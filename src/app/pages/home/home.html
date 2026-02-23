@@ -1,4 +1,107 @@
-<!-- Home page minimal placeholder -->
-<section class="min-h-screen flex items-center justify-center bg-brand-neutralLight">
-  <h1 class="text-3xl font-bold text-brand-neutralDark">Pagina principal</h1>
+<!-- Hero Section -->
+<section class="hero-section min-h-screen flex items-center bg-brand-cream relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-brand-cream via-brand-warm to-brand-cream opacity-80"></div>
+  <div class="container mx-auto px-6 lg:px-12 relative z-10">
+    <div class="max-w-3xl">
+      <h1 class="text-5xl lg:text-7xl font-bold text-brand-charcoal leading-tight mb-6">
+        Transformamos ideas en <span class="text-brand-accent">soluciones digitales</span>
+      </h1>
+      <p class="text-xl lg:text-2xl text-brand-muted mb-8 leading-relaxed">
+        Somos un equipo apasionado por crear experiencias digitales excepcionales que impulsan el crecimiento de tu negocio.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="/contact" class="px-8 py-4 bg-brand-cta text-brand-cream font-semibold rounded-lg hover:bg-brand-charcoal transition-colors duration-300">
+          Iniciar proyecto
+        </a>
+        <a href="/services" class="px-8 py-4 border-2 border-brand-charcoal text-brand-charcoal font-semibold rounded-lg hover:bg-brand-charcoal hover:text-brand-cream transition-colors duration-300">
+          Ver servicios
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="absolute bottom-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-tan/20 to-transparent"></div>
+</section>
+
+<!-- Servicios Section -->
+<section class="py-24 bg-brand-warm">
+  <div class="container mx-auto px-6 lg:px-12">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl lg:text-5xl font-bold text-brand-charcoal mb-4">Nuestros Servicios</h2>
+      <p class="text-lg text-brand-muted max-w-2xl mx-auto">
+        Ofrecemos soluciones integrales para llevar tu negocio al siguiente nivel digital.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      @for (service of services; track service.title) {
+        <div class="service-card bg-brand-cream p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 group">
+          <div class="w-16 h-16 bg-brand-accent/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-accent/20 transition-colors">
+            <span class="text-3xl">{{ service.icon }}</span>
+          </div>
+          <h3 class="text-xl font-bold text-brand-charcoal mb-3">{{ service.title }}</h3>
+          <p class="text-brand-muted leading-relaxed">{{ service.description }}</p>
+        </div>
+      }
+    </div>
+
+    <div class="text-center mt-12">
+      <a href="/services" class="inline-flex items-center gap-2 text-brand-accent font-semibold hover:text-brand-charcoal transition-colors">
+        Ver todos los servicios
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Proyectos Section -->
+<section class="py-24 bg-brand-cream">
+  <div class="container mx-auto px-6 lg:px-12">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-16">
+      <div>
+        <h2 class="text-4xl lg:text-5xl font-bold text-brand-charcoal mb-4">Proyectos Destacados</h2>
+        <p class="text-lg text-brand-muted max-w-xl">
+          Conoce algunos de nuestros trabajos más recientes y cómo hemos ayudado a nuestros clientes.
+        </p>
+      </div>
+      <a href="/projects" class="mt-6 lg:mt-0 inline-flex items-center gap-2 text-brand-accent font-semibold hover:text-brand-charcoal transition-colors">
+        Ver todos los proyectos
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
+      </a>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      @for (project of projects; track project.title) {
+        <div class="project-card group cursor-pointer">
+          <div class="relative overflow-hidden rounded-2xl mb-4">
+            <div class="aspect-[4/3] bg-brand-tan/30 flex items-center justify-center">
+              <span class="text-6xl">{{ project.icon }}</span>
+            </div>
+            <div class="absolute inset-0 bg-brand-charcoal/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <span class="text-brand-cream font-semibold">Ver proyecto</span>
+            </div>
+          </div>
+          <span class="text-sm text-brand-accent font-medium">{{ project.category }}</span>
+          <h3 class="text-xl font-bold text-brand-charcoal mt-1 group-hover:text-brand-accent transition-colors">{{ project.title }}</h3>
+          <p class="text-brand-muted mt-2">{{ project.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-24 bg-brand-charcoal">
+  <div class="container mx-auto px-6 lg:px-12 text-center">
+    <h2 class="text-4xl lg:text-5xl font-bold text-brand-cream mb-6">¿Listo para comenzar?</h2>
+    <p class="text-xl text-brand-warm max-w-2xl mx-auto mb-10">
+      Conversemos sobre tu próximo proyecto y cómo podemos ayudarte a alcanzar tus objetivos.
+    </p>
+    <a href="/contact" class="inline-block px-10 py-5 bg-brand-accent text-brand-cream font-semibold rounded-lg hover:bg-brand-tan hover:text-brand-charcoal transition-colors duration-300 text-lg">
+      Contáctanos
+    </a>
+  </div>
 </section>
