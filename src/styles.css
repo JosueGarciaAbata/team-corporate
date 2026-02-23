@@ -1,0 +1,38 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Anthropic-inspired warm palette */
+  --color-brand-cream: #f5f0e8;
+  --color-brand-warm: #e8e0d4;
+  --color-brand-tan: #c9b99a;
+  --color-brand-charcoal: #191918;
+  --color-brand-muted: #6b6b5e;
+  --color-brand-accent: #b8560f;
+  --color-brand-cta: #1f1f1e;
+
+  --animate-slideDown: slideDown 0.25s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
