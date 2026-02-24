@@ -1,7 +1,9 @@
-import { Component, AfterViewInit, signal } from '@angular/core';
+import { Component, AfterViewInit, inject, signal } from '@angular/core';
 import { CommonModule, SlicePipe } from '@angular/common';
+import { Router } from '@angular/router';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ProjectsService, Project } from '../../services/projects.service';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,8 +23,12 @@ interface HomeService {
   styleUrl: './home.css',
 })
 export class Home implements AfterViewInit {
+  private router = inject(Router);
+  private projectsService = inject(ProjectsService);
 
   selectedService = signal<HomeService | null>(null);
+
+  projects = this.projectsService.getHomeProjects();
 
   services: HomeService[] = [
     {
@@ -63,12 +69,6 @@ export class Home implements AfterViewInit {
     },
   ];
 
-  projects = [
-    { icon: '🏪', title: 'E-Commerce Premium', category: 'Desarrollo Web', description: 'Plataforma con +50k productos, pagos integrados y panel de gestión.', tag: 'Web' },
-    { icon: '📊', title: 'Dashboard Analytics', category: 'Aplicación Web', description: 'Panel en tiempo real para análisis de datos empresariales complejos.', tag: 'SaaS' },
-    { icon: '🏥', title: 'App Salud Digital', category: 'Aplicación Móvil', description: 'Telemedicina con videollamadas, historial clínico y gestión de citas.', tag: 'Mobile' },
-  ];
-
   testimonials = [
     { name: 'Carlos Mendoza', role: 'CEO, Fintech Latam', quote: 'Stratium transformó por completo nuestra plataforma. Entregaron en tiempo récord con una calidad que superó todas las expectativas.', avatar: 'CM' },
     { name: 'Laura Vásquez', role: 'Directora de Producto, RetailCo', quote: 'El equipo entiende el negocio, no solo la tecnología. Eso marca la diferencia. Nuestras conversiones aumentaron un 40%.', avatar: 'LV' },
@@ -76,6 +76,11 @@ export class Home implements AfterViewInit {
   ];
 
   techStack = ['Angular', 'React', 'Flutter', 'Node.js', 'Python', 'AWS', 'PostgreSQL', 'Figma', 'Docker', 'TypeScript'];
+
+  navigateToProject(project: Project): void {
+    this.projectsService.setSelectedProjectId(project.id);
+    this.router.navigate(['/projects']);
+  }
 
   ngAfterViewInit(): void {
     this.preloadImages();
