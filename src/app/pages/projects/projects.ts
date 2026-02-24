@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, signal, computed } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -22,7 +22,7 @@ interface Project {
   templateUrl: './projects.html',
   styleUrl: './projects.css',
 })
-export class Projects implements AfterViewInit {
+export class Projects implements AfterViewInit, OnDestroy {
   activeFilter = signal('Todos');
   selectedProject = signal<Project | null>(null);
 
@@ -39,19 +39,19 @@ export class Projects implements AfterViewInit {
   projects: Project[] = [
     {
       id: 1,
-      title: 'Fuel Management System',
-      excerpt: 'Distributed system focused on detecting issues and edge cases in fuel consumption.',
-      description: 'A distributed backend that monitors fuel usage and flags anomalous patterns, inconsistencies, and potential misuse. Designed to detect sophisticated fraud attempts and inefficiencies.',
+      title: 'Sistema de Gestión de Combustible',
+      excerpt: 'Sistema distribuido enfocado en detectar problemas y casos extremos en el consumo de combustible.',
+      description: 'Backend distribuido que monitorea el uso de combustible y detecta patrones anómalos, inconsistencias y posibles irregularidades. Diseñado para identificar intentos sofisticados de fraude e ineficiencias operativas en tiempo real.',
       image: 'assets/img/projects/fuel-management.svg',
-      technologies: ['Node.js', 'NestJS', 'Distributed Systems', 'PostgreSQL', 'Redis'],
+      technologies: ['Node.js', 'NestJS', 'Sistemas Distribuidos', 'PostgreSQL', 'Redis'],
       category: 'Backend',
       publishDate: '2026-02-17',
     },
     {
       id: 2,
-      title: 'Hospital Management System',
-      excerpt: 'Microservices architecture with Spring Cloud, Eureka, API Gateway, Docker, and Azure.',
-      description: 'A microservices-based hospital management platform focused on scalability, resilience, and clean service boundaries. Handles patient records, appointments, billing, and medical workflows.',
+      title: 'Sistema de Gestión Hospitalaria',
+      excerpt: 'Arquitectura de microservicios con Spring Cloud, Eureka, API Gateway, Docker y Azure.',
+      description: 'Plataforma de gestión hospitalaria basada en microservicios, enfocada en escalabilidad, resiliencia y límites claros entre servicios. Gestiona expedientes de pacientes, citas, facturación y flujos de trabajo médicos.',
       image: 'assets/img/projects/hospital-management.svg',
       technologies: ['Java', 'Spring Boot', 'Spring Cloud', 'Docker', 'Azure', 'Eureka'],
       category: 'Microservicios',
@@ -59,9 +59,9 @@ export class Projects implements AfterViewInit {
     },
     {
       id: 3,
-      title: 'Event Reservation Management System',
-      excerpt: 'High-concurrency reservation system validating consistency and preventing duplicate bookings.',
-      description: 'A booking system designed for high throughput, correctness under concurrency, and strong data consistency guarantees. Handles millions of concurrent reservations with payment processing.',
+      title: 'Sistema de Gestión de Reservas',
+      excerpt: 'Sistema de reservas de alta concurrencia que valida consistencia y previene reservas duplicadas.',
+      description: 'Sistema de reservas diseñado para alto rendimiento, corrección bajo concurrencia y fuertes garantías de consistencia de datos. Gestiona millones de reservas concurrentes con procesamiento de pagos integrado.',
       image: 'assets/img/projects/event-reservation.svg',
       technologies: ['Java', 'Spring Boot', 'PostgreSQL', 'Redis', 'Stripe', 'Gatling'],
       category: 'Backend',
@@ -69,9 +69,9 @@ export class Projects implements AfterViewInit {
     },
     {
       id: 4,
-      title: 'Publication Management System',
-      excerpt: 'Full-stack system with Spring Boot, REST APIs, and CI/CD pipelines using Jenkins and Docker.',
-      description: 'A publication workflow platform with moderation tooling, automation pipelines, and reliable deployment practices. Manages content lifecycle from creation to publishing with comprehensive audit trails.',
+      title: 'Sistema de Gestión de Publicaciones',
+      excerpt: 'Sistema full-stack con Spring Boot, APIs REST y pipelines CI/CD usando Jenkins y Docker.',
+      description: 'Plataforma de flujo de publicaciones con herramientas de moderación, pipelines de automatización y prácticas de despliegue confiables. Gestiona el ciclo de vida del contenido desde su creación hasta la publicación con auditorías completas.',
       image: 'assets/img/projects/publication-management.svg',
       technologies: ['Java', 'Spring Boot', 'Jenkins', 'CI/CD', 'Docker', 'PostgreSQL'],
       category: 'Full-Stack',
@@ -83,12 +83,18 @@ export class Projects implements AfterViewInit {
     this.initAnimations();
   }
 
+  ngOnDestroy() {
+    document.body.style.overflow = '';
+  }
+
   selectProject(project: Project) {
     this.selectedProject.set(project);
+    document.body.style.overflow = 'hidden';
   }
 
   closeModal() {
     this.selectedProject.set(null);
+    document.body.style.overflow = '';
   }
 
   filterProjects(filter: string) {
