@@ -71,8 +71,28 @@
       </div>
 
       <!-- Right: Visual card stack -->
-      <div class="h-visual hidden lg:flex items-center justify-center relative">
-        <!-- Main card -->
+      <div class="h-visual hidden lg:flex flex-col items-center justify-start relative pt-0">
+        
+        <!-- Top row: Both floating cards at same level -->
+        <div class="flex items-center justify-between w-full max-w-md mb-6 px-4">
+          <!-- Floating mini card: rating -->
+          <div class="hero-card-float-1 bg-brand-cream rounded-2xl p-4 shadow-xl flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-[#10b981]/15 flex items-center justify-center text-xl">⭐</div>
+            <div>
+              <div class="text-brand-charcoal font-bold text-sm">4.9 / 5.0</div>
+              <div class="text-brand-muted text-xs">Valoración media</div>
+            </div>
+          </div>
+
+          <!-- Floating mini card: deploy -->
+          <div class="hero-card-float-2 bg-brand-charcoal border border-brand-warm/10 rounded-2xl p-4 shadow-xl flex items-center gap-3">
+            <div class="w-2.5 h-2.5 rounded-full bg-[#10b981] animate-pulse"></div>
+            <span class="text-brand-cream text-sm font-medium">Deploy exitoso</span>
+            <span class="text-brand-warm/40 text-xs">hace 2 min</span>
+          </div>
+        </div>
+
+        <!-- Main card below -->
         <div class="hero-card-main w-80 bg-brand-cream/5 border border-brand-warm/10 backdrop-blur-sm rounded-3xl p-6 relative z-10">
           <div class="flex items-center gap-3 mb-5">
             <div class="w-10 h-10 rounded-xl bg-brand-accent/20 flex items-center justify-center text-xl">🚀</div>
@@ -104,22 +124,6 @@
             </div>
             <span class="text-xs text-brand-warm/40">Entrega: 12 Mar</span>
           </div>
-        </div>
-
-        <!-- Floating mini card: rating -->
-        <div class="hero-card-float-1 absolute -bottom-4 -left-8 bg-brand-cream rounded-2xl p-4 shadow-xl flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-[#10b981]/15 flex items-center justify-center text-xl">⭐</div>
-          <div>
-            <div class="text-brand-charcoal font-bold text-sm">4.9 / 5.0</div>
-            <div class="text-brand-muted text-xs">Valoración media</div>
-          </div>
-        </div>
-
-        <!-- Floating mini card: deploy -->
-        <div class="hero-card-float-2 absolute -top-4 -right-6 bg-brand-charcoal border border-brand-warm/10 rounded-2xl p-4 shadow-xl flex items-center gap-3">
-          <div class="w-2.5 h-2.5 rounded-full bg-[#10b981] animate-pulse"></div>
-          <span class="text-brand-cream text-sm font-medium">Deploy exitoso</span>
-          <span class="text-brand-warm/40 text-xs">hace 2 min</span>
         </div>
       </div>
 
