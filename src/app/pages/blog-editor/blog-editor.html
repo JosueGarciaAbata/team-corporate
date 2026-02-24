@@ -180,17 +180,13 @@
                 [class.border-red-500]="blogForm.get('category')?.touched && blogForm.get('category')?.invalid"
               >
                 <option value="">Seleccionar...</option>
-                <option value="Ingeniería de Software">Ingeniería de Software</option>
-                <option value="Inteligencia Artificial">Inteligencia Artificial</option>
-                <option value="DevOps">DevOps</option>
-                <option value="Arquitectura Cloud">Arquitectura Cloud</option>
-                <option value="Desarrollo Web">Desarrollo Web</option>
-                <option value="Ciberseguridad">Ciberseguridad</option>
-                <option value="UX/UI Design">UX/UI Design</option>
-                <option value="Mobile Development">Mobile Development</option>
-                <option value="Data Science">Data Science</option>
-                <option value="Otros">Otros</option>
+                @for (cat of categories; track cat) {
+                  <option [value]="cat">{{ cat }}</option>
+                }
               </select>
+              @if (blogForm.get('category')?.touched && blogForm.get('category')?.invalid) {
+                <p class="mt-2 text-sm text-red-600">{{ getErrorMessage('category') }}</p>
+              }
             </div>
 
             <!-- Read Time -->
