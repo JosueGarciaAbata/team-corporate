@@ -12,11 +12,11 @@ export class Header {
   scrolled = signal(false);
 
   navLinks = [
-    { label: 'Home', path: '/', exact: true },
-    { label: 'Services', path: '/services', exact: false },
-    { label: 'Projects', path: '/projects', exact: false },
+    { label: 'Inicio', path: '/', exact: true },
+    { label: 'Servicios', path: '/services', exact: false },
+    { label: 'Proyectos', path: '/projects', exact: false },
     { label: 'Blog', path: '/blog', exact: false },
-    { label: 'Team', path: '/team', exact: false },
+    { label: 'Equipo', path: '/team', exact: false },
   ];
 
   @HostListener('window:scroll')

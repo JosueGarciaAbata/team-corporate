@@ -1,0 +1,188 @@
+<!-- ═══════════════════════════════════════════════ -->
+<!--  HERO SECTION                                  -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="blog-hero relative min-h-[75vh] flex items-center overflow-hidden bg-brand-charcoal">
+  
+  <!-- Background decorative orbs -->
+  <div class="orb-1 absolute top-[12%] right-[10%] w-80 h-80 rounded-full bg-brand-accent/20 blur-[110px] pointer-events-none"></div>
+  <div class="orb-2 absolute bottom-[20%] left-[6%] w-96 h-96 rounded-full bg-[#7c3aed]/15 blur-[120px] pointer-events-none"></div>
+  <div class="orb-3 absolute top-[45%] right-[35%] w-52 h-52 rounded-full bg-[#0ea5e9]/10 blur-[90px] pointer-events-none"></div>
+
+  <!-- Grid overlay -->
+  <div class="absolute inset-0 blog-grid opacity-[0.04] pointer-events-none"></div>
+
+  <div class="container mx-auto px-6 lg:px-12 relative z-10 py-20 lg:py-28">
+    <div class="max-w-4xl">
+      
+      <!-- Badge -->
+      <div class="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-accent/40 bg-brand-accent/10 mb-8">
+        <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
+        <span class="text-brand-accent text-sm font-medium tracking-wide uppercase">Insights & Conocimiento</span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="hero-title text-5xl lg:text-7xl font-bold text-brand-cream leading-[0.95] mb-6">
+        Blog <span class="text-brand-accent">Stratium</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="hero-subtitle text-lg lg:text-xl text-brand-warm/70 max-w-2xl leading-relaxed mb-10">
+        Explorando las últimas tendencias en desarrollo de software, arquitectura cloud,
+        inteligencia artificial y transformación digital.
+      </p>
+
+      <!-- CTA -->
+      <a 
+        routerLink="/blog/new" 
+        class="hero-cta group inline-flex items-center gap-3 px-7 py-3.5 bg-brand-accent text-brand-cream font-semibold rounded-full transition-all duration-300 hover:bg-brand-accent/90 hover:gap-5"
+      >
+        Escribir nuevo post
+        <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+        </svg>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════ -->
+<!--  FILTERS BAR                                   -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="filters-bar sticky top-16 lg:top-18 z-40 bg-brand-cream/95 backdrop-blur-sm border-b border-brand-warm shadow-sm">
+  <div class="container mx-auto px-6 lg:px-12 py-4">
+    <div class="flex items-center gap-3 overflow-x-auto scrollbar-hide">
+      @for (cat of categories(); track cat) {
+        <button
+          (click)="selectCategory(cat)"
+          [class.filter-active]="selectedCategory() === cat"
+          class="filter-btn flex-shrink-0 px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 
+                 border border-brand-warm/30 hover:border-brand-accent/50 hover:bg-brand-accent/5
+                 whitespace-nowrap"
+        >
+          {{ cat }}
+        </button>
+      }
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════ -->
+<!--  BLOG POSTS GRID                               -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="py-20 bg-brand-warm">
+  <div class="container mx-auto px-6 lg:px-12">
+    
+    @if (filteredBlogs().length === 0) {
+      <!-- Empty state -->
+      <div class="text-center py-20">
+        <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-brand-accent/10 flex items-center justify-center">
+          <svg class="w-10 h-10 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-brand-charcoal mb-2">No hay posts en esta categoría</h3>
+        <p class="text-brand-muted mb-6">Prueba seleccionando otra categoría o escribe el primer post.</p>
+        <a 
+          routerLink="/blog/new"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-brand-accent text-brand-cream font-semibold rounded-full hover:bg-brand-accent/90 transition-all duration-200"
+        >
+          Crear nuevo post
+        </a>
+      </div>
+    } @else {
+      <!-- Blog grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        @for (post of filteredBlogs(); track post.id) {
+          <article class="blog-card group bg-brand-cream rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-brand-warm/40 hover:border-brand-accent/30">
+            
+            <!-- Image -->
+            <a [routerLink]="['/blog', post.id]" class="block relative overflow-hidden aspect-[16/9] bg-brand-charcoal">
+              <img 
+                [src]="post.imageUrl" 
+                [alt]="post.title"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-charcoal/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </a>
+
+            <!-- Content -->
+            <div class="p-6">
+              
+              <!-- Meta -->
+              <div class="flex items-center justify-between mb-3">
+                <span class="inline-block px-3 py-1 text-xs font-semibold text-brand-accent bg-brand-accent/10 rounded-full">
+                  {{ post.category }}
+                </span>
+                <span class="text-xs text-brand-muted">{{ post.readTime }} lectura</span>
+              </div>
+
+              <!-- Title -->
+              <h3 class="text-xl font-bold text-brand-charcoal mb-3 line-clamp-2 leading-tight group-hover:text-brand-accent transition-colors duration-200">
+                <a [routerLink]="['/blog', post.id]">{{ post.title }}</a>
+              </h3>
+
+              <!-- Excerpt -->
+              <p class="text-brand-muted text-sm leading-relaxed mb-4 line-clamp-3">
+                {{ post.excerpt }}
+              </p>
+
+              <!-- Footer -->
+              <div class="flex items-center justify-between pt-4 border-t border-brand-warm/40">
+                <div class="flex items-center gap-2">
+                  <div class="w-8 h-8 rounded-full bg-brand-accent/20 flex items-center justify-center text-xs font-bold text-brand-accent">
+                    {{ post.author.charAt(0) }}
+                  </div>
+                  <div>
+                    <div class="text-sm font-medium text-brand-charcoal">{{ post.author }}</div>
+                    <div class="text-xs text-brand-muted">{{ formatDate(post.date) }}</div>
+                  </div>
+                </div>
+                <a 
+                  [routerLink]="['/blog', post.id]"
+                  class="text-brand-accent hover:gap-2 inline-flex items-center gap-1 text-sm font-semibold transition-all duration-200"
+                >
+                  Leer más
+                  <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                  </svg>
+                </a>
+              </div>
+
+            </div>
+          </article>
+        }
+      </div>
+    }
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════ -->
+<!--  CTA SECTION                                   -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="py-20 bg-brand-charcoal relative overflow-hidden">
+  
+  <div class="orb-cta-1 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-brand-accent/10 blur-[150px] pointer-events-none"></div>
+
+  <div class="container mx-auto px-6 lg:px-12 relative z-10 text-center">
+    <h2 class="text-3xl lg:text-5xl font-bold text-brand-cream mb-6">
+      ¿Tienes un proyecto en mente?
+    </h2>
+    <p class="text-lg text-brand-warm/70 max-w-2xl mx-auto mb-10">
+      Conversemos sobre cómo podemos ayudarte a construir el futuro digital de tu empresa.
+    </p>
+    <a 
+      routerLink="/contact"
+      class="inline-flex items-center gap-3 px-8 py-4 bg-brand-accent text-brand-cream font-semibold rounded-full transition-all duration-300 hover:bg-brand-accent/90 hover:gap-5"
+    >
+      Iniciar conversación
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+      </svg>
+    </a>
+  </div>
+</section>
