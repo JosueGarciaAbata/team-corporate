@@ -20,18 +20,16 @@
 }
 
 .filter-btn {
+  background: transparent;
+  border-color: #c9b99a;
   color: #6b6b5e;
 }
 
-.filter-active {
-  background-color: #b8560f;
-  color: #f5f0e8;
-  border-color: #b8560f;
-}
 
-.filter-active:hover {
-  background-color: #a04c0d;
-  border-color: #a04c0d;
+.filter-active {
+  background: #191918;
+  border-color: #191918;
+  color: #f5f0e8;
 }
 
 /* ─────────────────────────────────────────
@@ -60,4 +58,37 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* ─────────────────────────────────────────
+   ANIMACIONES
+───────────────────────────────────────── */
+.hero-content {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeSlideUp 0.8s ease-out forwards;
+  animation-delay: 0.2s;
+}
+
+.blog-card {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeSlideUp 0.6s ease-out forwards;
+}
+
+.blog-card:nth-child(1) { animation-delay: 0.1s; }
+.blog-card:nth-child(2) { animation-delay: 0.2s; }
+.blog-card:nth-child(3) { animation-delay: 0.3s; }
+.blog-card:nth-child(4) { animation-delay: 0.4s; }
+.blog-card:nth-child(5) { animation-delay: 0.5s; }
+.blog-card:nth-child(6) { animation-delay: 0.6s; }
+.blog-card:nth-child(7) { animation-delay: 0.7s; }
+.blog-card:nth-child(8) { animation-delay: 0.8s; }
+.blog-card:nth-child(9) { animation-delay: 0.9s; }
+
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
