@@ -1,0 +1,259 @@
+<!-- ═══════════════════════════════════════════════ -->
+<!--  HERO SECTION                                  -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="projects-hero relative min-h-[92vh] flex items-center overflow-hidden bg-brand-charcoal">
+
+  <!-- Background decorative orbs -->
+  <div class="orb-1 absolute top-[10%] right-[8%] w-72 h-72 rounded-full bg-brand-accent/20 blur-[100px] pointer-events-none"></div>
+  <div class="orb-2 absolute bottom-[15%] left-[5%] w-96 h-96 rounded-full bg-[#7c3aed]/15 blur-[120px] pointer-events-none"></div>
+  <div class="orb-3 absolute top-[50%] right-[30%] w-48 h-48 rounded-full bg-[#0ea5e9]/10 blur-[80px] pointer-events-none"></div>
+
+  <!-- Grid lines overlay -->
+  <div class="absolute inset-0 grid-overlay opacity-[0.04] pointer-events-none"></div>
+
+  <div class="container mx-auto px-6 lg:px-12 relative z-10 py-24 lg:py-32">
+    <div class="max-w-4xl">
+
+      <!-- Badge -->
+      <div class="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-accent/40 bg-brand-accent/10 mb-8">
+        <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
+        <span class="text-brand-accent text-sm font-medium tracking-wide uppercase">Nuestros Proyectos</span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="hero-title text-5xl lg:text-7xl xl:text-8xl font-bold text-brand-cream leading-[0.95] mb-6">
+        Proyectos que<br>
+        <span class="hero-accent-text relative inline-block">
+          transforman
+          <span class="hero-underline absolute bottom-1 left-0 w-full h-[3px] bg-gradient-to-r from-brand-accent to-transparent"></span>
+        </span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="hero-subtitle text-lg lg:text-xl text-brand-warm/70 max-w-2xl leading-relaxed mb-10">
+        Trabajos que demuestran nuestra expertise en arquitectura distribuida, microservicios y sistemas 
+        de alto rendimiento. Cada proyecto resuelve retos complejos del mundo real.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap gap-4">
+        <a href="#projects" class="hero-cta group inline-flex items-center gap-3 px-7 py-3.5 bg-brand-accent text-brand-cream font-semibold rounded-full transition-all duration-300 hover:bg-brand-accent/90 hover:gap-5">
+          Ver proyectos
+          <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+        <a href="/contact" class="hero-cta inline-flex items-center gap-3 px-7 py-3.5 border border-brand-warm/30 text-brand-warm font-semibold rounded-full transition-all duration-300 hover:border-brand-warm/60 hover:bg-brand-warm/5">
+          Hablar con un experto
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero-scroll-indicator absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+    <span class="text-brand-warm/40 text-xs uppercase tracking-[0.2em]">Scroll</span>
+    <div class="w-[1px] h-10 bg-gradient-to-b from-brand-warm/40 to-transparent relative overflow-hidden">
+      <div class="scroll-dot w-full h-3 bg-brand-accent/80 rounded-full absolute top-0"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════ -->
+<!--  PROJECTS SECTION                              -->
+<!-- ═══════════════════════════════════════════════ -->
+<section id="projects" class="py-28 bg-brand-warm">
+  <div class="container mx-auto px-6 lg:px-12">
+
+    <!-- Section header -->
+    <div class="mb-16">
+      <div class="section-tag inline-flex items-center gap-2 text-brand-accent text-sm font-semibold uppercase tracking-widest mb-4">
+        <span class="w-8 h-[2px] bg-brand-accent"></span>
+        Portafolio
+      </div>
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+        <h2 class="section-title text-4xl lg:text-5xl font-bold text-brand-charcoal leading-tight max-w-2xl">
+          Proyectos con <span class="text-brand-accent">impacto real</span>
+        </h2>
+        <p class="section-subtitle text-brand-muted max-w-sm leading-relaxed">
+          Desde sistemas distribuidos hasta plataformas de alto rendimiento, cada proyecto 
+          resuelve desafíos tecnológicos complejos.
+        </p>
+      </div>
+    </div>
+
+    <!-- Filter buttons -->
+    <div class="projects-filters mb-16 space-y-8">
+      <div class="flex flex-wrap gap-3">
+        @for (filter of filters; track filter) {
+          <button 
+            (click)="filterProjects(filter)"
+            [class.filter-active]="activeFilter() === filter"
+            class="filter-btn px-6 py-2.5 rounded-full text-sm font-medium border border-brand-muted transition-all duration-300 hover:border-brand-charcoal"
+          >
+            {{ filter }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- Projects grid -->
+    <div class="projects-grid grid grid-cols-1 md:grid-cols-2 gap-8">
+      @for (project of filteredProjects(); track project.id) {
+        <div 
+          class="project-card group relative rounded-2xl overflow-hidden bg-white cursor-pointer 
+                   transition-all duration-300 hover:shadow-lg"
+          (click)="selectProject(project)"
+        >
+          <!-- Project image -->
+          <div class="relative h-64 md:h-72 overflow-hidden bg-brand-warm">
+            <img 
+              [src]="project.image" 
+              [alt]="project.title"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+            <!-- Overlay gradient -->
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-charcoal/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+
+          <!-- Project info -->
+          <div class="p-6">
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-2 mb-3">
+              @for (tech of project.technologies.slice(0, 3); track tech) {
+                <span class="inline-block px-3 py-1 bg-brand-accent/10 text-brand-accent text-xs font-semibold rounded-full">
+                  {{ tech }}
+                </span>
+              }
+            </div>
+
+            <!-- Title -->
+            <h3 class="text-xl font-bold text-brand-charcoal mb-2 group-hover:text-brand-accent transition-colors duration-300">
+              {{ project.title }}
+            </h3>
+
+            <!-- Excerpt -->
+            <p class="text-brand-muted text-sm leading-relaxed mb-4">
+              {{ project.excerpt }}
+            </p>
+
+            <!-- Footer -->
+            <div class="flex items-center justify-between pt-4 border-t border-brand-warm/20">
+              <span class="text-xs text-brand-muted/60">{{ formatDate(project.publishDate) }}</span>
+              <span class="inline-flex items-center gap-2 text-brand-accent text-sm font-semibold group-hover:gap-3 transition-all duration-300">
+                Ver más
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════ -->
+<!--  PROJECT DETAIL MODAL                          -->
+<!-- ═══════════════════════════════════════════════ -->
+@if (selectedProject()) {
+  <div class="modal-overlay fixed inset-0 bg-brand-charcoal/80 backdrop-blur-sm z-40 animate-fadeIn" 
+       (click)="closeModal()">
+  </div>
+
+  <div class="modal-wrapper fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 overflow-y-auto py-8 md:py-0" 
+       (click)="$event.stopPropagation()">
+    <div class="modal-card bg-white rounded-2xl w-full max-w-2xl shadow-2xl animate-slideUp">
+      
+      <!-- Modal header with close button -->
+      <div class="flex items-start justify-between p-6 md:p-8 border-b border-brand-warm/20 bg-white rounded-t-2xl">
+        <div class="flex-1">
+          <h2 class="text-2xl md:text-3xl font-bold text-brand-charcoal leading-tight">{{ selectedProject()?.title }}</h2>
+          <p class="text-sm text-brand-accent mt-2 font-semibold">{{ selectedProject()?.category }}</p>
+        </div>
+        <button 
+          (click)="closeModal()"
+          class="ml-4 p-2 hover:bg-brand-warm rounded-lg transition-colors duration-300 text-brand-charcoal/60 hover:text-brand-charcoal flex-shrink-0"
+          aria-label="Cerrar modal"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal body with scroll -->
+      <div class="overflow-y-auto max-h-[calc(100vh-300px)]">
+        <div class="p-6 md:p-8 space-y-6">
+          <!-- Project image -->
+          <div class="relative rounded-xl overflow-hidden bg-gradient-to-br from-brand-warm to-brand-warm/50 aspect-video">
+            <img 
+              [src]="selectedProject()?.image" 
+              [alt]="selectedProject()?.title"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <!-- Description -->
+          <div>
+            <h3 class="text-sm font-semibold text-brand-muted uppercase tracking-widest mb-2">Descripción</h3>
+            <p class="text-base md:text-lg text-brand-charcoal/80 leading-relaxed">
+              {{ selectedProject()?.description }}
+            </p>
+          </div>
+
+          <!-- Technologies -->
+          <div>
+            <h3 class="text-sm font-semibold text-brand-charcoal uppercase tracking-widest mb-3">
+              Tecnologías utilizadas
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              @for (tech of selectedProject()?.technologies; track tech) {
+                <span class="inline-block px-4 py-2 bg-brand-accent/15 text-brand-accent text-xs md:text-sm font-semibold rounded-full border border-brand-accent/30 hover:border-brand-accent/60 transition-colors duration-300">
+                  {{ tech }}
+                </span>
+              }
+            </div>
+          </div>
+
+          <!-- Project info grid -->
+          <div class="grid grid-cols-2 gap-4 pt-4 border-t border-brand-warm/20">
+            <div>
+              <div class="text-xs font-semibold text-brand-muted uppercase tracking-widest mb-1">
+                Tipo
+              </div>
+              <div class="text-base text-brand-charcoal font-semibold">{{ selectedProject()?.category }}</div>
+            </div>
+            <div>
+              <div class="text-xs font-semibold text-brand-muted uppercase tracking-widest mb-1">
+                Publicado
+              </div>
+              <div class="text-base text-brand-charcoal font-semibold">{{ formatDate(selectedProject()?.publishDate || '') }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="flex flex-col sm:flex-row gap-3 p-6 md:p-8 border-t border-brand-warm/20 bg-brand-warm/5 rounded-b-2xl">
+        <button 
+          (click)="closeModal()"
+          class="px-6 py-3 text-brand-charcoal font-semibold rounded-full border border-brand-warm/40 hover:border-brand-charcoal/40 hover:bg-brand-warm/10 transition-all duration-300 order-2 sm:order-1"
+        >
+          Cerrar
+        </button>
+        <a 
+          href="/contact" 
+          class="px-6 py-3 bg-brand-accent text-white font-semibold rounded-full hover:bg-brand-accent/90 transition-all duration-300 text-center order-1 sm:order-2 sm:ml-auto"
+        >
+          Iniciar proyecto
+        </a>
+      </div>
+    </div>
+  </div>
+}
