@@ -1,5 +1,13 @@
 @import 'tailwindcss';
 
+@font-face {
+  font-family: 'Europa Grotesk';
+  src: url('/assets/fonts/Europa-Grotesk-No2-Medium-B7a8PlH0.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   /* Anthropic-inspired warm palette */
   --color-brand-cream: #f5f0e8;
@@ -11,6 +19,9 @@
   --color-brand-cta: #1f1f1e;
 
   --animate-slideDown: slideDown 0.25s ease-out;
+
+  /* 👇 fuente como token */
+  --font-brand: 'Europa Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 @keyframes slideDown {
@@ -29,10 +40,6 @@ html {
 }
 
 body {
-  font-family:
-    system-ui,
-    -apple-system,
-    'Segoe UI',
-    sans-serif;
+  font-family: var(--font-brand);
   -webkit-font-smoothing: antialiased;
 }

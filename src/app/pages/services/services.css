@@ -1,7 +1,7 @@
 /* ─────────────────────────────────────────
    GRID OVERLAY
 ───────────────────────────────────────── */
-.home-grid {
+.grid-overlay {
   background-image:
     linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
@@ -9,115 +9,131 @@
 }
 
 /* ─────────────────────────────────────────
-   HERO FLOATING CARDS
+   HERO ACCENT TEXT
 ───────────────────────────────────────── */
-.hero-card-float-1 {
-  animation: floatCard1 5s ease-in-out infinite;
+.hero-accent-text {
+  color: #b8560f;
 }
-.hero-card-float-2 {
-  animation: floatCard2 6s ease-in-out infinite;
+
+.hero-underline {
+  border-radius: 2px;
 }
-@keyframes floatCard1 {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+
+/* ─────────────────────────────────────────
+   STATS BAR
+───────────────────────────────────────── */
+.stats-bar .stat-number {
+  font-variant-numeric: tabular-nums;
 }
-@keyframes floatCard2 {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(8px); }
+
+/* ─────────────────────────────────────────
+   FILTER BUTTONS
+───────────────────────────────────────── */
+.filter-btn {
+  background: transparent;
+  border-color: #c9b99a;
+  color: #6b6b5e;
+}
+
+.filter-btn:hover {
+  border-color: #191918;
+  color: #191918;
+}
+
+.filter-btn.filter-active {
+  background: #191918;
+  border-color: #191918;
+  color: #f5f0e8;
 }
 
 /* ─────────────────────────────────────────
    SERVICE CARDS — imagen de fondo
 ───────────────────────────────────────── */
-.srv-card {
+.service-card {
   pointer-events: auto;
-  /* content-visibility acelera el render de cards fuera del viewport */
   content-visibility: auto;
-  contain-intrinsic-size: 0 256px;
+  contain-intrinsic-size: 0 288px;
   transition: transform 0.45s cubic-bezier(0.34, 1.36, 0.64, 1),
               box-shadow 0.45s ease;
 }
 
-/* El zoom va en el WRAPPER, no en el img — evita repaint */
-.srv-card .relative {
+/* Zoom en el wrapper, no en el img */
+.card-img-wrap {
   background-color: #c9b99a;
   transform: translateZ(0);
   transition: transform 0.7s ease;
 }
 
-.srv-card:hover .relative {
+.service-card:hover .card-img-wrap {
   transform: scale(1.08) translateZ(0);
 }
 
-/* El img es estático — sin transform ni transition propios */
-.srv-card img {
+.card-img-wrap img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* GPU layer sin animación activa */
   transform: translateZ(0);
   backface-visibility: hidden;
-}
-
-.img-loaded {
-  /* sin transition aquí, la maneja el wrapper */
 }
 
 /* ─────────────────────────────────────────
    MODAL
 ───────────────────────────────────────── */
-.home-modal-panel {
+.modal-backdrop {
+  /* opacity manejada por GSAP */
+}
+
+.modal-panel {
   max-height: 90vh;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #c9b99a transparent;
 }
 
-.home-modal-panel::-webkit-scrollbar { width: 4px; }
-.home-modal-panel::-webkit-scrollbar-track { background: transparent; }
-.home-modal-panel::-webkit-scrollbar-thumb { background: #c9b99a; border-radius: 99px; }
+.modal-panel::-webkit-scrollbar { width: 4px; }
+.modal-panel::-webkit-scrollbar-track { background: transparent; }
+.modal-panel::-webkit-scrollbar-thumb { background: #c9b99a; border-radius: 99px; }
 
 /* ─────────────────────────────────────────
-   PROJECT CARDS
+   PROCESS STEPS
 ───────────────────────────────────────── */
-.proj-card .aspect-\[4\/3\] {
-  transition: all 0.3s ease;
+.process-step {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeSlideUp 0.6s ease-out forwards;
+}
+
+.process-step:nth-child(1) { animation-delay: 0.1s; }
+.process-step:nth-child(2) { animation-delay: 0.25s; }
+.process-step:nth-child(3) { animation-delay: 0.4s; }
+.process-step:nth-child(4) { animation-delay: 0.55s; }
+
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ─────────────────────────────────────────
-   TICKER
+   CTA SECTION ORBS
 ───────────────────────────────────────── */
-.ticker-wrap {
-  will-change: transform;
+.orb-cta-1 {
+  animation: float1 8s ease-in-out infinite;
 }
-.ticker-inner {
-  will-change: transform;
+.orb-cta-2 {
+  animation: float2 10s ease-in-out infinite;
 }
 
-/* ─────────────────────────────────────────
-   CTA SECTION
-───────────────────────────────────────── */
-.cta-orb-1 {
-  animation: ctaFloat1 9s ease-in-out infinite;
-}
-.cta-orb-2 {
-  animation: ctaFloat2 11s ease-in-out infinite;
-}
-@keyframes ctaFloat1 {
+@keyframes float1 {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-30px, 20px) scale(1.06); }
-}
-@keyframes ctaFloat2 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(20px, -15px) scale(0.96); }
+  50% { transform: translate(30px, -20px) scale(1.05); }
 }
 
-.cta-info-card {
-  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
-}
-.cta-info-card:hover {
-  transform: translateX(6px);
+@keyframes float2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-20px, 15px) scale(0.97); }
 }
 
 /* ─────────────────────────────────────────

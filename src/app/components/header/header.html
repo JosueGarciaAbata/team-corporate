@@ -1,11 +1,19 @@
-<header class="fixed top-0 left-0 w-full z-50 bg-brand-cream border-b border-brand-warm">
+<header
+  class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
+  [class.header-scrolled]="scrolled()"
+  [class.header-top]="!scrolled()"
+>
   <div class="max-w-[1200px] mx-auto px-6 lg:px-10">
     <div class="flex items-center justify-between h-16 lg:h-18">
+
       <!-- Logo -->
-      <a routerLink="/" class="flex items-center group">
-        <span class="text-[17px] font-bold uppercase tracking-[0.2em] text-brand-charcoal"
-          >Stratium</span
-        >
+      <a routerLink="/" class="flex items-center gap-2.5 group flex-shrink-0">
+        <img
+          src="logo.png"
+          alt="Stratium"
+          class="h-8 w-auto transition-opacity duration-200 group-hover:opacity-75"
+        />
+        <span class="text-[17px] font-bold uppercase tracking-[0.2em] text-brand-charcoal group-hover:text-brand-accent transition-colors duration-200">Stratium</span>
       </a>
 
       <!-- Desktop Navigation -->
@@ -13,16 +21,16 @@
         @for (link of navLinks; track link.path) {
           <a
             [routerLink]="link.path"
-            routerLinkActive="!text-brand-charcoal"
+            routerLinkActive="nav-link-active"
             [routerLinkActiveOptions]="{ exact: link.exact }"
-            class="text-[15px] text-brand-muted transition-colors duration-200 hover:text-brand-charcoal"
+            class="nav-link relative text-[15px] transition-colors duration-200 hover:text-brand-charcoal"
           >
             {{ link.label }}
           </a>
         }
         <a
           routerLink="/contact"
-          class="ml-2 px-5 py-2 text-sm font-medium rounded-full bg-brand-cta text-brand-cream transition-all duration-200 hover:bg-brand-charcoal/80"
+          class="ml-2 px-5 py-2 text-sm font-medium rounded-full bg-brand-cta text-brand-cream transition-all duration-200 hover:bg-brand-accent"
         >
           Contact
         </a>
@@ -35,7 +43,7 @@
         [attr.aria-expanded]="mobileOpen()"
         aria-label="Toggle navigation menu"
       >
-        <div class="w-5 flex flex-col gap-1.25 items-center">
+        <div class="w-5 flex flex-col gap-[5px] items-center">
           <span
             class="block h-0.5 w-full bg-brand-charcoal rounded-full transition-all duration-300 origin-center"
             [class.translate-y-[7px]]="mobileOpen()"
@@ -63,10 +71,10 @@
         @for (link of navLinks; track link.path) {
           <a
             [routerLink]="link.path"
-            routerLinkActive="!text-brand-charcoal"
+            routerLinkActive="mobile-link-active"
             [routerLinkActiveOptions]="{ exact: link.exact }"
             (click)="closeMobile()"
-            class="px-4 py-3 text-[15px] text-brand-muted rounded-lg transition-colors duration-200 hover:text-brand-charcoal hover:bg-brand-warm/50"
+            class="mobile-link px-4 py-3 text-[15px] rounded-lg transition-colors duration-200 hover:text-brand-charcoal hover:bg-brand-warm/50"
           >
             {{ link.label }}
           </a>
@@ -74,7 +82,7 @@
         <a
           routerLink="/contact"
           (click)="closeMobile()"
-          class="mt-2 px-4 py-3 text-sm font-medium text-center rounded-full bg-brand-cta text-brand-cream transition-all duration-200 hover:bg-brand-charcoal/80"
+          class="mt-2 px-4 py-3 text-sm font-medium text-center rounded-full bg-brand-cta text-brand-cream transition-all duration-200 hover:bg-brand-accent"
         >
           Contact
         </a>
