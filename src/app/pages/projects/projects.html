@@ -90,7 +90,7 @@
         @for (filter of filters; track filter) {
           <button 
             (click)="filterProjects(filter)"
-            [class.filter-active]="activeFilter === filter"
+            [class.filter-active]="activeFilter() === filter"
             class="filter-btn px-6 py-2.5 rounded-full text-sm font-medium border border-brand-muted transition-all duration-300 hover:border-brand-charcoal"
           >
             {{ filter }}
@@ -101,7 +101,7 @@
 
     <!-- Projects grid -->
     <div class="projects-grid grid grid-cols-1 md:grid-cols-2 gap-8">
-      @for (project of projects; track project.id) {
+      @for (project of filteredProjects(); track project.id) {
         <div 
           class="project-card group relative rounded-2xl overflow-hidden bg-white cursor-pointer 
                    transition-all duration-300 hover:shadow-lg"
@@ -162,20 +162,24 @@
 <!--  PROJECT DETAIL MODAL                          -->
 <!-- ═══════════════════════════════════════════════ -->
 @if (selectedProject()) {
-  <div class="modal-overlay fixed inset-0 bg-brand-charcoal/80 backdrop-blur-sm z-40" 
+  <div class="modal-overlay fixed inset-0 bg-brand-charcoal/80 backdrop-blur-sm z-40 animate-fadeIn" 
        (click)="closeModal()">
   </div>
 
-  <div class="modal-content fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6" 
+  <div class="modal-wrapper fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 overflow-y-auto py-8 md:py-0" 
        (click)="$event.stopPropagation()">
-    <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+    <div class="modal-card bg-white rounded-2xl w-full max-w-2xl shadow-2xl animate-slideUp">
       
       <!-- Modal header with close button -->
-      <div class="sticky top-0 flex items-center justify-between p-6 border-b border-brand-warm/20 bg-white/95 backdrop-blur-sm z-10">
-        <h2 class="text-2xl font-bold text-brand-charcoal">{{ selectedProject()?.title }}</h2>
+      <div class="flex items-start justify-between p-6 md:p-8 border-b border-brand-warm/20 bg-white rounded-t-2xl">
+        <div class="flex-1">
+          <h2 class="text-2xl md:text-3xl font-bold text-brand-charcoal leading-tight">{{ selectedProject()?.title }}</h2>
+          <p class="text-sm text-brand-accent mt-2 font-semibold">{{ selectedProject()?.category }}</p>
+        </div>
         <button 
           (click)="closeModal()"
-          class="p-2 hover:bg-brand-warm rounded-lg transition-colors duration-300 text-brand-charcoal/60 hover:text-brand-charcoal"
+          class="ml-4 p-2 hover:bg-brand-warm rounded-lg transition-colors duration-300 text-brand-charcoal/60 hover:text-brand-charcoal flex-shrink-0"
+          aria-label="Cerrar modal"
         >
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -183,62 +187,69 @@
         </button>
       </div>
 
-      <!-- Modal body -->
-      <div class="p-6">
-        <!-- Project image -->
-        <img 
-          [src]="selectedProject()?.image" 
-          [alt]="selectedProject()?.title"
-          class="w-full h-80 object-cover rounded-lg mb-6"
-        />
-
-        <!-- Description -->
-        <p class="text-lg text-brand-charcoal/80 leading-relaxed mb-6">
-          {{ selectedProject()?.description }}
-        </p>
-
-        <!-- Technologies -->
-        <div class="mb-6">
-          <h3 class="text-sm font-semibold text-brand-charcoal uppercase tracking-wide mb-3">
-            Tecnologías utilizadas
-          </h3>
-          <div class="flex flex-wrap gap-2">
-            @for (tech of selectedProject()?.technologies; track tech) {
-              <span class="inline-block px-4 py-2 bg-brand-accent/10 text-brand-accent text-sm font-semibold rounded-full border border-brand-accent/20">
-                {{ tech }}
-              </span>
-            }
+      <!-- Modal body with scroll -->
+      <div class="overflow-y-auto max-h-[calc(100vh-300px)]">
+        <div class="p-6 md:p-8 space-y-6">
+          <!-- Project image -->
+          <div class="relative rounded-xl overflow-hidden bg-gradient-to-br from-brand-warm to-brand-warm/50 aspect-video">
+            <img 
+              [src]="selectedProject()?.image" 
+              [alt]="selectedProject()?.title"
+              class="w-full h-full object-cover"
+            />
           </div>
-        </div>
 
-        <!-- Project info grid -->
-        <div class="grid grid-cols-2 gap-4 pt-6 border-t border-brand-warm/20">
+          <!-- Description -->
           <div>
-            <div class="text-xs font-semibold text-brand-muted uppercase tracking-wide mb-1">
-              Categoría
-            </div>
-            <div class="text-brand-charcoal font-semibold">{{ selectedProject()?.category }}</div>
+            <h3 class="text-sm font-semibold text-brand-muted uppercase tracking-widest mb-2">Descripción</h3>
+            <p class="text-base md:text-lg text-brand-charcoal/80 leading-relaxed">
+              {{ selectedProject()?.description }}
+            </p>
           </div>
+
+          <!-- Technologies -->
           <div>
-            <div class="text-xs font-semibold text-brand-muted uppercase tracking-wide mb-1">
-              Fecha
+            <h3 class="text-sm font-semibold text-brand-charcoal uppercase tracking-widest mb-3">
+              Tecnologías utilizadas
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              @for (tech of selectedProject()?.technologies; track tech) {
+                <span class="inline-block px-4 py-2 bg-brand-accent/15 text-brand-accent text-xs md:text-sm font-semibold rounded-full border border-brand-accent/30 hover:border-brand-accent/60 transition-colors duration-300">
+                  {{ tech }}
+                </span>
+              }
             </div>
-            <div class="text-brand-charcoal font-semibold">{{ formatDate(selectedProject()?.publishDate || '') }}</div>
+          </div>
+
+          <!-- Project info grid -->
+          <div class="grid grid-cols-2 gap-4 pt-4 border-t border-brand-warm/20">
+            <div>
+              <div class="text-xs font-semibold text-brand-muted uppercase tracking-widest mb-1">
+                Tipo
+              </div>
+              <div class="text-base text-brand-charcoal font-semibold">{{ selectedProject()?.category }}</div>
+            </div>
+            <div>
+              <div class="text-xs font-semibold text-brand-muted uppercase tracking-widest mb-1">
+                Publicado
+              </div>
+              <div class="text-base text-brand-charcoal font-semibold">{{ formatDate(selectedProject()?.publishDate || '') }}</div>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Modal footer -->
-      <div class="sticky bottom-0 flex gap-3 p-6 border-t border-brand-warm/20 bg-white/95 backdrop-blur-sm justify-end">
+      <div class="flex flex-col sm:flex-row gap-3 p-6 md:p-8 border-t border-brand-warm/20 bg-brand-warm/5 rounded-b-2xl">
         <button 
           (click)="closeModal()"
-          class="px-6 py-2.5 text-brand-charcoal font-semibold rounded-full border border-brand-warm/30 hover:bg-brand-warm/5 transition-colors duration-300"
+          class="px-6 py-3 text-brand-charcoal font-semibold rounded-full border border-brand-warm/40 hover:border-brand-charcoal/40 hover:bg-brand-warm/10 transition-all duration-300 order-2 sm:order-1"
         >
           Cerrar
         </button>
         <a 
           href="/contact" 
-          class="px-6 py-2.5 bg-brand-accent text-white font-semibold rounded-full hover:bg-brand-accent/90 transition-colors duration-300"
+          class="px-6 py-3 bg-brand-accent text-white font-semibold rounded-full hover:bg-brand-accent/90 transition-all duration-300 text-center order-1 sm:order-2 sm:ml-auto"
         >
           Iniciar proyecto
         </a>

@@ -26,17 +26,39 @@
   background: transparent;
   border-color: #c9b99a;
   color: #6b6b5e;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.filter-btn:hover::before {
+  transform: translateX(100%);
 }
 
 .filter-btn:hover {
   border-color: #191918;
   color: #191918;
+  box-shadow: 0 4px 12px rgba(25, 25, 24, 0.1);
 }
 
 .filter-btn.filter-active {
-  background: #191918;
-  border-color: #191918;
+  background: linear-gradient(135deg, #b8560f, #b8560f);
+  border-color: #b8560f;
   color: #f5f0e8;
+  box-shadow: 0 8px 24px rgba(184, 86, 15, 0.25);
+}
+
+.filter-btn.filter-active:hover {
+  box-shadow: 0 12px 32px rgba(184, 86, 15, 0.35);
 }
 
 /* ─────────────────────────────────────────
@@ -72,7 +94,11 @@
   animation: fadeIn 0.3s ease;
 }
 
-.modal-content {
+.modal-wrapper {
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-card {
   animation: slideUp 0.3s cubic-bezier(0.34, 1.36, 0.64, 1);
 }
 
@@ -88,7 +114,7 @@
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -96,28 +122,48 @@
   }
 }
 
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.3s cubic-bezier(0.34, 1.36, 0.64, 1) forwards;
+}
+
 /* ─────────────────────────────────────────
    RESPONSIVE DESIGN
 ───────────────────────────────────────── */
 @media (max-width: 768px) {
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
   }
 
   .section-title {
-    font-size: 2rem;
+    font-size: 1.875rem;
   }
 
   .projects-grid {
     grid-template-columns: 1fr;
   }
 
-  .modal-content {
-    padding: 1rem;
+  .modal-wrapper {
+    align-items: flex-start;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 
-  .modal-content > div {
-    max-height: calc(100vh - 2rem);
+  .modal-card {
+    max-height: 95vh;
+  }
+
+  .projects-filters .flex {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    font-size: 0.875rem;
+    padding: 0.625rem 1rem;
   }
 }
 

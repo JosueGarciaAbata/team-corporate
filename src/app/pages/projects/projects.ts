@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, signal } from '@angular/core';
+import { Component, AfterViewInit, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -23,10 +23,18 @@ interface Project {
   styleUrl: './projects.css',
 })
 export class Projects implements AfterViewInit {
-  activeFilter = 'Todos';
+  activeFilter = signal('Todos');
   selectedProject = signal<Project | null>(null);
 
   filters = ['Todos', 'Backend', 'Microservicios', 'Full-Stack', 'Distributed'];
+
+  filteredProjects = computed(() => {
+    const filter = this.activeFilter();
+    if (filter === 'Todos') {
+      return this.projects;
+    }
+    return this.projects.filter(p => p.category === filter);
+  });
 
   projects: Project[] = [
     {
@@ -84,7 +92,7 @@ export class Projects implements AfterViewInit {
   }
 
   filterProjects(filter: string) {
-    this.activeFilter = filter;
+    this.activeFilter.set(filter);
   }
 
   private initAnimations() {
