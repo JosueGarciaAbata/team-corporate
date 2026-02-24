@@ -1,0 +1,75 @@
+/* ─────────────────────────────────────────
+   GRID OVERLAY  (mirrors home-grid pattern)
+───────────────────────────────────────── */
+.footer-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ─────────────────────────────────────────
+   NAV LINKS — sliding underline on hover
+───────────────────────────────────────── */
+.ft-nav-link {
+  position: relative;
+}
+
+.ft-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #b8560f;
+  border-radius: 99px;
+  transition: width 0.25s ease;
+}
+
+.ft-nav-link:hover::after {
+  width: 100%;
+}
+
+/* ─────────────────────────────────────────
+   AMBIENT ORBS — subtle drift
+───────────────────────────────────────── */
+.ft-orb-1 {
+  animation: ftOrb1 14s ease-in-out infinite;
+}
+.ft-orb-2 {
+  animation: ftOrb2 18s ease-in-out infinite;
+}
+
+@keyframes ftOrb1 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-20px, 14px);
+  }
+}
+@keyframes ftOrb2 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(16px, -10px);
+  }
+}
+
+/* ─────────────────────────────────────────
+   SOCIAL ICONS — scale on hover
+───────────────────────────────────────── */
+.ft-social {
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+.ft-social:hover {
+  transform: translateY(-2px);
+}
