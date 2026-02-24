@@ -1,0 +1,174 @@
+/* ─────────────────────────────────────────
+   GRID OVERLAY
+───────────────────────────────────────── */
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ─────────────────────────────────────────
+   HERO ACCENT TEXT
+───────────────────────────────────────── */
+.hero-accent-text {
+  color: #b8560f;
+}
+
+.hero-underline {
+  border-radius: 2px;
+}
+
+/* ─────────────────────────────────────────
+   FILTER BUTTONS
+───────────────────────────────────────── */
+.filter-btn {
+  background: transparent;
+  border-color: #c9b99a;
+  color: #6b6b5e;
+}
+
+.filter-btn:hover {
+  border-color: #191918;
+  color: #191918;
+}
+
+.filter-btn.filter-active {
+  background: #191918;
+  border-color: #191918;
+  color: #f5f0e8;
+}
+
+/* ─────────────────────────────────────────
+   PROJECT CARDS
+───────────────────────────────────────── */
+.project-card {
+  pointer-events: auto;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 400px;
+  transition: transform 0.45s cubic-bezier(0.34, 1.36, 0.64, 1),
+              box-shadow 0.45s ease,
+              background-color 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(25, 25, 24, 0.1);
+}
+
+.project-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* ─────────────────────────────────────────
+   MODAL STYLES
+───────────────────────────────────────── */
+.modal-overlay {
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  animation: slideUp 0.3s cubic-bezier(0.34, 1.36, 0.64, 1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE DESIGN
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-content {
+    padding: 1rem;
+  }
+
+  .modal-content > div {
+    max-height: calc(100vh - 2rem);
+  }
+}
+
+/* ─────────────────────────────────────────
+   SCROLL ANIMATIONS
+───────────────────────────────────────── */
+@keyframes scrollDot {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(8px);
+  }
+}
+
+.scroll-dot {
+  animation: scrollDot 2s ease-in-out infinite;
+}
+
+/* ─────────────────────────────────────────
+   TAG STYLES
+───────────────────────────────────────── */
+.section-tag {
+  color: #b8560f;
+}
+
+.section-tag::before {
+  content: '';
+  width: 8px;
+  height: 2px;
+  background-color: #b8560f;
+  display: block;
+}
+
+/* ─────────────────────────────────────────
+   ACCESSIBILITY
+───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─────────────────────────────────────────
+   HOVER STATES
+───────────────────────────────────────── */
+.project-card a:focus-visible,
+.filter-btn:focus-visible,
+.hero-cta:focus-visible {
+  outline: 2px solid #b8560f;
+  outline-offset: 2px;
+}
