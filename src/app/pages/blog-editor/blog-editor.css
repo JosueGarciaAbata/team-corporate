@@ -1,0 +1,113 @@
+/* ─────────────────────────────────────────
+   NGX-EDITOR CUSTOM STYLES
+───────────────────────────────────────── */
+.ngx-editor-wrapper {
+  border: 1px solid #c9b99a;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.ngx-editor-wrapper ::ng-deep .NgxEditor {
+  min-height: 400px;
+  background-color: #f5f0e8;
+}
+
+.ngx-editor-wrapper ::ng-deep .NgxEditor__Content {
+  padding: 1.5rem;
+  min-height: 400px;
+  color: #191918;
+}
+
+.ngx-editor-wrapper ::ng-deep .NgxEditor__MenuBar {
+  background-color: #e8e0d4;
+  border-bottom: 1px solid #c9b99a;
+  padding: 0.75rem;
+}
+
+.ngx-editor-wrapper ::ng-deep .NgxEditor__MenuItem {
+  color: #191918;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.ngx-editor-wrapper ::ng-deep .NgxEditor__MenuItem:hover {
+  background-color: #c9b99a;
+}
+
+.ngx-editor-wrapper ::ng-deep .NgxEditor__MenuItem--Active {
+  background-color: #b8560f;
+  color: #f5f0e8;
+}
+
+.ngx-editor-wrapper ::ng-deep .NgxEditor__Dropdown {
+  background-color: #f5f0e8;
+  border: 1px solid #c9b99a;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.ngx-editor-wrapper ::ng-deep .NgxEditor__Dropdown--Text {
+  color: #191918;
+}
+
+.ngx-editor-wrapper ::ng-deep .NgxEditor__Dropdown--Item:hover {
+  background-color: #e8e0d4;
+}
+
+/* Placeholder styling */
+.ngx-editor-wrapper ::ng-deep .NgxEditor__Content p.is-empty:first-child::before {
+  color: #6b6b5e;
+}
+
+/* ─────────────────────────────────────────
+   EDITOR SECTIONS ANIMATION
+───────────────────────────────────────── */
+.editor-section {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─────────────────────────────────────────
+   FORM ELEMENTS
+───────────────────────────────────────── */
+input:focus,
+textarea:focus,
+select:focus {
+  box-shadow: 0 0 0 3px rgba(184, 86, 15, 0.1);
+}
+
+/* ─────────────────────────────────────────
+   SCROLLBAR FOR TEXTAREA
+───────────────────────────────────────── */
+textarea {
+  scrollbar-width: thin;
+  scrollbar-color: #c9b99a #e8e0d4;
+}
+
+textarea::-webkit-scrollbar {
+  width: 8px;
+}
+
+textarea::-webkit-scrollbar-track {
+  background: #e8e0d4;
+  border-radius: 4px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background: #c9b99a;
+  border-radius: 4px;
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+  background: #b8560f;
+}
