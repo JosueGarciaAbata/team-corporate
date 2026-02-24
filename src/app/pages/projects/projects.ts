@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, signal, computed } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -22,7 +22,7 @@ interface Project {
   templateUrl: './projects.html',
   styleUrl: './projects.css',
 })
-export class Projects implements AfterViewInit {
+export class Projects implements AfterViewInit, OnDestroy {
   activeFilter = signal('Todos');
   selectedProject = signal<Project | null>(null);
 
@@ -83,12 +83,18 @@ export class Projects implements AfterViewInit {
     this.initAnimations();
   }
 
+  ngOnDestroy() {
+    document.body.style.overflow = '';
+  }
+
   selectProject(project: Project) {
     this.selectedProject.set(project);
+    document.body.style.overflow = 'hidden';
   }
 
   closeModal() {
     this.selectedProject.set(null);
+    document.body.style.overflow = '';
   }
 
   filterProjects(filter: string) {
