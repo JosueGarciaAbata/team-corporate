@@ -227,13 +227,27 @@ export class BlogService {
     const newBlog: Blog = {
       ...blog,
       id: `user-${Date.now()}`,
-      date: new Date().toISOString().split('T')[0],
+      date: this.getCurrentDateInEcuador(),
       isStatic: false
     };
     
     const currentBlogs = this.blogsSignal();
     this.blogsSignal.set([...currentBlogs, newBlog]);
     this.saveStoredBlogs(this.blogsSignal());
+  }
+
+  private getCurrentDateInEcuador(): string {
+    // Ecuador está en UTC-5 (ECT - Ecuador Time)
+    const now = new Date();
+    const ecuadorOffset = -5 * 60; // -5 horas en minutos
+    const localOffset = now.getTimezoneOffset(); // Offset del navegador
+    const ecuadorTime = new Date(now.getTime() + (localOffset + ecuadorOffset) * 60000);
+    
+    const year = ecuadorTime.getFullYear();
+    const month = String(ecuadorTime.getMonth() + 1).padStart(2, '0');
+    const day = String(ecuadorTime.getDate()).padStart(2, '0');
+    
+    return `${year}-${month}-${day}`;
   }
 
   updateBlog(id: string, updates: Partial<Blog>): void {
