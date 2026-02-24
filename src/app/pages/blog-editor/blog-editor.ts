@@ -39,6 +39,9 @@ export class BlogEditor implements OnInit, OnDestroy {
   showSaveModal = signal(false);
   alertMessage = signal<string | null>(null);
   alertType = signal<'error' | 'warning' | 'info'>('info');
+  
+  // Obtener categorías del servicio
+  categories = this.blogService.getCategories();
 
   ngOnInit(): void {
     this.editor = new Editor();
