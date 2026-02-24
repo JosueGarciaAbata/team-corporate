@@ -253,22 +253,27 @@
 
     <div class="proj-grid grid md:grid-cols-3 gap-6">
       @for (project of projects; track project.title) {
-        <div class="proj-card group cursor-pointer">
-          <!-- Image placeholder -->
-          <div class="relative overflow-hidden rounded-3xl mb-5 aspect-[4/3] bg-gradient-to-br from-brand-warm to-brand-tan/40 flex items-center justify-center">
-            <span class="text-7xl transition-transform duration-500 group-hover:scale-110">{{ project.icon }}</span>
+        <div class="proj-card group cursor-pointer" (click)="navigateToProject(project)">
+          <!-- Project Image -->
+          <div class="relative overflow-hidden rounded-3xl mb-5 aspect-[4/3] bg-gradient-to-br from-brand-warm to-brand-tan/40">
+            <img [src]="project.image" [alt]="project.title" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-brand-charcoal/75 opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex flex-col items-center justify-center gap-2">
               <span class="text-brand-cream font-semibold text-lg">Ver proyecto</span>
               <svg class="w-6 h-6 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
               </svg>
             </div>
-            <!-- Tag -->
-            <span class="absolute top-4 left-4 text-xs font-bold px-3 py-1 rounded-full bg-brand-charcoal/80 text-brand-cream backdrop-blur-sm">{{ project.tag }}</span>
+            <!-- Category Tag -->
+            <span class="absolute top-4 left-4 text-xs font-bold px-3 py-1 rounded-full bg-brand-charcoal/80 text-brand-cream backdrop-blur-sm">{{ project.category }}</span>
           </div>
-          <div class="text-sm text-brand-accent font-semibold mb-1">{{ project.category }}</div>
+          <!-- Technologies -->
+          <div class="flex flex-wrap gap-2 mb-3">
+            @for (tech of project.technologies | slice:0:3; track tech) {
+              <span class="text-xs font-medium px-2 py-1 rounded-full bg-brand-accent/10 text-brand-accent">{{ tech }}</span>
+            }
+          </div>
           <h3 class="text-xl font-bold text-brand-charcoal mb-2 group-hover:text-brand-accent transition-colors">{{ project.title }}</h3>
-          <p class="text-brand-muted text-sm leading-relaxed">{{ project.description }}</p>
+          <p class="text-brand-muted text-sm leading-relaxed">{{ project.excerpt }}</p>
         </div>
       }
     </div>
