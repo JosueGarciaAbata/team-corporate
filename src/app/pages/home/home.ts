@@ -8,7 +8,6 @@ import { ProjectsService, Project } from '../../services/projects.service';
 gsap.registerPlugin(ScrollTrigger);
 
 interface HomeService {
-  icon: string;
   title: string;
   description: string;
   tag: string;
@@ -32,37 +31,37 @@ export class Home implements AfterViewInit {
 
   services: HomeService[] = [
     {
-      icon: '💻', title: 'Desarrollo Web', tag: 'Desarrollo',
+      title: 'Desarrollo Web', tag: 'Desarrollo',
       image: 'assets/img/services/desarrollo-web.webp',
       description: 'Sitios y apps web de alto rendimiento, optimizados para SEO y velocidad.',
       features: ['React / Angular / Vue', 'APIs RESTful & GraphQL', 'Optimización SEO', 'Performance Web Vitals'],
     },
     {
-      icon: '📱', title: 'Apps Móviles', tag: 'Desarrollo',
+      title: 'Apps Móviles', tag: 'Desarrollo',
       image: 'assets/img/services/desarrollo-movil.webp',
       description: 'Aplicaciones nativas e híbridas para iOS y Android con UX excepcional.',
       features: ['React Native / Flutter', 'iOS & Android', 'Offline First', 'Push Notifications'],
     },
     {
-      icon: '🎨', title: 'Diseño UI/UX', tag: 'Diseño',
+      title: 'Diseño UI/UX', tag: 'Diseño',
       image: 'assets/img/services/disenoui.webp',
       description: 'Interfaces intuitivas y visualmente impactantes que convierten usuarios.',
       features: ['Research & Testing', 'Prototipos Interactivos', 'Design Systems', 'Accesibilidad WCAG'],
     },
     {
-      icon: '🚀', title: 'Marketing Digital', tag: 'Marketing',
+      title: 'Marketing Digital', tag: 'Marketing',
       image: 'assets/img/services/marketing-digital.webp',
       description: 'Estrategias basadas en datos para escalar tu presencia y tus ventas.',
       features: ['SEO & SEM', 'Social Media Ads', 'Email Marketing', 'Analytics & KPIs'],
     },
     {
-      icon: '☁️', title: 'Soluciones Cloud', tag: 'Desarrollo',
+      title: 'Soluciones Cloud', tag: 'Desarrollo',
       image: 'assets/img/services/soluciones-cloud.webp',
       description: 'Infraestructura escalable y segura en AWS, GCP y Azure.',
       features: ['AWS / GCP / Azure', 'DevOps & CI/CD', 'Microservicios', 'Seguridad & Compliance'],
     },
     {
-      icon: '🔧', title: 'Consultoría Tech', tag: 'Consultoría',
+      title: 'Consultoría Tech', tag: 'Consultoría',
       image: 'assets/img/services/consultoria-tech.webp',
       description: 'Asesoramiento experto para tomar las decisiones tecnológicas correctas.',
       features: ['Auditoría Técnica', 'Tech Stack Review', 'Roadmap Digital', 'Team Building'],
