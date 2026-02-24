@@ -1,64 +1,40 @@
-<header
-  class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
-  [class.header-scrolled]="scrolled()"
-  [class.header-top]="!scrolled()"
->
+<header class="fixed top-0 left-0 w-full z-50 transition-all duration-300" [class.header-scrolled]="scrolled()"
+  [class.header-top]="!scrolled()">
   <div class="max-w-[1200px] mx-auto px-6 lg:px-10">
     <div class="flex items-center justify-between h-16 lg:h-18">
 
       <!-- Logo -->
       <a routerLink="/" class="flex items-center gap-2.5 group flex-shrink-0">
-        <img
-          src="logo.png"
-          alt="Stratium"
-          class="h-8 w-auto transition-opacity duration-200 group-hover:opacity-75"
-        />
-        <span class="text-[17px] font-bold uppercase tracking-[0.2em] text-brand-charcoal group-hover:text-brand-accent transition-colors duration-200">Stratium</span>
+        <img src="logo.png" alt="Stratium" class="h-8 w-auto transition-opacity duration-200 group-hover:opacity-75" />
+        <span
+          class="text-[17px] font-bold uppercase tracking-[0.2em] text-brand-charcoal group-hover:text-brand-accent transition-colors duration-200">Stratium</span>
       </a>
 
       <!-- Desktop Navigation -->
       <nav class="hidden lg:flex items-center gap-8">
         @for (link of navLinks; track link.path) {
-          <a
-            [routerLink]="link.path"
-            routerLinkActive="nav-link-active"
-            [routerLinkActiveOptions]="{ exact: link.exact }"
-            class="nav-link relative text-[15px] transition-colors duration-200 hover:text-brand-charcoal"
-          >
-            {{ link.label }}
-          </a>
+        <a [routerLink]="link.path" routerLinkActive="nav-link-active" [routerLinkActiveOptions]="{ exact: link.exact }"
+          class="nav-link relative text-[15px] transition-colors duration-200 hover:text-brand-charcoal">
+          {{ link.label }}
+        </a>
         }
-        <a
-          routerLink="/contact"
-          class="ml-2 px-5 py-2 text-sm font-medium rounded-full bg-brand-cta text-brand-cream transition-all duration-200 hover:bg-brand-accent"
-        >
+        <a routerLink="/contact"
+          class="ml-2 px-5 py-2 text-sm font-medium rounded-full bg-brand-cta text-brand-cream transition-all duration-200 hover:bg-brand-accent">
           Contact
         </a>
       </nav>
 
       <!-- Mobile Menu Button -->
-      <button
-        (click)="toggleMobile()"
+      <button (click)="toggleMobile()"
         class="lg:hidden relative w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-200 hover:bg-brand-warm"
-        [attr.aria-expanded]="mobileOpen()"
-        aria-label="Toggle navigation menu"
-      >
+        [attr.aria-expanded]="mobileOpen()" aria-label="Toggle navigation menu">
         <div class="w-5 flex flex-col gap-[5px] items-center">
-          <span
-            class="block h-0.5 w-full bg-brand-charcoal rounded-full transition-all duration-300 origin-center"
-            [class.translate-y-[7px]]="mobileOpen()"
-            [class.rotate-45]="mobileOpen()"
-          ></span>
-          <span
-            class="block h-0.5 w-full bg-brand-charcoal rounded-full transition-all duration-300"
-            [class.opacity-0]="mobileOpen()"
-            [class.scale-x-0]="mobileOpen()"
-          ></span>
-          <span
-            class="block h-0.5 w-full bg-brand-charcoal rounded-full transition-all duration-300 origin-center"
-            [class.-translate-y-[7px]]="mobileOpen()"
-            [class.-rotate-45]="mobileOpen()"
-          ></span>
+          <span class="block h-0.5 w-full bg-brand-charcoal rounded-full transition-all duration-300 origin-center"
+            [class.translate-y-[7px]]="mobileOpen()" [class.rotate-45]="mobileOpen()"></span>
+          <span class="block h-0.5 w-full bg-brand-charcoal rounded-full transition-all duration-300"
+            [class.opacity-0]="mobileOpen()" [class.scale-x-0]="mobileOpen()"></span>
+          <span class="block h-0.5 w-full bg-brand-charcoal rounded-full transition-all duration-300 origin-center"
+            [class.-translate-y-[7px]]="mobileOpen()" [class.-rotate-45]="mobileOpen()"></span>
         </div>
       </button>
     </div>
@@ -66,28 +42,21 @@
 
   <!-- Mobile Navigation Panel -->
   @if (mobileOpen()) {
-    <div class="lg:hidden border-t border-brand-warm bg-brand-cream animate-slideDown">
-      <nav class="max-w-[1200px] mx-auto px-6 py-4 flex flex-col gap-1">
-        @for (link of navLinks; track link.path) {
-          <a
-            [routerLink]="link.path"
-            routerLinkActive="mobile-link-active"
-            [routerLinkActiveOptions]="{ exact: link.exact }"
-            (click)="closeMobile()"
-            class="mobile-link px-4 py-3 text-[15px] rounded-lg transition-colors duration-200 hover:text-brand-charcoal hover:bg-brand-warm/50"
-          >
-            {{ link.label }}
-          </a>
-        }
-        <a
-          routerLink="/contact"
-          (click)="closeMobile()"
-          class="mt-2 px-4 py-3 text-sm font-medium text-center rounded-full bg-brand-cta text-brand-cream transition-all duration-200 hover:bg-brand-accent"
-        >
-          Contact
-        </a>
-      </nav>
-    </div>
+  <div class="lg:hidden border-t border-brand-warm bg-brand-cream animate-slideDown">
+    <nav class="max-w-[1200px] mx-auto px-6 py-4 flex flex-col gap-1">
+      @for (link of navLinks; track link.path) {
+      <a [routerLink]="link.path" routerLinkActive="mobile-link-active"
+        [routerLinkActiveOptions]="{ exact: link.exact }" (click)="closeMobile()"
+        class="mobile-link px-4 py-3 text-[15px] rounded-lg transition-colors duration-200 hover:text-brand-charcoal hover:bg-brand-warm/50">
+        {{ link.label }}
+      </a>
+      }
+      <a routerLink="/contact" (click)="closeMobile()"
+        class="mt-2 px-4 py-3 text-sm font-medium text-center rounded-full bg-brand-cta text-brand-cream transition-all duration-200 hover:bg-brand-accent">
+        Contacto
+      </a>
+    </nav>
+  </div>
   }
 </header>
 
