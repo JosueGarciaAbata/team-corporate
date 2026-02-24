@@ -5,11 +5,12 @@ import { Blog } from './pages/blog/blog';
 import { BlogDetail } from './pages/blog-detail/blog-detail';
 import { BlogEditor } from './pages/blog-editor/blog-editor';
 import { Team } from './pages/team/team';
-
+import { Contact } from './pages/contact/contact';
 
 export const routes: Routes = [
   { path: '', component: Home },
   { path: 'services', component: Services },
+  { path: 'contact', component: Contact },
   { path: 'team', component: Team },
   { path: 'blog', component: Blog },
   { path: 'blog/new', component: BlogEditor },
