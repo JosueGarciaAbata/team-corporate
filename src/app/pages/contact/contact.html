@@ -21,8 +21,8 @@
             Hablemos de tu próximo gran proyecto.
           </h1>
           <p class="text-lg text-brand-muted max-w-md">
-            Nuestro equipo está listo para ayudarte a llevar tu visión a la realidad. Escríbenos y te responderemos en
-            menos de 24 horas.
+            Nuestro equipo está listo para ayudarte a llevar tu visión a la realidad. Escríbenos y
+            te responderemos en menos de 24 horas.
           </p>
         </div>
 
@@ -47,7 +47,7 @@
             </div>
             <div>
               <h3 class="font-bold text-brand-charcoal mb-1">Email</h3>
-              <p class="text-brand-muted">info@stratium.com<br>soporte@stratium.com</p>
+              <p class="text-brand-muted">stratium.digital&#64;gmail.com</p>
             </div>
           </div>
 
@@ -76,7 +76,7 @@
             <!-- Nombre -->
             <div class="form-group">
               <label for="name" class="block text-sm font-semibold text-brand-charcoal mb-2">Nombre Completo</label>
-              <input type="text" id="name" formControlName="name" class="input-field" placeholder="Ej. Juan Pérez">
+              <input type="text" id="name" formControlName="name" class="input-field" placeholder="Ej. Juan Pérez" />
               <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" class="error-message">
                 <span *ngIf="contactForm.get('name')?.errors?.['required']">El nombre es obligatorio.</span>
                 <span *ngIf="contactForm.get('name')?.errors?.['minlength']">Mínimo 3 caracteres.</span>
@@ -85,8 +85,9 @@
 
             <!-- Email -->
             <div class="form-group">
-              <label for="email" class="block text-sm font-semibold text-brand-charcoal mb-2">Email Profesional</label>
-              <input type="email" id="email" formControlName="email" class="input-field" placeholder="tu@empresa.com">
+              <label for="email" class="block text-sm font-semibold text-brand-charcoal mb-2">Email</label>
+              <input type="email" id="email" formControlName="email" class="input-field"
+                placeholder="tu&#64;email.com" />
               <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="error-message">
                 <span *ngIf="contactForm.get('email')?.errors?.['required']">El email es obligatorio.</span>
                 <span *ngIf="contactForm.get('email')?.errors?.['email']">Ingrese un email válido.</span>
@@ -124,9 +125,10 @@
 
           <!-- Términos -->
           <div class="form-group flex items-start gap-3 mt-4">
-            <input type="checkbox" id="terms" formControlName="acceptTerms" class="custom-checkbox mt-1">
+            <input type="checkbox" id="terms" formControlName="acceptTerms" class="custom-checkbox mt-1" />
             <label for="terms" class="text-sm text-brand-muted">
-              He leído y acepto la <a href="#" class="text-brand-accent hover:underline">Política de Privacidad</a> y
+              He leído y acepto la
+              <a href="#" class="text-brand-accent hover:underline">Política de Privacidad</a> y
               consiento el tratamiento de mis datos.
             </label>
           </div>
