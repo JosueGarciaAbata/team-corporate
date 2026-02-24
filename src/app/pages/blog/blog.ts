@@ -14,11 +14,8 @@ export class Blog {
   
   blogs = this.blogService.getBlogs();
   
-  // Categorías únicas para filtros
-  categories = computed(() => {
-    const cats = new Set(this.blogs().map(b => b.category));
-    return ['Todos', ...Array.from(cats)];
-  });
+  // Categorías fijas del servicio
+  categories = signal(['Todos', ...this.blogService.getCategories()]);
 
   selectedCategory = signal('Todos');
 

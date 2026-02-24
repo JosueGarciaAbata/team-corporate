@@ -20,8 +20,22 @@ export class BlogService {
   private readonly STORAGE_KEY = 'stratium-blogs';
   private blogsSignal = signal<Blog[]>([]);
 
+  // Categorías oficiales permitidas
+  private readonly CATEGORIES = [
+    'Ingeniería de Software',
+    'Inteligencia Artificial',
+    'DevOps',
+    'Arquitectura Cloud',
+    'Desarrollo Web'
+  ] as const;
+
   constructor() {
     this.loadBlogs();
+  }
+
+  // Método público para obtener categorías
+  getCategories(): readonly string[] {
+    return this.CATEGORIES;
   }
 
   // Blogs estáticos predefinidos
