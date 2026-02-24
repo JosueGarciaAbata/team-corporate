@@ -16,6 +16,7 @@ export class BlogDetail implements OnInit {
 
   blog = signal<BlogModel | undefined>(undefined);
   relatedBlogs = signal<BlogModel[]>([]);
+  showDeleteModal = signal(false);
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -52,9 +53,19 @@ export class BlogDetail implements OnInit {
     const currentBlog = this.blog();
     if (!currentBlog || currentBlog.isStatic) return;
     
-    if (confirm('¿Estás seguro de que deseas eliminar este post?')) {
-      this.blogService.deleteBlog(currentBlog.id);
-      this.router.navigate(['/blog']);
-    }
+    this.showDeleteModal.set(true);
+  }
+
+  confirmDelete(): void {
+    const currentBlog = this.blog();
+    if (!currentBlog) return;
+    
+    this.showDeleteModal.set(false);
+    this.blogService.deleteBlog(currentBlog.id);
+    this.router.navigate(['/blog']);
+  }
+
+  closeDeleteModal(): void {
+    this.showDeleteModal.set(false);
   }
 }
