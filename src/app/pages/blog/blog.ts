@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { BlogService } from '../../services/blog.service';
 import { CommonModule } from '@angular/common';
@@ -20,17 +20,17 @@ export class Blog {
     return ['Todos', ...Array.from(cats)];
   });
 
-  selectedCategory = 'Todos';
+  selectedCategory = signal('Todos');
 
   filteredBlogs = computed(() => {
-    if (this.selectedCategory === 'Todos') {
+    if (this.selectedCategory() === 'Todos') {
       return this.blogs();
     }
-    return this.blogs().filter(b => b.category === this.selectedCategory);
+    return this.blogs().filter(b => b.category === this.selectedCategory());
   });
 
   selectCategory(category: string): void {
-    this.selectedCategory = category;
+    this.selectedCategory.set(category);
   }
 
   formatDate(dateString: string): string {
