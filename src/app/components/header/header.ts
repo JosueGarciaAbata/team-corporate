@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, HostListener } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
@@ -9,6 +9,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class Header {
   mobileOpen = signal(false);
+  scrolled = signal(false);
 
   navLinks = [
     { label: 'Home', path: '/', exact: true },
@@ -17,6 +18,11 @@ export class Header {
     { label: 'Blog', path: '/blog', exact: false },
     { label: 'Team', path: '/team', exact: false },
   ];
+
+  @HostListener('window:scroll')
+  onScroll() {
+    this.scrolled.set(window.scrollY > 20);
+  }
 
   toggleMobile() {
     this.mobileOpen.update((v) => !v);

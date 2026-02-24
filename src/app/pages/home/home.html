@@ -1,107 +1,488 @@
-<!-- Hero Section -->
-<section class="hero-section min-h-screen flex items-center bg-brand-cream relative overflow-hidden">
-  <div class="absolute inset-0 bg-gradient-to-br from-brand-cream via-brand-warm to-brand-cream opacity-80"></div>
-  <div class="container mx-auto px-6 lg:px-12 relative z-10">
-    <div class="max-w-3xl">
-      <h1 class="text-5xl lg:text-7xl font-bold text-brand-charcoal leading-tight mb-6">
-        Transformamos ideas en <span class="text-brand-accent">soluciones digitales</span>
-      </h1>
-      <p class="text-xl lg:text-2xl text-brand-muted mb-8 leading-relaxed">
-        Somos un equipo apasionado por crear experiencias digitales excepcionales que impulsan el crecimiento de tu negocio.
-      </p>
-      <div class="flex flex-wrap gap-4">
-        <a href="/contact" class="px-8 py-4 bg-brand-cta text-brand-cream font-semibold rounded-lg hover:bg-brand-charcoal transition-colors duration-300">
-          Iniciar proyecto
-        </a>
-        <a href="/services" class="px-8 py-4 border-2 border-brand-charcoal text-brand-charcoal font-semibold rounded-lg hover:bg-brand-charcoal hover:text-brand-cream transition-colors duration-300">
-          Ver servicios
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="absolute bottom-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-tan/20 to-transparent"></div>
-</section>
+<!-- ═══════════════════════════════════════════════ -->
+<!--  HERO                                          -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="hero-home relative min-h-screen flex items-center overflow-hidden bg-brand-charcoal">
 
-<!-- Servicios Section -->
-<section class="py-24 bg-brand-warm">
-  <div class="container mx-auto px-6 lg:px-12">
-    <div class="text-center mb-16">
-      <h2 class="text-4xl lg:text-5xl font-bold text-brand-charcoal mb-4">Nuestros Servicios</h2>
-      <p class="text-lg text-brand-muted max-w-2xl mx-auto">
-        Ofrecemos soluciones integrales para llevar tu negocio al siguiente nivel digital.
-      </p>
-    </div>
+  <!-- Orbs -->
+  <div class="h-orb-1 absolute top-[8%] right-[10%] w-80 h-80 rounded-full bg-brand-accent/20 blur-[110px] pointer-events-none"></div>
+  <div class="h-orb-2 absolute bottom-[10%] left-[4%] w-[28rem] h-[28rem] rounded-full bg-[#7c3aed]/15 blur-[130px] pointer-events-none"></div>
+  <div class="h-orb-3 absolute top-[55%] right-[35%] w-52 h-52 rounded-full bg-[#0ea5e9]/10 blur-[90px] pointer-events-none"></div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      @for (service of services; track service.title) {
-        <div class="service-card bg-brand-cream p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 group">
-          <div class="w-16 h-16 bg-brand-accent/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-accent/20 transition-colors">
-            <span class="text-3xl">{{ service.icon }}</span>
-          </div>
-          <h3 class="text-xl font-bold text-brand-charcoal mb-3">{{ service.title }}</h3>
-          <p class="text-brand-muted leading-relaxed">{{ service.description }}</p>
-        </div>
-      }
-    </div>
+  <!-- Grid overlay -->
+  <div class="absolute inset-0 home-grid opacity-[0.04] pointer-events-none"></div>
 
-    <div class="text-center mt-12">
-      <a href="/services" class="inline-flex items-center gap-2 text-brand-accent font-semibold hover:text-brand-charcoal transition-colors">
-        Ver todos los servicios
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-        </svg>
-      </a>
-    </div>
-  </div>
-</section>
+  <div class="container mx-auto px-6 lg:px-12 relative z-10 py-28 lg:py-32">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
 
-<!-- Proyectos Section -->
-<section class="py-24 bg-brand-cream">
-  <div class="container mx-auto px-6 lg:px-12">
-    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-16">
+      <!-- Left: Copy -->
       <div>
-        <h2 class="text-4xl lg:text-5xl font-bold text-brand-charcoal mb-4">Proyectos Destacados</h2>
-        <p class="text-lg text-brand-muted max-w-xl">
-          Conoce algunos de nuestros trabajos más recientes y cómo hemos ayudado a nuestros clientes.
+        <!-- Badge -->
+        <div class="h-badge inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-accent/40 bg-brand-accent/10 mb-8">
+          <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
+          <span class="text-brand-accent text-sm font-medium tracking-wide uppercase">Agencia Digital de Alto Impacto</span>
+        </div>
+
+        <!-- Title -->
+        <h1 class="h-title text-5xl lg:text-6xl xl:text-7xl font-bold text-brand-cream leading-[0.92] mb-6">
+          Construimos el<br>
+          <span class="h-accent-word relative inline-block text-brand-accent">
+            futuro digital
+            <span class="h-line absolute bottom-1 left-0 w-full h-[3px] bg-gradient-to-r from-brand-accent to-transparent rounded-full"></span>
+          </span><br>
+          de tu empresa.
+        </h1>
+
+        <!-- Sub -->
+        <p class="h-sub text-lg lg:text-xl text-brand-warm/65 max-w-xl leading-relaxed mb-10">
+          Somos el equipo tecnológico que convierte tu visión en productos digitales reales,
+          escalables y diseñados para crecer con tu negocio.
         </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-wrap gap-4 mb-14">
+          <a href="/contact" class="h-cta group inline-flex items-center gap-3 px-7 py-3.5 bg-brand-accent text-brand-cream font-semibold rounded-full transition-all duration-300 hover:bg-brand-accent/90 hover:gap-5">
+            Iniciar proyecto
+            <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+          <a href="/services" class="h-cta inline-flex items-center gap-3 px-7 py-3.5 border border-brand-warm/25 text-brand-warm font-semibold rounded-full transition-all duration-300 hover:border-brand-warm/50 hover:bg-brand-warm/5">
+            Ver servicios
+          </a>
+        </div>
+
+        <!-- Metrics -->
+        <div class="flex flex-wrap gap-8">
+          <div class="h-metrics">
+            <div class="text-3xl font-bold text-brand-cream">150<span class="text-brand-accent">+</span></div>
+            <div class="text-sm text-brand-warm/50 mt-1">Proyectos entregados</div>
+          </div>
+          <div class="h-metrics w-px bg-brand-warm/10 hidden sm:block"></div>
+          <div class="h-metrics">
+            <div class="text-3xl font-bold text-brand-cream">98<span class="text-brand-accent">%</span></div>
+            <div class="text-sm text-brand-warm/50 mt-1">Clientes satisfechos</div>
+          </div>
+          <div class="h-metrics w-px bg-brand-warm/10 hidden sm:block"></div>
+          <div class="h-metrics">
+            <div class="text-3xl font-bold text-brand-cream">12<span class="text-brand-accent">+</span></div>
+            <div class="text-sm text-brand-warm/50 mt-1">Años de experiencia</div>
+          </div>
+        </div>
       </div>
-      <a href="/projects" class="mt-6 lg:mt-0 inline-flex items-center gap-2 text-brand-accent font-semibold hover:text-brand-charcoal transition-colors">
-        Ver todos los proyectos
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+
+      <!-- Right: Visual card stack -->
+      <div class="h-visual hidden lg:flex items-center justify-center relative">
+        <!-- Main card -->
+        <div class="hero-card-main w-80 bg-brand-cream/5 border border-brand-warm/10 backdrop-blur-sm rounded-3xl p-6 relative z-10">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-xl bg-brand-accent/20 flex items-center justify-center text-xl">🚀</div>
+            <div>
+              <div class="text-brand-cream font-semibold text-sm">Proyecto en progreso</div>
+              <div class="text-brand-warm/40 text-xs">App de fintech · Sprint 3</div>
+            </div>
+          </div>
+          <!-- Progress bars -->
+          <div class="space-y-3 mb-5">
+            <div>
+              <div class="flex justify-between text-xs text-brand-warm/50 mb-1"><span>Diseño UI</span><span>100%</span></div>
+              <div class="h-1.5 rounded-full bg-brand-warm/10"><div class="h-full rounded-full bg-[#0ea5e9] w-full"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs text-brand-warm/50 mb-1"><span>Backend API</span><span>82%</span></div>
+              <div class="h-1.5 rounded-full bg-brand-warm/10"><div class="h-full rounded-full bg-brand-accent" style="width:82%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs text-brand-warm/50 mb-1"><span>Testing QA</span><span>54%</span></div>
+              <div class="h-1.5 rounded-full bg-brand-warm/10"><div class="h-full rounded-full bg-[#10b981]" style="width:54%"></div></div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-brand-warm/10">
+            <div class="flex -space-x-2">
+              <div class="w-7 h-7 rounded-full bg-brand-accent text-brand-cream text-[10px] font-bold flex items-center justify-center border-2 border-brand-charcoal">JD</div>
+              <div class="w-7 h-7 rounded-full bg-[#7c3aed] text-brand-cream text-[10px] font-bold flex items-center justify-center border-2 border-brand-charcoal">MR</div>
+              <div class="w-7 h-7 rounded-full bg-[#0ea5e9] text-brand-cream text-[10px] font-bold flex items-center justify-center border-2 border-brand-charcoal">AL</div>
+            </div>
+            <span class="text-xs text-brand-warm/40">Entrega: 12 Mar</span>
+          </div>
+        </div>
+
+        <!-- Floating mini card: rating -->
+        <div class="hero-card-float-1 absolute -bottom-4 -left-8 bg-brand-cream rounded-2xl p-4 shadow-xl flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-[#10b981]/15 flex items-center justify-center text-xl">⭐</div>
+          <div>
+            <div class="text-brand-charcoal font-bold text-sm">4.9 / 5.0</div>
+            <div class="text-brand-muted text-xs">Valoración media</div>
+          </div>
+        </div>
+
+        <!-- Floating mini card: deploy -->
+        <div class="hero-card-float-2 absolute -top-4 -right-6 bg-brand-charcoal border border-brand-warm/10 rounded-2xl p-4 shadow-xl flex items-center gap-3">
+          <div class="w-2.5 h-2.5 rounded-full bg-[#10b981] animate-pulse"></div>
+          <span class="text-brand-cream text-sm font-medium">Deploy exitoso</span>
+          <span class="text-brand-warm/40 text-xs">hace 2 min</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+    <span class="text-brand-warm/35 text-[11px] uppercase tracking-[0.25em]">Scroll</span>
+    <div class="w-px h-10 bg-gradient-to-b from-brand-warm/35 to-transparent relative overflow-hidden">
+      <div class="h-scroll-dot w-full h-3 bg-brand-accent/70 rounded-full absolute top-0"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════ -->
+<!--  TICKER / TECH STACK                          -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="ticker-wrap bg-brand-accent overflow-hidden py-4 border-y border-brand-accent/50">
+  <div class="ticker-inner flex gap-16 whitespace-nowrap w-max">
+    @for (tech of techStack; track tech) {
+      <span class="text-brand-cream text-sm font-semibold uppercase tracking-widest">{{ tech }}</span>
+      <span class="text-brand-cream/40">✦</span>
+    }
+    @for (tech of techStack; track tech) {
+      <span class="text-brand-cream text-sm font-semibold uppercase tracking-widest">{{ tech }}</span>
+      <span class="text-brand-cream/40">✦</span>
+    }
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════ -->
+<!--  SERVICIOS                                     -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="py-28 bg-brand-warm">
+  <div class="container mx-auto px-6 lg:px-12">
+
+    <div class="srv-head flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
+      <div>
+        <div class="inline-flex items-center gap-2 text-brand-accent text-sm font-semibold uppercase tracking-widest mb-4">
+          <span class="w-8 h-[2px] bg-brand-accent"></span>
+          Servicios
+        </div>
+        <h2 class="text-4xl lg:text-5xl font-bold text-brand-charcoal leading-tight">
+          Todo lo que necesitas<br>en <span class="text-brand-accent">un solo equipo</span>
+        </h2>
+      </div>
+      <a href="/services" class="inline-flex items-center gap-2 text-brand-accent font-semibold hover:text-brand-charcoal transition-colors group">
+        Ver todos los servicios
+        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
         </svg>
       </a>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      @for (project of projects; track project.title) {
-        <div class="project-card group cursor-pointer">
-          <div class="relative overflow-hidden rounded-2xl mb-4">
-            <div class="aspect-[4/3] bg-brand-tan/30 flex items-center justify-center">
-              <span class="text-6xl">{{ project.icon }}</span>
-            </div>
-            <div class="absolute inset-0 bg-brand-charcoal/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <span class="text-brand-cream font-semibold">Ver proyecto</span>
+    <div class="srv-grid grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      @for (service of services; track service.title) {
+        <div class="srv-card group relative rounded-3xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+             (click)="openModal(service)">
+
+          <!-- Image -->
+          <div class="relative h-64 overflow-hidden">
+            <img
+              [src]="service.image"
+              [alt]="service.title"
+              loading="eager"
+              decoding="async"
+              class="w-full h-full object-cover img-loaded"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10 transition-all duration-500 group-hover:from-black/90 group-hover:via-black/50"></div>
+          </div>
+
+          <!-- Content over image -->
+          <div class="absolute inset-0 flex flex-col justify-end p-6">
+            <span class="inline-block w-fit text-[11px] font-bold uppercase tracking-[0.18em] px-3 py-1 rounded-full bg-brand-accent/90 text-brand-cream mb-3 backdrop-blur-sm">
+              {{ service.tag }}
+            </span>
+            <h3 class="text-lg font-bold text-white leading-tight mb-2 drop-shadow-sm">
+              {{ service.title }}
+            </h3>
+            <p class="text-white/70 text-sm leading-relaxed max-h-0 overflow-hidden group-hover:max-h-16 transition-all duration-500 ease-out mb-3">
+              {{ service.description | slice:0:85 }}…
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-[12px] font-semibold text-white/60 group-hover:text-brand-accent transition-colors duration-300">Ver detalle</span>
+              <div class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center transition-all duration-300 group-hover:bg-brand-accent group-hover:border-brand-accent backdrop-blur-sm">
+                <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </div>
             </div>
           </div>
-          <span class="text-sm text-brand-accent font-medium">{{ project.category }}</span>
-          <h3 class="text-xl font-bold text-brand-charcoal mt-1 group-hover:text-brand-accent transition-colors">{{ project.title }}</h3>
-          <p class="text-brand-muted mt-2">{{ project.description }}</p>
+
         </div>
       }
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════ -->
+<!--  PROYECTOS                                     -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="py-28 bg-brand-cream">
+  <div class="container mx-auto px-6 lg:px-12">
+
+    <div class="proj-head flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
+      <div>
+        <div class="inline-flex items-center gap-2 text-brand-accent text-sm font-semibold uppercase tracking-widest mb-4">
+          <span class="w-8 h-[2px] bg-brand-accent"></span>
+          Proyectos
+        </div>
+        <h2 class="text-4xl lg:text-5xl font-bold text-brand-charcoal leading-tight">
+          Resultados que<br><span class="text-brand-accent">hablan por sí solos</span>
+        </h2>
+      </div>
+      <a href="/projects" class="inline-flex items-center gap-2 text-brand-accent font-semibold hover:text-brand-charcoal transition-colors group">
+        Ver todos los proyectos
+        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="proj-grid grid md:grid-cols-3 gap-6">
+      @for (project of projects; track project.title) {
+        <div class="proj-card group cursor-pointer">
+          <!-- Image placeholder -->
+          <div class="relative overflow-hidden rounded-3xl mb-5 aspect-[4/3] bg-gradient-to-br from-brand-warm to-brand-tan/40 flex items-center justify-center">
+            <span class="text-7xl transition-transform duration-500 group-hover:scale-110">{{ project.icon }}</span>
+            <div class="absolute inset-0 bg-brand-charcoal/75 opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex flex-col items-center justify-center gap-2">
+              <span class="text-brand-cream font-semibold text-lg">Ver proyecto</span>
+              <svg class="w-6 h-6 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </div>
+            <!-- Tag -->
+            <span class="absolute top-4 left-4 text-xs font-bold px-3 py-1 rounded-full bg-brand-charcoal/80 text-brand-cream backdrop-blur-sm">{{ project.tag }}</span>
+          </div>
+          <div class="text-sm text-brand-accent font-semibold mb-1">{{ project.category }}</div>
+          <h3 class="text-xl font-bold text-brand-charcoal mb-2 group-hover:text-brand-accent transition-colors">{{ project.title }}</h3>
+          <p class="text-brand-muted text-sm leading-relaxed">{{ project.description }}</p>
+        </div>
+      }
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════ -->
+<!--  TESTIMONIOS                                   -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="py-28 bg-brand-charcoal relative overflow-hidden">
+  <div class="absolute top-0 left-1/3 w-[600px] h-[600px] rounded-full bg-brand-accent/8 blur-[160px] pointer-events-none"></div>
+
+  <div class="container mx-auto px-6 lg:px-12 relative z-10">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 text-brand-accent text-sm font-semibold uppercase tracking-widest mb-4">
+        <span class="w-8 h-[2px] bg-brand-accent"></span>
+        Testimonios
+        <span class="w-8 h-[2px] bg-brand-accent"></span>
+      </div>
+      <h2 class="text-4xl lg:text-5xl font-bold text-brand-cream">Lo que dicen nuestros clientes</h2>
+    </div>
+
+    <div class="tst-grid grid md:grid-cols-3 gap-6">
+      @for (t of testimonials; track t.name) {
+        <div class="tst-card bg-brand-cream/5 border border-brand-warm/10 rounded-3xl p-8 hover:border-brand-warm/20 transition-all duration-300 hover:-translate-y-1">
+          <!-- Stars -->
+          <div class="flex gap-1 mb-5">
+            @for (s of [1,2,3,4,5]; track s) {
+              <svg class="w-4 h-4 text-brand-accent" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            }
+          </div>
+          <blockquote class="text-brand-warm/75 leading-relaxed mb-6 text-[15px]">"{{ t.quote }}"</blockquote>
+          <div class="flex items-center gap-3 pt-5 border-t border-brand-warm/10">
+            <div class="w-10 h-10 rounded-full bg-brand-accent/20 text-brand-accent text-sm font-bold flex items-center justify-center flex-shrink-0">{{ t.avatar }}</div>
+            <div>
+              <div class="text-brand-cream font-semibold text-sm">{{ t.name }}</div>
+              <div class="text-brand-warm/40 text-xs">{{ t.role }}</div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════ -->
+<!--  CTA                                           -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="cta-box relative py-32 bg-brand-charcoal overflow-hidden">
+
+  <!-- Background decoration -->
+  <div class="cta-orb-1 absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-brand-accent/15 blur-[140px] pointer-events-none"></div>
+  <div class="cta-orb-2 absolute -bottom-24 -left-24 w-[500px] h-[500px] rounded-full bg-[#7c3aed]/12 blur-[120px] pointer-events-none"></div>
+  <div class="cta-orb-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-[#0ea5e9]/6 blur-[100px] pointer-events-none"></div>
+
+  <!-- Subtle grid -->
+  <div class="absolute inset-0 home-grid opacity-[0.03] pointer-events-none"></div>
+
+  <!-- Horizontal rule top -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-warm/15 to-transparent"></div>
+
+  <div class="container mx-auto px-6 lg:px-12 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left: Text -->
+      <div>
+        <!-- Tag -->
+        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-brand-accent/35 bg-brand-accent/10 mb-8">
+          <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
+          <span class="text-brand-accent text-sm font-medium tracking-wide">Disponible para nuevos proyectos</span>
+        </div>
+
+        <h2 class="text-5xl lg:text-6xl font-bold text-brand-cream leading-[0.95] mb-6">
+          Hagamos<br>
+          <span class="cta-accent relative inline-block">
+            algo grande
+            <span class="absolute bottom-1 left-0 w-full h-[3px] bg-gradient-to-r from-brand-accent to-transparent rounded-full"></span>
+          </span><br>
+          juntos.
+        </h2>
+
+        <p class="text-brand-warm/55 text-lg leading-relaxed mb-10 max-w-md">
+          Primera consulta <span class="text-brand-warm font-semibold">100% gratuita</span>.
+          Cuéntanos tu idea y en 48h tienes una hoja de ruta lista.
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="/contact" class="group inline-flex items-center gap-3 px-8 py-4 bg-brand-accent text-brand-cream font-semibold rounded-full text-[15px] transition-all duration-300 hover:bg-brand-accent/90 hover:gap-5 hover:shadow-[0_0_40px_rgba(184,86,15,0.4)]">
+            Iniciar proyecto
+            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+          <a href="mailto:hola@stratium.com" class="inline-flex items-center gap-3 px-8 py-4 border border-brand-warm/20 text-brand-warm font-semibold rounded-full text-[15px] transition-all duration-300 hover:border-brand-warm/50 hover:bg-brand-warm/5">
+            hola&#64;stratium.com
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Info cards -->
+      <div class="flex flex-col gap-4">
+
+        <!-- Card 1 -->
+        <div class="cta-info-card flex items-start gap-4 p-5 rounded-2xl border border-brand-warm/10 bg-brand-warm/5 hover:border-brand-warm/20 transition-all duration-300 group">
+          <div class="w-11 h-11 rounded-xl bg-brand-accent/15 flex items-center justify-center text-xl flex-shrink-0 group-hover:bg-brand-accent/25 transition-colors">💬</div>
+          <div>
+            <div class="text-brand-cream font-semibold mb-1">Consultoría gratuita</div>
+            <div class="text-brand-warm/45 text-sm leading-relaxed">Una llamada de 30 min para entender tu proyecto sin compromisos.</div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="cta-info-card flex items-start gap-4 p-5 rounded-2xl border border-brand-warm/10 bg-brand-warm/5 hover:border-brand-warm/20 transition-all duration-300 group">
+          <div class="w-11 h-11 rounded-xl bg-[#7c3aed]/20 flex items-center justify-center text-xl flex-shrink-0 group-hover:bg-[#7c3aed]/30 transition-colors">⚡</div>
+          <div>
+            <div class="text-brand-cream font-semibold mb-1">Propuesta en 48 horas</div>
+            <div class="text-brand-warm/45 text-sm leading-relaxed">Recibe un roadmap técnico detallado y presupuesto estimado.</div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="cta-info-card flex items-start gap-4 p-5 rounded-2xl border border-brand-warm/10 bg-brand-warm/5 hover:border-brand-warm/20 transition-all duration-300 group">
+          <div class="w-11 h-11 rounded-xl bg-[#10b981]/15 flex items-center justify-center text-xl flex-shrink-0 group-hover:bg-[#10b981]/25 transition-colors">🛡️</div>
+          <div>
+            <div class="text-brand-cream font-semibold mb-1">Sin letra pequeña</div>
+            <div class="text-brand-warm/45 text-sm leading-relaxed">Transparencia total en costos, plazos y alcance desde el día uno.</div>
+          </div>
+        </div>
+
+        <!-- Social proof strip -->
+        <div class="flex items-center gap-4 pt-2 pl-1">
+          <div class="flex -space-x-3">
+            <div class="w-9 h-9 rounded-full bg-brand-accent text-brand-cream text-xs font-bold flex items-center justify-center border-2 border-brand-charcoal">CM</div>
+            <div class="w-9 h-9 rounded-full bg-[#7c3aed] text-brand-cream text-xs font-bold flex items-center justify-center border-2 border-brand-charcoal">LV</div>
+            <div class="w-9 h-9 rounded-full bg-[#0ea5e9] text-brand-cream text-xs font-bold flex items-center justify-center border-2 border-brand-charcoal">DT</div>
+            <div class="w-9 h-9 rounded-full bg-[#10b981] text-brand-cream text-xs font-bold flex items-center justify-center border-2 border-brand-charcoal">+</div>
+          </div>
+          <div class="text-sm text-brand-warm/45">
+            <span class="text-brand-cream font-semibold">150+ clientes</span> ya confían en nosotros
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
 
-<!-- CTA Section -->
-<section class="py-24 bg-brand-charcoal">
-  <div class="container mx-auto px-6 lg:px-12 text-center">
-    <h2 class="text-4xl lg:text-5xl font-bold text-brand-cream mb-6">¿Listo para comenzar?</h2>
-    <p class="text-xl text-brand-warm max-w-2xl mx-auto mb-10">
-      Conversemos sobre tu próximo proyecto y cómo podemos ayudarte a alcanzar tus objetivos.
-    </p>
-    <a href="/contact" class="inline-block px-10 py-5 bg-brand-accent text-brand-cream font-semibold rounded-lg hover:bg-brand-tan hover:text-brand-charcoal transition-colors duration-300 text-lg">
-      Contáctanos
-    </a>
+<!-- ═══════════════════════════════════════════════ -->
+<!--  MODAL                                         -->
+<!-- ═══════════════════════════════════════════════ -->
+@if (selectedService()) {
+  <div class="home-modal-backdrop fixed inset-0 z-[100] flex items-center justify-center p-4 lg:p-8"
+       (click)="closeModal()">
+    <div class="absolute inset-0 bg-brand-charcoal/70 backdrop-blur-sm"></div>
+
+    <div class="home-modal-panel relative z-10 w-full max-w-2xl bg-brand-cream rounded-3xl overflow-hidden shadow-2xl"
+         (click)="$event.stopPropagation()">
+
+      <!-- Header con imagen -->
+      <div class="relative min-h-[160px] flex items-end px-8 pt-10 pb-8 overflow-hidden">
+        <img [src]="selectedService()!.image"
+             [alt]="selectedService()!.title"
+             class="absolute inset-0 w-full h-full object-cover"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/20"></div>
+
+        <button (click)="closeModal()"
+                class="absolute top-5 right-5 w-9 h-9 rounded-full bg-black/30 hover:bg-black/50 border border-white/20 flex items-center justify-center transition-colors duration-200 backdrop-blur-sm group">
+          <svg class="w-4 h-4 text-white/70 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+
+        <div class="relative z-10">
+          <span class="inline-block text-[11px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-brand-accent text-brand-cream mb-2">{{ selectedService()!.tag }}</span>
+          <h3 class="text-2xl font-bold text-white">{{ selectedService()!.title }}</h3>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="px-8 py-7">
+        <p class="text-brand-muted leading-relaxed mb-7">{{ selectedService()!.description }}</p>
+
+        <div class="mb-7">
+          <h4 class="text-sm font-semibold uppercase tracking-widest text-brand-charcoal/50 mb-4">¿Qué incluye?</h4>
+          <ul class="grid grid-cols-2 gap-3">
+            @for (feature of selectedService()!.features; track feature) {
+              <li class="flex items-center gap-2.5 text-[14px] text-brand-charcoal font-medium">
+                <span class="w-5 h-5 rounded-full bg-brand-accent/15 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-3 h-3 text-brand-accent" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                </span>
+                {{ feature }}
+              </li>
+            }
+          </ul>
+        </div>
+
+        <div class="flex flex-wrap gap-3 pt-6 border-t border-brand-warm/60">
+          <a href="/services"
+             class="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-brand-charcoal text-brand-cream font-semibold rounded-full text-sm transition-all duration-300 hover:bg-brand-accent">
+            Ver todos los servicios
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+          <button (click)="closeModal()"
+                  class="px-6 py-3.5 border border-brand-warm text-brand-muted font-semibold rounded-full text-sm transition-all duration-300 hover:border-brand-charcoal hover:text-brand-charcoal">
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
-</section>
+}
