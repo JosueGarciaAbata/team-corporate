@@ -23,8 +23,8 @@
                 <span class="headline-line"><span class="headline-line-inner">lo extraordinario</span></span>
             </h1>
             <p class="hero-body">
-                No somos un equipo cualquiera. Somos siete ingenieros que eligen no trabajar en todos
-                los proyectos — solo en los que merecen lo mejor de nosotros.
+                Trabajamos de manera cercana con nuestros clientes, entendiendo sus necesidades y transformando sus
+                ideas en soluciones tangibles y eficientes.
             </p>
             <div class="hero-meta">
                 <div class="meta-item">
@@ -80,10 +80,10 @@
 <section class="members-section">
     <div class="members-grid">
         @for (member of filteredMembers(); track member.id; let i = $index) {
-        <article class="member-card card-enter" [class.is-hovered]="hoveredId() === member.id"
-            [style.--delay]="(i * 80) + 'ms'" [attr.aria-label]="member.name + ', ' + member.role"
-            (mouseenter)="setHovered(member.id)" (mouseleave)="setHovered(null)" (focusin)="setHovered(member.id)"
-            (focusout)="setHovered(null)" tabindex="0">
+        <article class="member-card" [class.is-hovered]="hoveredId() === member.id"
+            [attr.aria-label]="member.name + ', ' + member.role" (mouseenter)="setHovered(member.id)"
+            (mouseleave)="setHovered(null)" (focusin)="setHovered(member.id)" (focusout)="setHovered(null)"
+            tabindex="0">
             <!-- Accent bar superior -->
             <div class="card-top-accent" aria-hidden="true"></div>
 
@@ -151,11 +151,15 @@
 
         <!-- Cabecera editorial -->
         <header class="section-header reveal-item">
-            <span class="section-overline">Criterio técnico</span>
+            <span class="section-overline"><span class="section-overline-dot"></span>Criterio técnico</span>
             <h2 class="section-headline">Cómo pensamos</h2>
             <p class="section-subtext">
-                Las decisiones técnicas que más cuestan son las que se toman rápido, sin modelo mental claro.
-                Este es el nuestro.
+                Abordamos cada proyecto con claridad estratégica y visión a largo plazo.
+                Cada decisión técnica responde a un análisis estructurado: impacto en el negocio, sostenibilidad del
+                sistema y capacidad de evolución.
+
+                Diseñamos soluciones que generan ventaja competitiva y
+                acompañan el crecimiento real de nuestros clientes.
             </p>
         </header>
 
@@ -164,57 +168,55 @@
 
             <div class="thinking-card reveal-item" style="--reveal-delay: 0ms">
                 <div class="thinking-marker" aria-hidden="true">01</div>
-                <h3 class="thinking-title">Arquitectura antes que velocidad</h3>
+                <h3 class="thinking-title">Software diseñado a la medida</h3>
                 <p class="thinking-body">
-                    No resolvemos el problema de hoy introduciendo el problema del año próximo.
-                    Cada decisión estructural pasa por un criterio de coste diferido: si esto escala,
-                    si esto migra, si esto se puede eliminar.
+                    Desarrollamos soluciones completamente alineadas con la realidad operativa de cada organización.
+                    Analizamos procesos, identificamos fricciones y estructuramos sistemas que resuelven problemas
+                    concretos con eficiencia y precisión.
                 </p>
                 <div class="thinking-footer">
-                    <span class="thinking-tag">ADRs</span>
-                    <span class="thinking-tag">Design Review</span>
+                    <span class="thinking-tag">Soluciones Personalizadas</span>
+                    <span class="thinking-tag">Optimización de Procesos</span>
                 </div>
             </div>
 
             <div class="thinking-card reveal-item" style="--reveal-delay: 80ms">
                 <div class="thinking-marker" aria-hidden="true">02</div>
-                <h3 class="thinking-title">Deuda técnica como variable gestionada</h3>
+                <h3 class="thinking-title">Innovación que impulsa resultados</h3>
                 <p class="thinking-body">
-                    No existe software sin deuda. Lo que existe es deuda controlada y deuda ignorada.
-                    Mantenemos un registro activo de compromisos técnicos pendientes y los priorizamos
-                    igual que priorizamos nuevas funcionalidades.
+                    Integramos herramientas modernas y criterio estratégico para transformar operaciones, mejorar
+                    indicadores clave y sostener resultados en el tiempo.
                 </p>
                 <div class="thinking-footer">
-                    <span class="thinking-tag">Backlog técnico</span>
-                    <span class="thinking-tag">Refactor cycles</span>
+                    <span class="thinking-tag">Transformación Digital</span>
+                    <span class="thinking-tag">Innovación Tecnológica</span>
                 </div>
             </div>
 
             <div class="thinking-card reveal-item" style="--reveal-delay: 160ms">
                 <div class="thinking-marker" aria-hidden="true">03</div>
-                <h3 class="thinking-title">Calidad no es perfección, es trazabilidad</h3>
+                <h3 class="thinking-title">Escalabilidad y confiabilidad garantizadas</h3>
                 <p class="thinking-body">
-                    Un bug en producción es tolerable. Un bug que nadie puede reproducir, diagnosticar
-                    ni rastrear no lo es. Invertimos en observabilidad, contratos de API claros
-                    y decisiones documentadas más que en cobertura de tests arbitraria.
+                    Diseñamos sistemas con fundamentos sólidos. Arquitecturas escalables, buenas prácticas de ingeniería
+                    y estándares claros que permiten crecer sin comprometer estabilidad ni rendimiento.
                 </p>
                 <div class="thinking-footer">
-                    <span class="thinking-tag">Observabilidad</span>
-                    <span class="thinking-tag">Contract testing</span>
+                    <span class="thinking-tag">Software Confiable</span>
+                    <span class="thinking-tag">Arquitectura Escalable</span>
                 </div>
             </div>
 
             <div class="thinking-card reveal-item" style="--reveal-delay: 240ms">
                 <div class="thinking-marker" aria-hidden="true">04</div>
-                <h3 class="thinking-title">La discusión técnica es trabajo real</h3>
+                <h3 class="thinking-title">Socios estratégicos de confianza</h3>
                 <p class="thinking-body">
-                    Dedicamos tiempo intencionado a revisar propuestas de arquitectura, no solo código
-                    ya escrito. Un PR es tarde para la conversación de fondo.
-                    Las decisiones difíciles ocurren antes del teclado.
+                    Nos involucramos en cada proyecto con visión de largo plazo. Comprendemos los objetivos
+                    empresariales, evaluamos riesgos y acompañamos el ciclo completo del desarrollo, asegurando que la
+                    tecnología impulse decisiones inteligentes y sostenibles.
                 </p>
                 <div class="thinking-footer">
-                    <span class="thinking-tag">RFC interno</span>
-                    <span class="thinking-tag">Architecture review</span>
+                    <span class="thinking-tag">Éxito Tecnológico</span>
+                    <span class="thinking-tag">Socios de Negocio</span>
                 </div>
             </div>
 
@@ -240,9 +242,7 @@
                 construir.
             </h2>
             <p class="closing-body">
-                No ofrecemos estimaciones genéricas ni propuestas masivas.
-                Si tienes un problema técnico complejo y buscas un equipo
-                que lo entienda con profundidad, este es el punto de partida.
+                Creamos estrategias precisas, adaptadas a la complejidad de tu proyecto.
             </p>
         </div>
 
