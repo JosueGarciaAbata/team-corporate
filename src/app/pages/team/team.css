@@ -563,27 +563,9 @@
     box-shadow: 0 1px 4px rgba(26, 24, 21, 0.06), 0 2px 8px rgba(26, 24, 21, 0.04);
 }
 
-/* Animación de entrada: parte invisible y desplazada */
-.member-card.card-enter {
-    opacity: 0;
-    transform: translateY(28px) scale(0.97);
-    animation: cardEnter 0.58s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0ms) both;
-}
-
-@keyframes cardEnter {
-    0% {
-        opacity: 0;
-        transform: translateY(28px) scale(0.97);
-    }
-
-    60% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+/* Estado inicial de las cards — el JS (IntersectionObserver) controla opacity/transform */
+.member-card {
+    will-change: opacity, transform;
 }
 
 .member-card:focus-visible {
@@ -908,13 +890,13 @@
 
 .closing-headline {
     font-family: var(--font-brand);
-    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-size: clamp(2.4rem, 4.5vw, 4rem);
     font-weight: 700;
     color: var(--ink-bright);
     letter-spacing: -0.03em;
-    line-height: 1.1;
+    line-height: 1.08;
     margin: 0 0 1.75rem;
-    max-width: 520px;
+    max-width: 600px;
 }
 
 .closing-accent {
@@ -1012,8 +994,9 @@
     font-family: var(--font-brand);
     font-size: 0.72rem;
     letter-spacing: 0.05em;
-    color: var(--ink-muted);
+    color: #ffffff;
     margin: 0;
+    opacity: 0.85;
 }
 
 /* Texto decorativo de fondo */
@@ -1059,13 +1042,29 @@
 }
 
 .section-overline {
-    font-family: var(--ff-mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(184, 86, 15, 0.40);
+    background: rgba(184, 86, 15, 0.10);
+    font-family: var(--font-brand);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
     color: var(--orange);
-    display: block;
-    margin-bottom: 1.1rem;
+    text-transform: uppercase;
+    margin-bottom: 1.8rem;
+}
+
+.section-overline-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--orange);
+    flex-shrink: 0;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .section-overline--muted {
@@ -1118,18 +1117,17 @@
 .thinking-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0;
-    border-top: 1px solid var(--rule-strong);
-    border-left: 1px solid var(--rule-strong);
+    gap: 1.5rem;
 }
 
 .thinking-card {
     padding: 2.5rem 2.75rem;
-    border-right: 1px solid var(--rule-strong);
-    border-bottom: 1px solid var(--rule-strong);
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+    border: 1px solid var(--rule-strong);
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr auto;
+    column-gap: 1.75rem;
     background: var(--surface-card);
     transition:
         background-color 0.28s ease,
@@ -1158,14 +1156,28 @@
 }
 
 .thinking-marker {
-    font-family: var(--ff-mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.18em;
-    color: var(--tan);
-    margin-bottom: 1.5rem;
+    grid-column: 1;
+    grid-row: 1 / 4;
+    font-family: var(--ff-display);
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(184, 86, 15, 0.30);
+    user-select: none;
+    padding-top: 0.1rem;
+    transition: -webkit-text-stroke-color 0.28s ease;
+    align-self: start;
+}
+
+.thinking-card:hover .thinking-marker {
+    -webkit-text-stroke-color: var(--orange);
 }
 
 .thinking-title {
+    grid-column: 2;
+    grid-row: 1;
     font-family: var(--font-brand);
     font-size: 1.1rem;
     font-weight: 700;
@@ -1176,15 +1188,18 @@
 }
 
 .thinking-body {
+    grid-column: 2;
+    grid-row: 2;
     font-size: 0.875rem;
     line-height: 1.78;
     color: var(--text-secondary);
     font-weight: 300;
-    flex: 1;
     margin: 0 0 1.75rem;
 }
 
 .thinking-footer {
+    grid-column: 2;
+    grid-row: 3;
     display: flex;
     gap: 0.4rem;
     flex-wrap: wrap;
@@ -1197,14 +1212,15 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--text-muted);
-    padding: 0.22rem 0.55rem;
+    padding: 0.28rem 0.75rem;
     border: 1px solid var(--rule-strong);
+    border-radius: 9999px;
     background: var(--surface-warm);
-    transition: all 0.18s ease;
+    transition: all 0.22s ease;
 }
 
 .thinking-card:hover .thinking-tag {
-    border-color: rgba(184, 86, 15, 0.25);
+    border-color: rgba(184, 86, 15, 0.35);
     color: var(--orange-dim);
     background: var(--orange-light);
 }
@@ -1377,5 +1393,10 @@
 
     .thinking-card {
         padding: 2rem 1.75rem;
+        column-gap: 1.25rem;
+    }
+
+    .thinking-marker {
+        font-size: 3rem;
     }
 }
