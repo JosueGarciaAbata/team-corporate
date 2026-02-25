@@ -1,5 +1,8 @@
-import { Component, signal, computed, AfterViewInit, OnDestroy, ElementRef, inject, PLATFORM_ID } from '@angular/core';
+import { Component, signal, computed, AfterViewInit, OnDestroy, ElementRef, inject, PLATFORM_ID, NgZone } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
 export interface TeamMember {
     id: number;
@@ -26,7 +29,10 @@ export class Team implements AfterViewInit, OnDestroy {
 
     private el = inject(ElementRef);
     private platformId = inject(PLATFORM_ID);
+    private zone = inject(NgZone);
     private observer: IntersectionObserver | null = null;
+    private cardObserver: IntersectionObserver | null = null;
+    private membersSection: HTMLElement | null = null;
 
     departments = ['Todos', 'Frontend', 'Backend', 'Fullstack', 'DevOps'];
 
@@ -125,42 +131,123 @@ export class Team implements AfterViewInit, OnDestroy {
     ngAfterViewInit(): void {
         if (!isPlatformBrowser(this.platformId)) return;
 
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+        this.membersSection = this.el.nativeElement.querySelector('.members-section');
+
+        // Scroll al tope al cargar la página
+        window.scrollTo({ top: 0, behavior: 'instant' });
+
         const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // ── Reveal items (sección "Cómo pensamos") con IntersectionObserver ──
         if (prefersReduced) {
-            // Revelar todo inmediatamente si el usuario prefiere movimiento reducido
             this.el.nativeElement.querySelectorAll('.reveal-item').forEach((el: Element) => {
                 (el as HTMLElement).classList.add('is-visible');
             });
-            return;
+        } else {
+            this.observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            const el = entry.target as HTMLElement;
+                            const delay = el.style.getPropertyValue('--reveal-delay') || '0ms';
+                            setTimeout(() => el.classList.add('is-visible'), parseInt(delay, 10));
+                            this.observer?.unobserve(el);
+                        }
+                    });
+                },
+                { threshold: 0.12, rootMargin: '0px 0px -48px 0px' }
+            );
+            this.el.nativeElement.querySelectorAll('.reveal-item').forEach((el: Element) => {
+                this.observer?.observe(el);
+            });
         }
 
-        this.observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        const el = entry.target as HTMLElement;
-                        const delay = el.style.getPropertyValue('--reveal-delay') || '0ms';
-                        setTimeout(() => {
-                            el.classList.add('is-visible');
-                        }, parseInt(delay, 10));
-                        this.observer?.unobserve(el);
-                    }
-                });
-            },
-            { threshold: 0.12, rootMargin: '0px 0px -48px 0px' }
-        );
+        if (prefersReduced) return;
 
-        this.el.nativeElement.querySelectorAll('.reveal-item').forEach((el: Element) => {
-            this.observer?.observe(el);
+        // Esperar dos frames para que Angular pinte el @for en el DOM
+        this.zone.runOutsideAngular(() => {
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    this.setupCardAnimations();
+                });
+            });
         });
+    }
+
+    private setupCardAnimations(): void {
+        // Destruir observer anterior si existe
+        this.cardObserver?.disconnect();
+        this.cardObserver = null;
+
+        const cards = Array.from(
+            this.el.nativeElement.querySelectorAll('.member-card')
+        ) as HTMLElement[];
+
+        if (!cards.length) return;
+
+        // Estado inicial: todas invisibles antes de que el observer actúe
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(48px) scale(0.96)';
+            card.style.transition = 'none';
+        });
+
+        // Pequeño delay para que los estilos iniciales se apliquen antes del observer
+        setTimeout(() => {
+            this.cardObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        const card = entry.target as HTMLElement;
+                        if (entry.isIntersecting) {
+                            // Card entra al viewport → aparece
+                            card.style.transition = 'opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1)';
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0) scale(1)';
+                        } else {
+                            // Card sale del viewport → desaparece
+                            card.style.transition = 'opacity 0.3s ease-in, transform 0.3s ease-in';
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(48px) scale(0.96)';
+                        }
+                    });
+                },
+                {
+                    threshold: 0.12,
+                    rootMargin: '0px 0px -40px 0px',
+                }
+            );
+
+            cards.forEach(card => this.cardObserver?.observe(card));
+        }, 80);
     }
 
     ngOnDestroy(): void {
         this.observer?.disconnect();
+        this.cardObserver?.disconnect();
+        ScrollTrigger.getAll().forEach(t => t.kill());
     }
 
     setFilter(dept: string) {
         this.activeFilter.set(dept);
+
+        if (isPlatformBrowser(this.platformId) && this.membersSection) {
+            gsap.to(window, {
+                duration: 0.65,
+                scrollTo: { y: this.membersSection, offsetY: 72 },
+                ease: 'power2.inOut',
+            });
+        }
+
+        // Re-observar las nuevas cards tras el cambio de filtro
+        this.zone.runOutsideAngular(() => {
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    this.setupCardAnimations();
+                });
+            });
+        });
     }
 
     setHovered(id: number | null) {
