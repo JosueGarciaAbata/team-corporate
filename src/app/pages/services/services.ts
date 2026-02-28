@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, signal } from '@angular/core';
+import { Component, AfterViewInit, signal, computed, OnDestroy } from '@angular/core';
 import { CommonModule, SlicePipe } from '@angular/common';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -21,8 +21,8 @@ interface Service {
   templateUrl: './services.html',
   styleUrl: './services.css',
 })
-export class Services implements AfterViewInit {
-  activeFilter = 'Todos';
+export class Services implements AfterViewInit, OnDestroy {
+  activeFilter = signal('Todos');
   selectedService = signal<Service | null>(null);
 
   filters = ['Todos', 'Desarrollo', 'Diseño', 'Marketing', 'Consultoría'];
@@ -98,17 +98,19 @@ export class Services implements AfterViewInit {
     { number: '04', icon: '🚀', title: 'Lanzamiento', desc: 'Desplegamos, medimos y optimizamos continuamente para maximizar resultados.' },
   ];
 
-  get filteredServices(): Service[] {
-    if (this.activeFilter === 'Todos') return this.services;
-    return this.services.filter(s => s.tag === this.activeFilter);
-  }
+  filteredServices = computed(() => {
+    const filter = this.activeFilter();
+    if (filter === 'Todos') return this.services;
+    return this.services.filter(s => s.tag === filter);
+  });
 
   setFilter(filter: string) {
-    this.activeFilter = filter;
-    // Kill any existing card ScrollTriggers so re-animation works cleanly
-    ScrollTrigger.getAll()
-      .filter(st => st.vars?.['trigger'] === '.services-grid' || (st.trigger as Element)?.classList?.contains('services-grid'))
-      .forEach(st => st.kill());
+    this.activeFilter.set(filter);
+    ScrollTrigger.getAll().forEach(st => {
+      if (st.vars.trigger === '.services-grid' || (st.trigger as Element)?.classList?.contains('service-card')) {
+        st.kill();
+      }
+    });
     setTimeout(() => this.animateCards(), 50);
   }
 
@@ -116,16 +118,17 @@ export class Services implements AfterViewInit {
     this.selectedService.set(service);
     document.body.style.overflow = 'hidden';
     setTimeout(() => {
-      gsap.set('.modal-backdrop', { opacity: 0 });
-      gsap.set('.modal-panel', { opacity: 0, y: 40, scale: 0.96 });
-      gsap.to('.modal-backdrop', { opacity: 1, duration: 0.3, ease: 'power2.out' });
-      gsap.to('.modal-panel', { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: 'power3.out' });
+      gsap.from('.modal-backdrop', { opacity: 0, duration: 0.3 });
+      gsap.from('.modal-panel', { opacity: 0, y: 40, scale: 0.96, duration: 0.4 });
     }, 20);
   }
 
   closeModal(): void {
     gsap.to('.modal-panel', {
-      opacity: 0, y: 24, scale: 0.96, duration: 0.25, ease: 'power2.in',
+      opacity: 0,
+      y: 24,
+      scale: 0.96,
+      duration: 0.25,
       onComplete: () => {
         this.selectedService.set(null);
         document.body.style.overflow = '';
@@ -135,99 +138,90 @@ export class Services implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.preloadImages();
     this.initHeroAnimations();
     this.initScrollAnimations();
     this.initStatsCounter();
   }
 
-  private preloadImages(): void {
-    this.services.forEach(s => {
-      const img = new window.Image();
-      img.src = s.image;
-    });
+  ngOnDestroy(): void {
+    document.body.style.overflow = '';
   }
 
   private initHeroAnimations(): void {
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    gsap.from('.hero-badge', {
+      opacity: 0,
+      y: 30,
+      duration: 0.6,
+      delay: 0.1,
+    });
 
-    tl.fromTo('.hero-badge',
-      { opacity: 0, y: 30, scale: 0.8 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.6 }
-    )
-    .fromTo('.hero-title',
-      { opacity: 0, y: 60, skewY: 3 },
-      { opacity: 1, y: 0, skewY: 0, duration: 0.9 },
-      '-=0.2'
-    )
-    .fromTo('.hero-subtitle',
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.7 },
-      '-=0.4'
-    )
-    .fromTo('.hero-cta',
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 },
-      '-=0.3'
-    )
-    .fromTo('.hero-scroll-indicator',
-      { opacity: 0 },
-      { opacity: 1, duration: 0.5 },
-      '-=0.2'
-    );
+    gsap.from('.hero-title', {
+      opacity: 0,
+      y: 50,
+      duration: 0.8,
+      delay: 0.2,
+    });
 
+    gsap.from('.hero-subtitle', {
+      opacity: 0,
+      y: 30,
+      duration: 0.8,
+      delay: 0.4,
+    });
+
+    gsap.from('.hero-cta', {
+      opacity: 0,
+      y: 20,
+      duration: 0.6,
+      delay: 0.6,
+      stagger: 0.1,
+    });
+
+    // Orbs animation
     gsap.to('.orb-1', { y: -30, x: 15, duration: 5, repeat: -1, yoyo: true, ease: 'sine.inOut' });
     gsap.to('.orb-2', { y: 20, x: -20, duration: 7, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 1 });
     gsap.to('.orb-3', { y: -15, x: 10, duration: 4, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 2 });
-    gsap.to('.scroll-dot', { y: 8, duration: 1.2, repeat: -1, yoyo: true, ease: 'power1.inOut' });
   }
 
   private initScrollAnimations(): void {
-    gsap.fromTo('.stats-bar',
-      { opacity: 0, y: 40 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
-        scrollTrigger: { trigger: '.stats-bar', start: 'top 85%' } }
-    );
+    const scrollElements = [
+      { selector: '.stats-bar', y: 40, x: 0 },
+      { selector: '.section-tag', y: 0, x: -30 },
+      { selector: '.section-title', y: 40, x: 0 },
+      { selector: '.filter-bar', y: 20, x: 0 },
+    ];
 
-    gsap.fromTo('.section-tag',
-      { opacity: 0, x: -30 },
-      { opacity: 1, x: 0, duration: 0.6,
-        scrollTrigger: { trigger: '.section-tag', start: 'top 85%' } }
-    );
-
-    gsap.fromTo('.section-title',
-      { opacity: 0, y: 40 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
-        scrollTrigger: { trigger: '.section-title', start: 'top 85%' } }
-    );
-
-    gsap.fromTo('.filter-bar',
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.6,
-        scrollTrigger: { trigger: '.filter-bar', start: 'top 88%' } }
-    );
-
-    gsap.fromTo('.cta-content',
-      { opacity: 0, scale: 0.95 },
-      { opacity: 1, scale: 1, duration: 0.8, ease: 'power3.out',
-        scrollTrigger: { trigger: '.cta-content', start: 'top 80%' } }
-    );
+    scrollElements.forEach(({ selector, y, x }) => {
+      gsap.from(selector, {
+        opacity: 0,
+        y,
+        x,
+        duration: 0.8,
+        scrollTrigger: {
+          trigger: selector,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+      });
+    });
 
     this.animateCards();
   }
 
   animateCards(): void {
-    gsap.set('.service-card', { opacity: 0, y: 50, scale: 0.95 });
-    gsap.to('.service-card', {
-      opacity: 1, y: 0, scale: 1,
-      duration: 0.55, stagger: 0.09, ease: 'power3.out',
-      clearProps: 'all',
-      scrollTrigger: {
-        trigger: '.services-grid',
-        start: 'top 88%',
-        toggleActions: 'play none none none',
-        once: true,
-      },
+    const cards = document.querySelectorAll('.service-card');
+    cards.forEach((card, index) => {
+      gsap.from(card, {
+        opacity: 0,
+        y: 40,
+        duration: 0.6,
+        delay: index * 0.08,
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+      });
     });
   }
 
