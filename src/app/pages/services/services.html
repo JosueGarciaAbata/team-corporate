@@ -89,15 +89,15 @@
 
     <!-- Section header -->
     <div class="mb-16">
-      <div class="section-tag inline-flex items-center gap-2 text-brand-accent text-sm font-semibold uppercase tracking-widest mb-4">
+      <div class="section-tag inline-flex items-center gap-2 text-brand-accent text-sm font-semibold uppercase tracking-widest mb-6">
         <span class="w-8 h-[2px] bg-brand-accent"></span>
         Lo que hacemos
       </div>
-      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+      <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
         <h2 class="section-title text-4xl lg:text-5xl font-bold text-brand-charcoal leading-tight max-w-2xl">
-          Cada servicio diseñado<br>para <span class="text-brand-accent">resultados reales</span>
+          Cada servicio diseñado para <span class="text-brand-accent">resultados reales</span>
         </h2>
-        <p class="section-subtitle text-brand-muted max-w-sm leading-relaxed">
+        <p class="section-subtitle text-brand-muted max-w-md leading-relaxed lg:pt-2">
           Un portafolio completo de servicios tecnológicos para cubrir todas las necesidades de tu negocio digital.
         </p>
       </div>
@@ -108,8 +108,8 @@
       @for (filter of filters; track filter) {
         <button
           (click)="setFilter(filter)"
-          [class.filter-active]="activeFilter === filter"
-          class="filter-btn px-5 py-2 rounded-full text-sm font-medium border transition-all duration-300">
+          [class.filter-active]="activeFilter() === filter"
+          class="filter-btn px-5 py-2 rounded-full text-sm font-medium border transition-all duration-300 cursor-pointer">
           {{ filter }}
         </button>
       }
@@ -117,7 +117,7 @@
 
     <!-- Services grid -->
     <div class="services-grid grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-      @for (service of filteredServices; track service.id) {
+      @for (service of filteredServices(); track service.id) {
         <div class="service-card group relative rounded-3xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
              (click)="openModal(service)">
 
