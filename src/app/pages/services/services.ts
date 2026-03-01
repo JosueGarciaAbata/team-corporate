@@ -151,6 +151,13 @@ export class Services implements AfterViewInit, OnDestroy {
     this.initStatsCounter();
   }
 
+  private preloadImages(): void {
+    this.services.forEach(s => {
+      const img = new window.Image();
+      img.src = s.image;
+    });
+  }
+
   private initHeroAnimations(): void {
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
