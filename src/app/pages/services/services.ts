@@ -116,15 +116,24 @@ export class Services implements AfterViewInit, OnDestroy {
   openModal(service: Service): void {
     this.selectedService.set(service);
     document.body.style.overflow = 'hidden';
-    setTimeout(() => {
-      gsap.set('.modal-backdrop', { opacity: 0 });
-      gsap.set('.modal-panel', { opacity: 0, y: 40, scale: 0.96 });
-      gsap.to('.modal-backdrop', { opacity: 1, duration: 0.3, ease: 'power2.out' });
-      gsap.to('.modal-panel', { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: 'power3.out' });
-    }, 20);
+    ScrollTrigger.getAll().forEach(trigger => trigger.disable());
+    // Slow and progressive reveal for elegant feel
+    gsap.set('.modal-backdrop', { opacity: 0 });
+    gsap.set('.modal-panel', { opacity: 0, y: 50, scale: 0.88 });
+    // Backdrop fades in gradually
+    gsap.to('.modal-backdrop', { opacity: 1, duration: 0.6, ease: 'power1.inOut' });
+    // Modal rises in slowly with staggered timing
+    gsap.to('.modal-panel', { 
+      opacity: 1, y: 0, scale: 1, 
+      duration: 0.8, 
+      delay: 0.15,
+      ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)' 
+    });
   }
 
   closeModal(): void {
+    // Re-enable ScrollTriggers
+    ScrollTrigger.getAll().forEach(trigger => trigger.enable());
     gsap.to('.modal-panel', {
       opacity: 0, y: 24, scale: 0.96, duration: 0.25, ease: 'power2.in',
       onComplete: () => {
@@ -260,5 +269,6 @@ export class Services implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    document.body.style.overflow = '';
   }
 }

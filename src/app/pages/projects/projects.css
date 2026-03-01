@@ -151,6 +151,7 @@
   color: rgba(25, 25, 24, 0.45);
   transition: background 0.2s, color 0.2s;
   flex-shrink: 0;
+  cursor: pointer;
 }
 
 .modal-close-btn:hover {
@@ -229,6 +230,7 @@
   border: 1.5px solid rgba(201, 185, 154, 0.6);
   border-radius: 999px;
   transition: border-color 0.2s, background 0.2s;
+  cursor: pointer;
 }
 
 .modal-btn-secondary:hover {
