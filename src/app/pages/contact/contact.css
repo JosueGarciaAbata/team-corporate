@@ -21,6 +21,16 @@
   box-shadow: 0 0 0 1px var(--color-brand-accent);
 }
 
+/* Custom Select Styling */
+select.input-field {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23b8560f'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.25rem;
+  padding-right: 2.5rem;
+}
+
 .input-field.ng-invalid.ng-touched {
   border-color: #ef4444;
   box-shadow: 0 0 0 1px #ef4444;
@@ -30,6 +40,79 @@
   color: #ef4444;
   font-size: 0.875rem;
   margin-top: 0.25rem;
+}
+
+/* Submit and WhatsApp Buttons */
+.submit-btn, .whatsapp-btn {
+  cursor: pointer;
+}
+
+.submit-btn:disabled, .whatsapp-btn:disabled {
+  cursor: not-allowed;
+}
+
+/* WhatsApp Button Modern Styling */
+.whatsapp-btn {
+  background-color: transparent;
+  border: 2px solid #128C7E; /* Slightly darker WhatsApp green */
+  color: #128C7E;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.whatsapp-btn:hover:not(:disabled) {
+  background-color: #075E54; /* Even darker on hover */
+  color: white;
+  border-color: #075E54;
+  box-shadow: 0 10px 20px -10px rgba(18, 140, 126, 0.5);
+  transform: translateY(-2px);
+}
+
+.whatsapp-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Info Cards Hover Effects */
+.info-card {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.info-card:hover {
+  transform: translateY(-8px);
+  background-color: white;
+  border-color: var(--color-brand-accent);
+  box-shadow: 0 20px 25px -5px rgba(184, 86, 15, 0.1), 0 10px 10px -5px rgba(184, 86, 15, 0.04);
+}
+
+.info-card:hover h3 {
+  color: var(--color-brand-accent);
+}
+
+.info-card:hover .rounded-full {
+  background-color: var(--color-brand-accent);
+  color: white;
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
+/* Custom Select Styling */
+select.input-field {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23B8560F'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.25rem;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+select.input-field option {
+  background-color: #F8F1EB; /* Color de fondo crema para que coincida con el input */
+  color: #1a1a1a;
+  padding: 12px;
+}
+
+select.input-field:focus {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23B8560F'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 15l7-7 7 7'%3E%3C/path%3E%3C/svg%3E");
 }
 
 /* Custom Checkbox */
@@ -60,4 +143,23 @@
   border: solid white;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
+}
+
+/* WhatsApp Button Modern Styling */
+.whatsapp-btn {
+  background-color: transparent;
+  border: 2px solid #25D366;
+  color: #25D366;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.whatsapp-btn:hover {
+  background-color: #25D366;
+  color: white;
+  box-shadow: 0 10px 20px -10px rgba(37, 211, 102, 0.5);
+  transform: translateY(-2px);
+}
+
+.whatsapp-btn:active {
+  transform: translateY(0);
 }
