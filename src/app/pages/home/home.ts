@@ -1,6 +1,6 @@
-import { Component, AfterViewInit, inject, signal } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, inject, signal } from '@angular/core';
 import { CommonModule, SlicePipe } from '@angular/common';
-import { Router } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ProjectsService, Project } from '../../services/projects.service';
@@ -17,15 +17,15 @@ interface HomeService {
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, SlicePipe],
+  imports: [CommonModule, SlicePipe, RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home implements AfterViewInit {
-  private router = inject(Router);
+export class Home implements AfterViewInit, OnDestroy {
   private projectsService = inject(ProjectsService);
 
   selectedService = signal<HomeService | null>(null);
+  selectedProject = signal<Project | null>(null);
 
   projects = this.projectsService.getHomeProjects();
 
@@ -76,15 +76,30 @@ export class Home implements AfterViewInit {
 
   techStack = ['Angular', 'React', 'Flutter', 'Node.js', 'Python', 'AWS', 'PostgreSQL', 'Figma', 'Docker', 'TypeScript'];
 
-  navigateToProject(project: Project): void {
-    this.projectsService.setSelectedProjectId(project.id);
-    this.router.navigate(['/projects']);
+  openProjectModal(project: Project): void {
+    this.selectedProject.set(project);
+    document.body.style.overflow = 'hidden';
+  }
+
+  closeProjectModal(): void {
+    this.selectedProject.set(null);
+    document.body.style.overflow = '';
+  }
+
+  formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
   }
 
   ngAfterViewInit(): void {
     this.preloadImages();
     this.initHero();
     this.initScrollSections();
+  }
+
+  ngOnDestroy(): void {
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    document.body.style.overflow = '';
   }
 
   private preloadImages(): void {
