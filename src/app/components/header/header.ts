@@ -13,10 +13,10 @@ export class Header {
 
   navLinks = [
     { label: 'Inicio', path: '/', exact: true },
-    { label: 'Servicios', path: '/services', exact: false },
-    { label: 'Proyectos', path: '/projects', exact: false },
+    { label: 'Servicios', path: '/servicios', exact: false },
+    { label: 'Proyectos', path: '/proyectos', exact: false },
     { label: 'Blog', path: '/blog', exact: false },
-    { label: 'Equipo', path: '/team', exact: false },
+    { label: 'Equipo', path: '/equipo', exact: false },
   ];
 
   @HostListener('window:scroll')
