@@ -19,7 +19,7 @@ export const routes: Routes = [
   { path: 'blog', component: Blog },
   { path: 'blog/nuevo', component: BlogEditor },
   { path: 'blog/editar/:id', component: BlogEditor },
-  { path: 'blog/:slug', component: BlogDetail },
+  { path: 'blog/:id', component: BlogDetail },
   { path: 'privacidad', component: Privacy },
   { path: 'terminos', component: Terms }
 ];
