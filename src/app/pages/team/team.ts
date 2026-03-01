@@ -1,5 +1,6 @@
 import { Component, signal, computed, AfterViewInit, OnDestroy, ElementRef, inject, PLATFORM_ID, NgZone } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
@@ -19,7 +20,7 @@ export interface TeamMember {
 
 @Component({
     selector: 'app-team',
-    imports: [],
+    imports: [RouterLink],
     templateUrl: './team.html',
     styleUrl: './team.css',
 })
