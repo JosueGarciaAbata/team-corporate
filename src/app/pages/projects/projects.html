@@ -44,7 +44,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
           </svg>
         </a>
-        <a href="/contact" class="hero-cta inline-flex items-center gap-3 px-7 py-3.5 border border-brand-warm/30 text-brand-warm font-semibold rounded-full transition-all duration-300 hover:border-brand-warm/60 hover:bg-brand-warm/5">
+        <a routerLink="/contacto" class="hero-cta inline-flex items-center gap-3 px-7 py-3.5 border border-brand-warm/30 text-brand-warm font-semibold rounded-full transition-all duration-300 hover:border-brand-warm/60 hover:bg-brand-warm/5">
           Hablar con un experto
         </a>
       </div>
@@ -101,15 +101,15 @@
     </div>
 
     <!-- Projects grid -->
-    <div class="projects-grid grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="projects-grid grid grid-cols-1 md:grid-cols-3 gap-6">
       @for (project of filteredProjects(); track project.id) {
         <div 
-          class="project-card group relative rounded-2xl overflow-hidden bg-white cursor-pointer 
+          class="project-card group relative rounded-3xl overflow-hidden bg-white cursor-pointer 
                    transition-all duration-300 hover:shadow-lg"
           (click)="selectProject(project)"
         >
           <!-- Project image -->
-          <div class="relative h-64 md:h-72 overflow-hidden bg-brand-warm">
+          <div class="relative overflow-hidden bg-brand-warm aspect-[4/3]">
             <img 
               [src]="project.image" 
               [alt]="project.title"

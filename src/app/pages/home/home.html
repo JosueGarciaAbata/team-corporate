@@ -40,13 +40,13 @@
 
         <!-- CTAs -->
         <div class="flex flex-wrap gap-4 mb-14">
-          <a href="/contact" class="h-cta group inline-flex items-center gap-3 px-7 py-3.5 bg-brand-accent text-brand-cream font-semibold rounded-full transition-all duration-300 hover:bg-brand-accent/90 hover:gap-5">
-            Iniciar proyecto
-            <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <a routerLink="/contacto" class="h-cta group inline-flex items-center gap-3 px-7 py-3.5 bg-brand-accent text-brand-cream font-semibold rounded-full transition-all duration-300 hover:bg-brand-accent/90 hover:gap-5">
+            Iniciar Proyecto
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
             </svg>
           </a>
-          <a href="/services" class="h-cta inline-flex items-center gap-3 px-7 py-3.5 border border-brand-warm/25 text-brand-warm font-semibold rounded-full transition-all duration-300 hover:border-brand-warm/50 hover:bg-brand-warm/5">
+          <a routerLink="/servicios" class="h-cta inline-flex items-center gap-3 px-7 py-3.5 border border-brand-warm/25 text-brand-warm font-semibold rounded-full transition-all duration-300 hover:border-brand-warm/50 hover:bg-brand-warm/5">
             Ver servicios
           </a>
         </div>
@@ -181,7 +181,7 @@
           Todo lo que necesitas<br>en <span class="text-brand-accent">un solo equipo</span>
         </h2>
       </div>
-      <a href="/services" class="inline-flex items-center gap-2 text-brand-accent font-semibold hover:text-brand-charcoal transition-colors group">
+      <a routerLink="/servicios" class="inline-flex items-center gap-2 text-brand-accent font-semibold hover:text-brand-charcoal transition-colors group">
         Ver todos los servicios
         <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -251,7 +251,7 @@
           Resultados que<br><span class="text-brand-accent">hablan por sí solos</span>
         </h2>
       </div>
-      <a href="/projects" class="inline-flex items-center gap-2 text-brand-accent font-semibold hover:text-brand-charcoal transition-colors group">
+      <a routerLink="/proyectos" class="inline-flex items-center gap-2 text-brand-accent font-semibold hover:text-brand-charcoal transition-colors group">
         Ver todos los proyectos
         <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -261,7 +261,7 @@
 
     <div class="proj-grid grid md:grid-cols-3 gap-6">
       @for (project of projects; track project.title) {
-        <div class="proj-card group cursor-pointer" (click)="navigateToProject(project)">
+        <div class="proj-card group cursor-pointer" (click)="openProjectModal(project)">
           <!-- Project Image -->
           <div class="relative overflow-hidden rounded-3xl mb-5 aspect-[4/3] bg-gradient-to-br from-brand-warm to-brand-tan/40">
             <img [src]="project.image" [alt]="project.title" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -288,6 +288,62 @@
 
   </div>
 </section>
+
+
+<!-- ═══════════════════════════════════════════════ -->
+<!--  PROJECT MODAL                                 -->
+<!-- ═══════════════════════════════════════════════ -->
+@if (selectedProject()) {
+  <div class="modal-overlay" (click)="closeProjectModal()"></div>
+  <div class="modal-wrapper">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <div class="flex-1 pr-4">
+          <h2 class="text-2xl md:text-3xl font-bold text-brand-charcoal leading-tight">{{ selectedProject()?.title }}</h2>
+          <p class="text-sm text-brand-accent mt-1.5 font-semibold uppercase tracking-wide">{{ selectedProject()?.category }}</p>
+        </div>
+        <button (click)="closeProjectModal()" class="modal-close-btn" aria-label="Cerrar">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-image-wrap">
+          <img [src]="selectedProject()?.image" [alt]="selectedProject()?.title" class="modal-image"/>
+        </div>
+        <div>
+          <h3 class="modal-section-label">Descripción</h3>
+          <p class="text-base text-brand-charcoal/80 leading-relaxed">{{ selectedProject()?.description }}</p>
+        </div>
+        <div>
+          <h3 class="modal-section-label">Tecnologías utilizadas</h3>
+          <div class="flex flex-wrap gap-2">
+            @for (tech of selectedProject()?.technologies; track tech) {
+              <span class="modal-tech-tag">{{ tech }}</span>
+            }
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 pt-4 border-t border-brand-warm/20">
+          <div>
+            <div class="modal-section-label mb-1">Categoría</div>
+            <div class="text-brand-charcoal font-semibold">{{ selectedProject()?.category }}</div>
+          </div>
+          <div>
+            <div class="modal-section-label mb-1">Publicado</div>
+            <div class="text-brand-charcoal font-semibold">{{ formatDate(selectedProject()?.publishDate || '') }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <a routerLink="/proyectos" (click)="closeProjectModal()" class="modal-btn-primary">Ver todos los proyectos</a>
+        <button (click)="closeProjectModal()" class="modal-btn-secondary">Cerrar</button>
+      </div>
+    </div>
+  </div>
+}
 
 
 <!-- ═══════════════════════════════════════════════ -->
@@ -375,7 +431,7 @@
         </p>
 
         <div class="flex flex-wrap gap-4">
-          <a href="/contact" class="group inline-flex items-center gap-3 px-8 py-4 bg-brand-accent text-brand-cream font-semibold rounded-full text-[15px] transition-all duration-300 hover:bg-brand-accent/90 hover:gap-5 hover:shadow-[0_0_40px_rgba(184,86,15,0.4)]">
+          <a routerLink="/contacto" class="group inline-flex items-center gap-3 px-8 py-4 bg-brand-accent text-brand-cream font-semibold rounded-full text-[15px] transition-all duration-300 hover:bg-brand-accent/90 hover:gap-5 hover:shadow-[0_0_40px_rgba(184,86,15,0.4)]">
             Iniciar proyecto
             <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -499,7 +555,7 @@
         </div>
 
         <div class="flex flex-wrap gap-3 pt-6 border-t border-brand-warm/60">
-          <a href="/services"
+          <a routerLink="/servicios"
              class="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-brand-charcoal text-brand-cream font-semibold rounded-full text-sm transition-all duration-300 hover:bg-brand-accent">
             Ver todos los servicios
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

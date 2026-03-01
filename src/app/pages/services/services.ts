@@ -1,5 +1,6 @@
 import { Component, AfterViewInit, signal, computed, OnDestroy } from '@angular/core';
 import { CommonModule, SlicePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -17,7 +18,7 @@ interface Service {
 
 @Component({
   selector: 'app-services',
-  imports: [CommonModule, SlicePipe],
+  imports: [CommonModule, SlicePipe, RouterLink],
   templateUrl: './services.html',
   styleUrl: './services.css',
 })
@@ -249,5 +250,9 @@ export class Services implements AfterViewInit, OnDestroy {
         });
       },
     });
+  }
+
+  ngOnDestroy(): void {
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
   }
 }

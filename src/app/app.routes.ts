@@ -7,15 +7,19 @@ import { BlogDetail } from './pages/blog-detail/blog-detail';
 import { BlogEditor } from './pages/blog-editor/blog-editor';
 import { Team } from './pages/team/team';
 import { Contact } from './pages/contact/contact';
+import { Privacy } from './pages/privacy/privacy';
+import { Terms } from './pages/terms/terms';
 
 export const routes: Routes = [
   { path: '', component: Home },
-  { path: 'services', component: Services },
-  { path: 'projects', component: Projects },
-  { path: 'contact', component: Contact },
-  { path: 'team', component: Team },
+  { path: 'servicios', component: Services },
+  { path: 'proyectos', component: Projects },
+  { path: 'contacto', component: Contact },
+  { path: 'equipo', component: Team },
   { path: 'blog', component: Blog },
-  { path: 'blog/new', component: BlogEditor },
-  { path: 'blog/edit/:id', component: BlogEditor },
-  { path: 'blog/:id', component: BlogDetail }
+  { path: 'blog/nuevo', component: BlogEditor },
+  { path: 'blog/editar/:id', component: BlogEditor },
+  { path: 'blog/:slug', component: BlogDetail },
+  { path: 'privacidad', component: Privacy },
+  { path: 'terminos', component: Terms }
 ];
