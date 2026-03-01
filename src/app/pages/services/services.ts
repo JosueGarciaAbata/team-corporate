@@ -144,10 +144,6 @@ export class Services implements AfterViewInit, OnDestroy {
     this.initStatsCounter();
   }
 
-  ngOnDestroy(): void {
-    document.body.style.overflow = '';
-  }
-
   private initHeroAnimations(): void {
     gsap.from('.hero-badge', {
       opacity: 0,
@@ -254,5 +250,6 @@ export class Services implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    document.body.style.overflow = '';
   }
 }
