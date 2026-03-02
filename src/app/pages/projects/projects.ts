@@ -1,5 +1,6 @@
 import { Component, AfterViewInit, OnDestroy, OnInit, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ProjectsService, Project } from '../../services/projects.service';
@@ -8,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-projects',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './projects.html',
   styleUrl: './projects.css',
 })
@@ -18,7 +19,7 @@ export class Projects implements OnInit, AfterViewInit, OnDestroy {
   activeFilter = signal('Todos');
   selectedProject = signal<Project | null>(null);
 
-  filters = ['Todos', 'Backend', 'Microservicios', 'Full-Stack', 'Distributed'];
+  filters = ['Todos', 'Backend', 'Microservicios', 'Full-Stack', 'Sistemas Distribuidos'];
 
   projects = this.projectsService.getProjects();
 
@@ -27,7 +28,9 @@ export class Projects implements OnInit, AfterViewInit, OnDestroy {
     if (filter === 'Todos') {
       return this.projects;
     }
-    return this.projects.filter(p => p.category === filter);
+    // Match by category OR by listed technologies (so filters like
+    // "Sistemas Distribuidos" that live in technologies still return results)
+    return this.projects.filter(p => p.category === filter || (p.technologies && p.technologies.includes(filter)));
   });
 
   ngOnInit(): void {
@@ -50,6 +53,7 @@ export class Projects implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy() {
     document.body.style.overflow = '';
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
   }
 
   selectProject(project: Project) {

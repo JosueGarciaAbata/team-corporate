@@ -11,10 +11,10 @@ export class Footer {
   readonly year = new Date().getFullYear();
 
   readonly navLinks = [
-    { label: 'Home', path: '/' },
-    { label: 'Services', path: '/services' },
-    { label: 'Projects', path: '/projects' },
+    { label: 'Inicio', path: '/' },
+    { label: 'Servicios', path: '/services' },
+    { label: 'Proyectos', path: '/projects' },
     { label: 'Blog', path: '/blog' },
-    { label: 'Team', path: '/team' },
+    { label: 'Equipo', path: '/team' },
   ];
 }

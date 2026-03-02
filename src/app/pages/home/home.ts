@@ -1,6 +1,6 @@
-import { Component, AfterViewInit, inject, signal } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, inject, signal } from '@angular/core';
 import { CommonModule, SlicePipe } from '@angular/common';
-import { Router } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ProjectsService, Project } from '../../services/projects.service';
@@ -8,7 +8,6 @@ import { ProjectsService, Project } from '../../services/projects.service';
 gsap.registerPlugin(ScrollTrigger);
 
 interface HomeService {
-  icon: string;
   title: string;
   description: string;
   tag: string;
@@ -18,51 +17,51 @@ interface HomeService {
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, SlicePipe],
+  imports: [CommonModule, SlicePipe, RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home implements AfterViewInit {
-  private router = inject(Router);
+export class Home implements AfterViewInit, OnDestroy {
   private projectsService = inject(ProjectsService);
 
   selectedService = signal<HomeService | null>(null);
+  selectedProject = signal<Project | null>(null);
 
   projects = this.projectsService.getHomeProjects();
 
   services: HomeService[] = [
     {
-      icon: '💻', title: 'Desarrollo Web', tag: 'Desarrollo',
+      title: 'Desarrollo Web', tag: 'Desarrollo',
       image: 'assets/img/services/desarrollo-web.webp',
       description: 'Sitios y apps web de alto rendimiento, optimizados para SEO y velocidad.',
       features: ['React / Angular / Vue', 'APIs RESTful & GraphQL', 'Optimización SEO', 'Performance Web Vitals'],
     },
     {
-      icon: '📱', title: 'Apps Móviles', tag: 'Desarrollo',
+      title: 'Apps Móviles', tag: 'Desarrollo',
       image: 'assets/img/services/desarrollo-movil.webp',
       description: 'Aplicaciones nativas e híbridas para iOS y Android con UX excepcional.',
       features: ['React Native / Flutter', 'iOS & Android', 'Offline First', 'Push Notifications'],
     },
     {
-      icon: '🎨', title: 'Diseño UI/UX', tag: 'Diseño',
+      title: 'Diseño UI/UX', tag: 'Diseño',
       image: 'assets/img/services/disenoui.webp',
       description: 'Interfaces intuitivas y visualmente impactantes que convierten usuarios.',
       features: ['Research & Testing', 'Prototipos Interactivos', 'Design Systems', 'Accesibilidad WCAG'],
     },
     {
-      icon: '🚀', title: 'Marketing Digital', tag: 'Marketing',
+      title: 'Marketing Digital', tag: 'Marketing',
       image: 'assets/img/services/marketing-digital.webp',
       description: 'Estrategias basadas en datos para escalar tu presencia y tus ventas.',
       features: ['SEO & SEM', 'Social Media Ads', 'Email Marketing', 'Analytics & KPIs'],
     },
     {
-      icon: '☁️', title: 'Soluciones Cloud', tag: 'Desarrollo',
+      title: 'Soluciones Cloud', tag: 'Desarrollo',
       image: 'assets/img/services/soluciones-cloud.webp',
       description: 'Infraestructura escalable y segura en AWS, GCP y Azure.',
       features: ['AWS / GCP / Azure', 'DevOps & CI/CD', 'Microservicios', 'Seguridad & Compliance'],
     },
     {
-      icon: '🔧', title: 'Consultoría Tech', tag: 'Consultoría',
+      title: 'Consultoría Tech', tag: 'Consultoría',
       image: 'assets/img/services/consultoria-tech.webp',
       description: 'Asesoramiento experto para tomar las decisiones tecnológicas correctas.',
       features: ['Auditoría Técnica', 'Tech Stack Review', 'Roadmap Digital', 'Team Building'],
@@ -77,15 +76,54 @@ export class Home implements AfterViewInit {
 
   techStack = ['Angular', 'React', 'Flutter', 'Node.js', 'Python', 'AWS', 'PostgreSQL', 'Figma', 'Docker', 'TypeScript'];
 
-  navigateToProject(project: Project): void {
-    this.projectsService.setSelectedProjectId(project.id);
-    this.router.navigate(['/projects']);
+  openProjectModal(project: Project): void {
+    this.selectedProject.set(project);
+    document.body.style.overflow = 'hidden';
+    ScrollTrigger.getAll().forEach(trigger => trigger.disable());
+    // Slow and progressive reveal for elegant feel
+    gsap.set('.modal-overlay', { opacity: 0 });
+    gsap.set('.modal-card', { opacity: 0, y: 50, scale: 0.88 });
+    // Backdrop fades in gradually
+    gsap.to('.modal-overlay', { opacity: 1, duration: 0.6, ease: 'power1.inOut' });
+    // Modal rises in slowly with staggered timing
+    gsap.to('.modal-card', { 
+      opacity: 1, y: 0, scale: 1, 
+      duration: 0.8, 
+      delay: 0.15,
+      ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)' 
+    });
+  }
+
+  closeProjectModal(): void {
+    // Re-enable ScrollTriggers
+    ScrollTrigger.getAll().forEach(trigger => trigger.enable());
+    gsap.to('.modal-card', {
+      opacity: 0,
+      y: 24,
+      scale: 0.96,
+      duration: 0.25,
+      onComplete: () => {
+        this.selectedProject.set(null);
+        document.body.style.overflow = '';
+      },
+    });
+    gsap.to('.modal-overlay', { opacity: 0, duration: 0.3 });
+  }
+
+  formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
   }
 
   ngAfterViewInit(): void {
     this.preloadImages();
     this.initHero();
     this.initScrollSections();
+  }
+
+  ngOnDestroy(): void {
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    document.body.style.overflow = '';
   }
 
   private preloadImages(): void {

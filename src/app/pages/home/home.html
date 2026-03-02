@@ -40,13 +40,13 @@
 
         <!-- CTAs -->
         <div class="flex flex-wrap gap-4 mb-14">
-          <a href="/contact" class="h-cta group inline-flex items-center gap-3 px-7 py-3.5 bg-brand-accent text-brand-cream font-semibold rounded-full transition-all duration-300 hover:bg-brand-accent/90 hover:gap-5">
-            Iniciar proyecto
-            <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <a routerLink="/contacto" class="h-cta group inline-flex items-center gap-3 px-7 py-3.5 bg-brand-accent text-brand-cream font-semibold rounded-full transition-all duration-300 hover:bg-brand-accent/90 hover:gap-5">
+            Iniciar Proyecto
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
             </svg>
           </a>
-          <a href="/services" class="h-cta inline-flex items-center gap-3 px-7 py-3.5 border border-brand-warm/25 text-brand-warm font-semibold rounded-full transition-all duration-300 hover:border-brand-warm/50 hover:bg-brand-warm/5">
+          <a routerLink="/servicios" class="h-cta inline-flex items-center gap-3 px-7 py-3.5 border border-brand-warm/25 text-brand-warm font-semibold rounded-full transition-all duration-300 hover:border-brand-warm/50 hover:bg-brand-warm/5">
             Ver servicios
           </a>
         </div>
@@ -77,7 +77,11 @@
         <div class="flex items-center justify-between w-full max-w-md mb-6 px-4">
           <!-- Floating mini card: rating -->
           <div class="hero-card-float-1 bg-brand-cream rounded-2xl p-4 shadow-xl flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-[#10b981]/15 flex items-center justify-center text-xl">⭐</div>
+            <div class="w-10 h-10 rounded-xl bg-[#10b981]/15 flex items-center justify-center">
+              <svg class="w-5 h-5 text-[#10b981]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
             <div>
               <div class="text-brand-charcoal font-bold text-sm">4.9 / 5.0</div>
               <div class="text-brand-muted text-xs">Valoración media</div>
@@ -95,7 +99,11 @@
         <!-- Main card below -->
         <div class="hero-card-main w-80 bg-brand-cream/5 border border-brand-warm/10 backdrop-blur-sm rounded-3xl p-6 relative z-10">
           <div class="flex items-center gap-3 mb-5">
-            <div class="w-10 h-10 rounded-xl bg-brand-accent/20 flex items-center justify-center text-xl">🚀</div>
+            <div class="w-10 h-10 rounded-xl bg-brand-accent/20 flex items-center justify-center">
+              <svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
             <div>
               <div class="text-brand-cream font-semibold text-sm">Proyecto en progreso</div>
               <div class="text-brand-warm/40 text-xs">App de fintech · Sprint 3</div>
@@ -173,7 +181,7 @@
           Todo lo que necesitas<br>en <span class="text-brand-accent">un solo equipo</span>
         </h2>
       </div>
-      <a href="/services" class="inline-flex items-center gap-2 text-brand-accent font-semibold hover:text-brand-charcoal transition-colors group">
+      <a routerLink="/servicios" class="inline-flex items-center gap-2 text-brand-accent font-semibold hover:text-brand-charcoal transition-colors group">
         Ver todos los servicios
         <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -243,7 +251,7 @@
           Resultados que<br><span class="text-brand-accent">hablan por sí solos</span>
         </h2>
       </div>
-      <a href="/projects" class="inline-flex items-center gap-2 text-brand-accent font-semibold hover:text-brand-charcoal transition-colors group">
+      <a routerLink="/proyectos" class="inline-flex items-center gap-2 text-brand-accent font-semibold hover:text-brand-charcoal transition-colors group">
         Ver todos los proyectos
         <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -253,7 +261,7 @@
 
     <div class="proj-grid grid md:grid-cols-3 gap-6">
       @for (project of projects; track project.title) {
-        <div class="proj-card group cursor-pointer" (click)="navigateToProject(project)">
+        <div class="proj-card group cursor-pointer" (click)="openProjectModal(project)">
           <!-- Project Image -->
           <div class="relative overflow-hidden rounded-3xl mb-5 aspect-[4/3] bg-gradient-to-br from-brand-warm to-brand-tan/40">
             <img [src]="project.image" [alt]="project.title" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -280,6 +288,62 @@
 
   </div>
 </section>
+
+
+<!-- ═══════════════════════════════════════════════ -->
+<!--  PROJECT MODAL                                 -->
+<!-- ═══════════════════════════════════════════════ -->
+@if (selectedProject()) {
+  <div class="modal-overlay" (click)="closeProjectModal()"></div>
+  <div class="modal-wrapper">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <div class="flex-1 pr-4">
+          <h2 class="text-2xl md:text-3xl font-bold text-brand-charcoal leading-tight">{{ selectedProject()?.title }}</h2>
+          <p class="text-sm text-brand-accent mt-1.5 font-semibold uppercase tracking-wide">{{ selectedProject()?.category }}</p>
+        </div>
+        <button (click)="closeProjectModal()" class="modal-close-btn" aria-label="Cerrar">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-image-wrap">
+          <img [src]="selectedProject()?.image" [alt]="selectedProject()?.title" class="modal-image"/>
+        </div>
+        <div>
+          <h3 class="modal-section-label">Descripción</h3>
+          <p class="text-base text-brand-charcoal/80 leading-relaxed">{{ selectedProject()?.description }}</p>
+        </div>
+        <div>
+          <h3 class="modal-section-label">Tecnologías utilizadas</h3>
+          <div class="flex flex-wrap gap-2">
+            @for (tech of selectedProject()?.technologies; track tech) {
+              <span class="modal-tech-tag">{{ tech }}</span>
+            }
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 pt-4 border-t border-brand-warm/20">
+          <div>
+            <div class="modal-section-label mb-1">Categoría</div>
+            <div class="text-brand-charcoal font-semibold">{{ selectedProject()?.category }}</div>
+          </div>
+          <div>
+            <div class="modal-section-label mb-1">Publicado</div>
+            <div class="text-brand-charcoal font-semibold">{{ formatDate(selectedProject()?.publishDate || '') }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <a routerLink="/proyectos" (click)="closeProjectModal()" class="modal-btn-primary">Ver todos los proyectos</a>
+        <button (click)="closeProjectModal()" class="modal-btn-secondary">Cerrar</button>
+      </div>
+    </div>
+  </div>
+}
 
 
 <!-- ═══════════════════════════════════════════════ -->
@@ -367,7 +431,7 @@
         </p>
 
         <div class="flex flex-wrap gap-4">
-          <a href="/contact" class="group inline-flex items-center gap-3 px-8 py-4 bg-brand-accent text-brand-cream font-semibold rounded-full text-[15px] transition-all duration-300 hover:bg-brand-accent/90 hover:gap-5 hover:shadow-[0_0_40px_rgba(184,86,15,0.4)]">
+          <a routerLink="/contacto" class="group inline-flex items-center gap-3 px-8 py-4 bg-brand-accent text-brand-cream font-semibold rounded-full text-[15px] transition-all duration-300 hover:bg-brand-accent/90 hover:gap-5 hover:shadow-[0_0_40px_rgba(184,86,15,0.4)]">
             Iniciar proyecto
             <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -384,7 +448,11 @@
 
         <!-- Card 1 -->
         <div class="cta-info-card flex items-start gap-4 p-5 rounded-2xl border border-brand-warm/10 bg-brand-warm/5 hover:border-brand-warm/20 transition-all duration-300 group">
-          <div class="w-11 h-11 rounded-xl bg-brand-accent/15 flex items-center justify-center text-xl flex-shrink-0 group-hover:bg-brand-accent/25 transition-colors">💬</div>
+          <div class="w-11 h-11 rounded-xl bg-brand-accent/15 flex items-center justify-center flex-shrink-0 group-hover:bg-brand-accent/25 transition-colors">
+            <svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+            </svg>
+          </div>
           <div>
             <div class="text-brand-cream font-semibold mb-1">Consultoría gratuita</div>
             <div class="text-brand-warm/45 text-sm leading-relaxed">Una llamada de 30 min para entender tu proyecto sin compromisos.</div>
@@ -393,7 +461,11 @@
 
         <!-- Card 2 -->
         <div class="cta-info-card flex items-start gap-4 p-5 rounded-2xl border border-brand-warm/10 bg-brand-warm/5 hover:border-brand-warm/20 transition-all duration-300 group">
-          <div class="w-11 h-11 rounded-xl bg-[#7c3aed]/20 flex items-center justify-center text-xl flex-shrink-0 group-hover:bg-[#7c3aed]/30 transition-colors">⚡</div>
+          <div class="w-11 h-11 rounded-xl bg-[#7c3aed]/20 flex items-center justify-center flex-shrink-0 group-hover:bg-[#7c3aed]/30 transition-colors">
+            <svg class="w-5 h-5 text-[#7c3aed]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
           <div>
             <div class="text-brand-cream font-semibold mb-1">Propuesta en 48 horas</div>
             <div class="text-brand-warm/45 text-sm leading-relaxed">Recibe un roadmap técnico detallado y presupuesto estimado.</div>
@@ -402,7 +474,11 @@
 
         <!-- Card 3 -->
         <div class="cta-info-card flex items-start gap-4 p-5 rounded-2xl border border-brand-warm/10 bg-brand-warm/5 hover:border-brand-warm/20 transition-all duration-300 group">
-          <div class="w-11 h-11 rounded-xl bg-[#10b981]/15 flex items-center justify-center text-xl flex-shrink-0 group-hover:bg-[#10b981]/25 transition-colors">🛡️</div>
+          <div class="w-11 h-11 rounded-xl bg-[#10b981]/15 flex items-center justify-center flex-shrink-0 group-hover:bg-[#10b981]/25 transition-colors">
+            <svg class="w-5 h-5 text-[#10b981]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
           <div>
             <div class="text-brand-cream font-semibold mb-1">Sin letra pequeña</div>
             <div class="text-brand-warm/45 text-sm leading-relaxed">Transparencia total en costos, plazos y alcance desde el día uno.</div>
@@ -446,7 +522,7 @@
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/20"></div>
 
         <button (click)="closeModal()"
-                class="absolute top-5 right-5 w-9 h-9 rounded-full bg-black/30 hover:bg-black/50 border border-white/20 flex items-center justify-center transition-colors duration-200 backdrop-blur-sm group">
+                class="absolute top-5 right-5 w-9 h-9 rounded-full bg-black/30 hover:bg-black/50 border border-white/20 flex items-center justify-center transition-colors duration-200 backdrop-blur-sm group cursor-pointer">
           <svg class="w-4 h-4 text-white/70 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
@@ -479,7 +555,7 @@
         </div>
 
         <div class="flex flex-wrap gap-3 pt-6 border-t border-brand-warm/60">
-          <a href="/services"
+          <a routerLink="/servicios"
              class="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-brand-charcoal text-brand-cream font-semibold rounded-full text-sm transition-all duration-300 hover:bg-brand-accent">
             Ver todos los servicios
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -487,7 +563,7 @@
             </svg>
           </a>
           <button (click)="closeModal()"
-                  class="px-6 py-3.5 border border-brand-warm text-brand-muted font-semibold rounded-full text-sm transition-all duration-300 hover:border-brand-charcoal hover:text-brand-charcoal">
+                  class="px-6 py-3.5 border border-brand-warm text-brand-muted font-semibold rounded-full text-sm transition-all duration-300 hover:border-brand-charcoal hover:text-brand-charcoal cursor-pointer">
             Cerrar
           </button>
         </div>
