@@ -79,11 +79,35 @@ export class Home implements AfterViewInit, OnDestroy {
   openProjectModal(project: Project): void {
     this.selectedProject.set(project);
     document.body.style.overflow = 'hidden';
+    ScrollTrigger.getAll().forEach(trigger => trigger.disable());
+    // Slow and progressive reveal for elegant feel
+    gsap.set('.modal-overlay', { opacity: 0 });
+    gsap.set('.modal-card', { opacity: 0, y: 50, scale: 0.88 });
+    // Backdrop fades in gradually
+    gsap.to('.modal-overlay', { opacity: 1, duration: 0.6, ease: 'power1.inOut' });
+    // Modal rises in slowly with staggered timing
+    gsap.to('.modal-card', { 
+      opacity: 1, y: 0, scale: 1, 
+      duration: 0.8, 
+      delay: 0.15,
+      ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)' 
+    });
   }
 
   closeProjectModal(): void {
-    this.selectedProject.set(null);
-    document.body.style.overflow = '';
+    // Re-enable ScrollTriggers
+    ScrollTrigger.getAll().forEach(trigger => trigger.enable());
+    gsap.to('.modal-card', {
+      opacity: 0,
+      y: 24,
+      scale: 0.96,
+      duration: 0.25,
+      onComplete: () => {
+        this.selectedProject.set(null);
+        document.body.style.overflow = '';
+      },
+    });
+    gsap.to('.modal-overlay', { opacity: 0, duration: 0.3 });
   }
 
   formatDate(dateString: string): string {
