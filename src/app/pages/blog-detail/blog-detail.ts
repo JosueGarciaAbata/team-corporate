@@ -17,6 +17,7 @@ export class BlogDetail implements OnInit {
   blog = signal<BlogModel | undefined>(undefined);
   relatedBlogs = signal<BlogModel[]>([]);
   showDeleteModal = signal(false);
+  showAuthorsModal = signal(false);
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -67,5 +68,14 @@ export class BlogDetail implements OnInit {
 
   closeDeleteModal(): void {
     this.showDeleteModal.set(false);
+  }
+
+  scrollToSection(id: string): void {
+    const el = document.getElementById(id);
+    if (!el) return;
+    // Offset for the sticky top bar (~56px header + ~48px article bar)
+    const offset = 112;
+    const top = el.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
   }
 }
