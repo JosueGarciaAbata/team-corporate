@@ -237,29 +237,126 @@
             @for (section of post.sections; track $index; let i = $index) {
               <section [id]="'section-' + (i + 1)" class="mb-10">
                 <h2>{{ section.title }}</h2>
+
                 @if (section.intro) {
                   <p>{{ section.intro }}</p>
                 }
-                @if (section.imageUrl) {
-                  <img
-                    [src]="section.imageUrl"
-                    [alt]="section.imageAlt || section.title"
-                    class="w-full rounded-xl my-6 shadow-md"
-                  />
+
+                @if (section.bullets && section.bullets.length > 0) {
+                  <ul class="blog-enhanced-list">
+                    @for (item of section.bullets; track $index) {
+                      <li>{{ item }}</li>
+                    }
+                  </ul>
                 }
+
+                @if (section.imageUrl) {
+                  <figure class="blog-figure">
+                    <img
+                      [src]="section.imageUrl"
+                      [alt]="section.imageAlt || section.title"
+                      class="blog-image"
+                      [ngClass]="section.imageSize || 'image-large'"
+                    />
+                    @if (section.imageCaption) {
+                      <figcaption class="blog-caption">
+                        {{ section.imageCaption }}
+                      </figcaption>
+                    }
+                  </figure>
+                }
+
+                @if (section.table) {
+                  <div class="blog-table-block">
+
+                    @if (section.table.title) {
+                      <h3 class="blog-table-title">{{ section.table.title }}</h3>
+                    }
+
+                    <div class="blog-table-wrap">
+                      <table class="blog-table">
+                        <thead>
+                        <tr>
+                          @for (header of section.table.headers; track $index) {
+                            <th>{{ header }}</th>
+                          }
+                        </tr>
+                        </thead>
+                        <tbody>
+                          @for (row of section.table.rows; track $index) {
+                            <tr>
+                              @for (cell of row; track $index) {
+                                <td>{{ cell }}</td>
+                              }
+                            </tr>
+                          }
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                }
+
                 @if (section.subsections && section.subsections.length > 0) {
                   @for (sub of section.subsections; track $index; let j = $index) {
-                    <div [id]="'section-' + (i + 1) + '-' + (j + 1)" class="mb-4">
+                    <div [id]="'section-' + (i + 1) + '-' + (j + 1)" class="mb-6">
                       @if (sub.title) {
                         <h3>{{ sub.title }}</h3>
                       }
+
                       <p>{{ sub.content }}</p>
+
+                      @if (sub.bullets && sub.bullets.length > 0) {
+                        <ul class="blog-enhanced-list">
+                          @for (item of sub.bullets; track $index) {
+                            <li>{{ item }}</li>
+                          }
+                        </ul>
+                      }
+
                       @if (sub.imageUrl) {
-                        <img
-                          [src]="sub.imageUrl"
-                          [alt]="sub.imageAlt || sub.title || ''"
-                          class="w-full rounded-xl my-6 shadow-md"
-                        />
+                        <figure class="blog-figure">
+                          <img
+                            [src]="sub.imageUrl"
+                            [alt]="sub.imageAlt || sub.title || ''"
+                            class="blog-image"
+                            [ngClass]="sub.imageSize || 'image-large'"
+                          />
+                          @if (sub.imageCaption) {
+                            <figcaption class="blog-caption">
+                              {{ sub.imageCaption }}
+                            </figcaption>
+                          }
+                        </figure>
+                      }
+
+                      @if (sub.table) {
+                        <div class="blog-table-block">
+
+                          @if (sub.table.title) {
+                            <h4 class="blog-table-title">{{ sub.table.title }}</h4>
+                          }
+
+                          <div class="blog-table-wrap">
+                            <table class="blog-table">
+                              <thead>
+                              <tr>
+                                @for (header of sub.table.headers; track $index) {
+                                  <th>{{ header }}</th>
+                                }
+                              </tr>
+                              </thead>
+                              <tbody>
+                                @for (row of sub.table.rows; track $index) {
+                                  <tr>
+                                    @for (cell of row; track $index) {
+                                      <td>{{ cell }}</td>
+                                    }
+                                  </tr>
+                                }
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
                       }
                     </div>
                   }
