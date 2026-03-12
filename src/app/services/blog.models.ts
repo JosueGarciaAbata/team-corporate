@@ -1,7 +1,3 @@
-// ─────────────────────────────────────────────────────────
-//  Domain Types — importa desde aquí, no desde blog.service
-// ─────────────────────────────────────────────────────────
-
 export type BlogCategory =
   | 'Ingeniería de Software'
   | 'Inteligencia Artificial'
@@ -25,11 +21,22 @@ export interface BlogAuthor {
   avatarUrl: string;
 }
 
+export interface BlogTable {
+  title?: string;
+  intro?: string;
+  headers: string[];
+  rows: string[][];
+}
+
 export interface BlogSubsection {
   title?: string;
   content: string;
   imageUrl?: string;
   imageAlt?: string;
+  imageCaption?: string;
+  imageSize?: string;
+  bullets?: string[];
+  table?: BlogTable;
 }
 
 export interface BlogSection {
@@ -37,6 +44,10 @@ export interface BlogSection {
   intro?: string;
   imageUrl?: string;
   imageAlt?: string;
+  imageCaption?: string;
+  imageSize?: string;
+  bullets?: string[];
+  table?: BlogTable;
   subsections?: BlogSubsection[];
 }
 
