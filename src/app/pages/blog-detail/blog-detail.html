@@ -1,23 +1,23 @@
 @if (blog(); as post) {
-  
+
   <!-- ═══════════════════════════════════════════════ -->
   <!--  HERO / COVER IMAGE                            -->
   <!-- ═══════════════════════════════════════════════ -->
   <section class="blog-detail-hero relative h-[60vh] lg:h-[70vh] flex items-end overflow-hidden bg-brand-charcoal">
-    
+
     <!-- Cover image -->
-    <img 
-      [src]="post.coverImageUrl" 
+    <img
+      [src]="post.coverImageUrl"
       [alt]="post.title"
       class="absolute inset-0 w-full h-full object-cover opacity-40"
     />
-    
+
     <!-- Gradient overlay -->
     <div class="absolute inset-0 bg-linear-to-t from-brand-charcoal via-brand-charcoal/60 to-transparent"></div>
 
     <!-- Content -->
     <div class="container mx-auto px-6 lg:px-12 relative z-10 pb-12 lg:pb-16">
-      
+
       <!-- Breadcrumb -->
       <div class="flex items-center gap-2 text-sm text-brand-warm/60 mb-6">
         <a routerLink="/blog" class="hover:text-brand-accent transition-colors">Blog</a>
@@ -26,7 +26,7 @@
       </div>
 
       <div class="max-w-4xl">
-        
+
         <!-- Category badge -->
         <span class="inline-block px-3 py-1 text-xs font-semibold text-brand-accent bg-brand-accent/20 rounded-full mb-4">
           {{ post.category }}
@@ -100,7 +100,7 @@
           <!-- Quick actions -->
           <div class="flex items-center gap-2">
             @if (!post.isStatic) {
-              <button 
+              <button
                 (click)="deleteBlog()"
                 class="inline-flex items-center gap-1.5 px-4 py-1.5 text-xs font-semibold text-brand-muted border border-brand-warm rounded-full hover:border-brand-accent/40 hover:text-brand-accent transition-all duration-200 cursor-pointer"
               >
@@ -110,7 +110,7 @@
                 Eliminar
               </button>
             }
-            <a 
+            <a
               routerLink="/blog"
               class="inline-flex items-center gap-1.5 px-4 py-1.5 text-xs font-semibold text-brand-muted hover:text-brand-charcoal transition-colors duration-200"
             >
@@ -124,43 +124,218 @@
       </div>
     </div>
 
-    <!-- ── ARTICLE BODY: columna centrada ── -->
+    <!-- ── ARTICLE BODY: sidebar TOC + content ── -->
     <div class="container mx-auto px-6 lg:px-12 py-14 lg:py-20">
-      <div class="max-w-3xl mx-auto">
+      <div class="lg:grid lg:grid-cols-[240px_1fr] lg:gap-10 xl:gap-14 max-w-6xl mx-auto">
 
-        <!-- Lead / Excerpt -->
-        <div class="article-lead">
-          <div class="lead-accent-bar"></div>
-          <p class="lead-text">{{ post.excerpt }}</p>
-        </div>
-
-        <!-- Divider -->
-        <div class="article-divider">
-          <span class="divider-dot"></span>
-          <span class="divider-dot"></span>
-          <span class="divider-dot"></span>
-        </div>
-
-        <!-- Índice de Contenidos -->
+        <!-- ══ TOC SIDEBAR (desktop sticky) ══ -->
         @if (post.sections.length > 0) {
-          <nav class="toc-block mb-10 p-6 bg-brand-warm/60 border border-brand-warm rounded-2xl">
-            <p class="text-xs font-semibold uppercase tracking-widest text-brand-accent mb-3">Índice de Contenidos</p>
-            <ol class="space-y-1">
-              @for (section of post.sections; track $index; let i = $index) {
-                <li>
-                  <button
-                    (click)="scrollToSection('section-' + (i + 1))"
-                    class="text-sm text-brand-charcoal hover:text-brand-accent transition-colors font-medium text-left cursor-pointer bg-transparent border-0 p-0"
-                  >{{ i + 1 }}. {{ section.title }}</button>
-                  @if (section.subsections && section.subsections.length > 0) {
-                    <ol class="mt-1 ml-4 space-y-0.5">
-                      @for (sub of section.subsections; track $index; let j = $index) {
-                        <li>
+          <aside class="toc-sidebar hidden lg:block border-r border-brand-warm/70 pr-6">
+            <div class="toc-sticky sticky top-[56px] max-h-[calc(100vh-80px)] overflow-y-auto">
+              <p class="toc-label">Contenidos</p>
+              <nav>
+                <ol class="toc-list">
+                  @for (section of post.sections; track $index; let i = $index) {
+                    <li class="toc-item">
+                      <div class="toc-row">
+                        <button
+                          (click)="scrollToSection('section-' + (i + 1))"
+                          [class.toc-active]="activeSection() === 'section-' + (i + 1)"
+                          class="toc-link"
+                        >{{ i + 1 }}. {{ section.title }}</button>
+                        @if (section.subsections && section.subsections.length > 0) {
                           <button
-                            (click)="scrollToSection('section-' + (i + 1) + '-' + (j + 1))"
-                            class="text-xs text-brand-muted hover:text-brand-accent transition-colors text-left cursor-pointer bg-transparent border-0 p-0"
-                          >{{ i + 1 }}.{{ j + 1 }}. {{ sub.title }}</button>
-                        </li>
+                            (click)="toggleSection(i)"
+                            class="toc-chevron"
+                            [class.toc-chevron-open]="isSectionExpanded(i)"
+                            [attr.aria-label]="isSectionExpanded(i) ? 'Contraer' : 'Expandir'"
+                          >
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                            </svg>
+                          </button>
+                        }
+                      </div>
+                      @if (section.subsections && section.subsections.length > 0 && isSectionExpanded(i)) {
+                        <ol class="toc-sub-list toc-sub-open">
+                          @for (sub of section.subsections; track $index; let j = $index) {
+                            @if (sub.title) {
+                              <li>
+                                <button
+                                  (click)="scrollToSection('section-' + (i + 1) + '-' + (j + 1))"
+                                  class="toc-sub-link"
+                                >{{ i + 1 }}.{{ j + 1 }} {{ sub.title }}</button>
+                              </li>
+                            }
+                          }
+                        </ol>
+                      }
+                    </li>
+                  }
+                </ol>
+              </nav>
+            </div>
+          </aside>
+        }
+
+        <!-- ══ ARTICLE MAIN COLUMN ══ -->
+        <div class="min-w-0">
+
+          <!-- Lead / Excerpt -->
+          <div class="article-lead">
+            <div class="lead-accent-bar"></div>
+            <p class="lead-text">{{ post.excerpt }}</p>
+          </div>
+
+          <!-- Divider -->
+          <div class="article-divider">
+            <span class="divider-dot"></span>
+            <span class="divider-dot"></span>
+            <span class="divider-dot"></span>
+          </div>
+
+          <!-- Contenido estructurado por secciones -->
+          <div class="blog-content">
+            @for (section of post.sections; track $index; let i = $index) {
+              <section [id]="'section-' + (i + 1)" class="mb-10">
+                <h2>{{ section.title }}</h2>
+                @if (section.intro) {
+                  <p>{{ section.intro }}</p>
+                }
+                @if (section.imageUrl) {
+                  <img
+                    [src]="section.imageUrl"
+                    [alt]="section.imageAlt || section.title"
+                    class="w-full rounded-xl my-6 shadow-md"
+                  />
+                }
+                @if (section.subsections && section.subsections.length > 0) {
+                  @for (sub of section.subsections; track $index; let j = $index) {
+                    <div [id]="'section-' + (i + 1) + '-' + (j + 1)" class="mb-4">
+                      @if (sub.title) {
+                        <h3>{{ sub.title }}</h3>
+                      }
+                      <p>{{ sub.content }}</p>
+                      @if (sub.imageUrl) {
+                        <img
+                          [src]="sub.imageUrl"
+                          [alt]="sub.imageAlt || sub.title || ''"
+                          class="w-full rounded-xl my-6 shadow-md"
+                        />
+                      }
+                    </div>
+                  }
+                }
+              </section>
+            }
+          </div>
+
+          <!-- POST FOOTER: author card(s) -->
+          <footer class="article-footer">
+            <div class="author-card text-center">
+              <p class="author-label mb-6">Escrito por</p>
+              <div class="flex flex-wrap justify-center gap-6">
+                @for (author of post.authors; track author.id) {
+                  <div class="flex flex-col items-center gap-2 min-w-28">
+                    <img
+                      [src]="author.avatarUrl"
+                      [alt]="author.name"
+                      class="w-14 h-14 rounded-full object-cover border-2 border-brand-accent/30"
+                    />
+                    <div>
+                      <p class="author-name text-sm">{{ author.name }}</p>
+                      <p class="text-xs text-brand-muted">{{ author.role }}</p>
+                    </div>
+                  </div>
+                }
+              </div>
+              <div class="author-meta justify-center mt-6">
+                <span class="meta-pill">
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                  </svg>
+                  {{ formatDate(post.date) }}
+                </span>
+                <span class="meta-pill">
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  {{ post.readTime }}
+                </span>
+              </div>
+            </div>
+          </footer>
+
+        </div><!-- /main column -->
+      </div><!-- /grid -->
+    </div><!-- /container -->
+  </article>
+
+  <!-- ══ MOBILE: botón flotante + drawer TOC ══ -->
+  @if (post.sections.length > 0) {
+    <!-- Fab button -->
+    <button
+      (click)="tocOpen.set(!tocOpen())"
+      class="toc-fab lg:hidden"
+      aria-label="Índice de contenidos"
+    >
+      @if (tocOpen()) {
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      } @else {
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h10M4 18h7"/>
+        </svg>
+      }
+    </button>
+
+    <!-- Drawer -->
+    @if (tocOpen()) {
+      <div class="toc-drawer lg:hidden" (click)="tocOpen.set(false)">
+        <div class="toc-drawer-panel" (click)="$event.stopPropagation()">
+          <div class="flex items-center justify-between mb-4">
+            <p class="toc-label mb-0">Contenidos</p>
+            <button (click)="tocOpen.set(false)" class="text-brand-muted hover:text-brand-charcoal cursor-pointer">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+            </button>
+          </div>
+          <nav>
+            <ol class="toc-list">
+              @for (section of post.sections; track $index; let i = $index) {
+                <li class="toc-item">
+                  <div class="toc-row">
+                    <button
+                      (click)="scrollToSection('section-' + (i + 1)); tocOpen.set(false)"
+                      [class.toc-active]="activeSection() === 'section-' + (i + 1)"
+                      class="toc-link"
+                    >{{ i + 1 }}. {{ section.title }}</button>
+                    @if (section.subsections && section.subsections.length > 0) {
+                      <button
+                        (click)="toggleSection(i)"
+                        class="toc-chevron"
+                        [class.toc-chevron-open]="isSectionExpanded(i)"
+                        [attr.aria-label]="isSectionExpanded(i) ? 'Contraer' : 'Expandir'"
+                      >
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                        </svg>
+                      </button>
+                    }
+                  </div>
+                  @if (section.subsections && section.subsections.length > 0 && isSectionExpanded(i)) {
+                    <ol class="toc-sub-list toc-sub-open">
+                      @for (sub of section.subsections; track $index; let j = $index) {
+                        @if (sub.title) {
+                          <li>
+                            <button
+                              (click)="scrollToSection('section-' + (i + 1) + '-' + (j + 1)); tocOpen.set(false)"
+                              class="toc-sub-link"
+                            >{{ i + 1 }}.{{ j + 1 }} {{ sub.title }}</button>
+                          </li>
+                        }
                       }
                     </ol>
                   }
@@ -168,123 +343,65 @@
               }
             </ol>
           </nav>
-        }
-
-        <!-- Contenido estructurado por secciones -->
-        <div class="blog-content">
-          @for (section of post.sections; track $index; let i = $index) {
-            <section [id]="'section-' + (i + 1)" class="mb-10">
-              <h2>{{ section.title }}</h2>
-              @if (section.intro) {
-                <p>{{ section.intro }}</p>
-              }
-              @if (section.subsections && section.subsections.length > 0) {
-                @for (sub of section.subsections; track $index; let j = $index) {
-                  <div [id]="'section-' + (i + 1) + '-' + (j + 1)" class="mb-4">
-                    <h3>{{ sub.title }}</h3>
-                    <p>{{ sub.content }}</p>
-                  </div>
-                }
-              }
-            </section>
-          }
         </div>
-
-        <!-- POST FOOTER: author card(s) -->
-        <footer class="article-footer">
-          <div class="author-card text-center">
-            <p class="author-label mb-6">Escrito por</p>
-            <div class="flex flex-wrap justify-center gap-6">
-              @for (author of post.authors; track author.id) {
-                <div class="flex flex-col items-center gap-2 min-w-28">
-                  <img
-                    [src]="author.avatarUrl"
-                    [alt]="author.name"
-                    class="w-14 h-14 rounded-full object-cover border-2 border-brand-accent/30"
-                  />
-                  <div>
-                    <p class="author-name text-sm">{{ author.name }}</p>
-                    <p class="text-xs text-brand-muted">{{ author.role }}</p>
-                  </div>
-                </div>
-              }
-            </div>
-            <div class="author-meta justify-center mt-6">
-              <span class="meta-pill">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                </svg>
-                {{ formatDate(post.date) }}
-              </span>
-              <span class="meta-pill">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                {{ post.readTime }}
-              </span>
-            </div>
-          </div>
-        </footer>
-
       </div>
-    </div>
-  </article>
+    }
+  }
+
+
 
 
   <!-- ═══════════════════════════════════════════════ -->
   <!--  RELATED POSTS                                 -->
   <!-- ═══════════════════════════════════════════════ -->
   @if (relatedBlogs().length > 0) {
-    <section class="py-20 bg-brand-warm">
+    <section class="py-16 bg-brand-cream border-t border-brand-warm">
       <div class="container mx-auto px-6 lg:px-12">
-        
-        <div class="mb-12">
-          <h2 class="text-3xl lg:text-4xl font-bold text-brand-charcoal mb-2">
-            Posts relacionados
-          </h2>
-          <p class="text-brand-muted">Más contenido sobre {{ post.category }}</p>
-        </div>
+        <div class="max-w-4xl mx-auto">
 
-        <div class="grid md:grid-cols-3 gap-8">
-          @for (related of relatedBlogs(); track related.id) {
-            <article class="blog-card group bg-brand-cream rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-brand-warm/40 hover:border-brand-accent/30">
-              
-              <!-- Image -->
-              <a [routerLink]="['/blog', related.id]" class="block relative overflow-hidden aspect-video bg-brand-charcoal">
-                <img 
-                  [src]="related.coverImageUrl" 
-                  [alt]="related.title"
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </a>
+          <div class="mb-8">
+            <h2 class="text-xl font-bold text-brand-charcoal mb-1">Posts relacionados</h2>
+            <p class="text-sm text-brand-muted">Más contenido sobre {{ post.category }}</p>
+          </div>
 
-              <!-- Content -->
-              <div class="p-6">
-                
-                <!-- Category -->
-                <span class="inline-block px-3 py-1 text-xs font-semibold text-brand-accent bg-brand-accent/10 rounded-full mb-3">
-                  {{ related.category }}
-                </span>
+          <div class="flex flex-col">
+            @for (related of relatedBlogs(); track related.id) {
+              <article class="related-row group flex items-start gap-5 py-5 border-b border-brand-warm last:border-b-0 first:border-t border-brand-warm">
 
-                <!-- Title -->
-                <h3 class="text-lg font-bold text-brand-charcoal mb-2 line-clamp-2 leading-tight group-hover:text-brand-accent transition-colors duration-200">
-                  <a [routerLink]="['/blog', related.id]">{{ related.title }}</a>
-                </h3>
-
-                <!-- Excerpt -->
-                <p class="text-brand-muted text-sm leading-relaxed mb-4 line-clamp-2">
-                  {{ related.excerpt }}
-                </p>
-
-                <!-- Meta -->
-                <div class="flex items-center justify-between text-xs text-brand-muted pt-3 border-t border-brand-warm/40">
-                  <span>{{ related.authors[0].name }}@if (related.authors.length > 1) { <span class="opacity-60"> +{{ related.authors.length - 1 }}</span> }</span>
-                  <span>{{ related.readTime }}</span>
+                <!-- Content -->
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2 text-xs text-brand-muted mb-2">
+                    <img
+                      [src]="related.authors[0].avatarUrl"
+                      [alt]="related.authors[0].name"
+                      class="w-5 h-5 rounded-full object-cover"
+                    />
+                    <span class="font-medium text-brand-charcoal">{{ related.authors[0].name }}</span>
+                    <span class="w-1 h-1 rounded-full bg-brand-tan inline-block"></span>
+                    <span>{{ related.readTime }} lectura</span>
+                  </div>
+                  <h3 class="text-base font-bold text-brand-charcoal leading-snug mb-1 group-hover:text-brand-accent transition-colors duration-150">
+                    <a [routerLink]="['/blog', related.id]" class="no-underline">{{ related.title }}</a>
+                  </h3>
+                  <p class="text-xs text-brand-muted leading-relaxed line-clamp-2">{{ related.excerpt }}</p>
+                  <span class="inline-block mt-2 text-[0.68rem] font-semibold text-brand-accent bg-brand-accent/8 border border-brand-accent/20 px-2.5 py-0.5 rounded-full">
+                    {{ related.category }}
+                  </span>
                 </div>
 
-              </div>
-            </article>
-          }
+                <!-- Thumbnail -->
+                <a [routerLink]="['/blog', related.id]" class="flex-shrink-0 w-24 h-16 sm:w-32 sm:h-[86px] rounded-md overflow-hidden bg-brand-warm block">
+                  <img
+                    [src]="related.coverImageUrl"
+                    [alt]="related.title"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </a>
+
+              </article>
+            }
+          </div>
+
         </div>
 
       </div>
@@ -297,7 +414,7 @@
   <!-- ═══════════════════════════════════════════════ -->
   <section class="py-16 bg-brand-charcoal">
     <div class="container mx-auto px-6 lg:px-12 text-center">
-      <a 
+      <a
         routerLink="/blog"
         class="inline-flex items-center gap-3 px-8 py-4 bg-brand-accent text-brand-cream font-semibold rounded-full transition-all duration-300 hover:bg-brand-accent/90 hover:gap-5"
       >
@@ -363,7 +480,7 @@
        (click)="closeDeleteModal()">
     <div class="modal-panel bg-brand-cream rounded-2xl shadow-2xl max-w-md w-full overflow-hidden"
          (click)="$event.stopPropagation()">
-      
+
       <!-- Header con gradiente -->
       <div class="modal-header bg-linear-to-br from-brand-accent to-[#a04c0d] p-6">
         <div class="flex items-center gap-3">

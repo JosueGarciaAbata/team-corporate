@@ -51,7 +51,7 @@ export class BlogService {
       totalWords += section.title.split(/\s+/).length;
       if (section.intro) totalWords += section.intro.split(/\s+/).length;
       for (const sub of section.subsections ?? []) {
-        totalWords += sub.title.split(/\s+/).length;
+        totalWords += (sub.title ?? '').split(/\s+/).length;
         totalWords += sub.content.split(/\s+/).length;
       }
     }
@@ -120,18 +120,18 @@ export class BlogService {
     const ecuadorOffset = -5 * 60; // -5 horas en minutos
     const localOffset = now.getTimezoneOffset(); // Offset del navegador
     const ecuadorTime = new Date(now.getTime() + (localOffset + ecuadorOffset) * 60000);
-    
+
     const year = ecuadorTime.getFullYear();
     const month = String(ecuadorTime.getMonth() + 1).padStart(2, '0');
     const day = String(ecuadorTime.getDate()).padStart(2, '0');
-    
+
     return `${year}-${month}-${day}`;
   }
 
   updateBlog(id: string, updates: Partial<Blog>): void {
     const blogs = this.blogsSignal();
     const blogToUpdate = blogs.find(b => b.id === id);
-    
+
     // No permitir editar blogs estáticos
     if (blogToUpdate?.isStatic) {
       console.warn('Cannot edit static blogs');
@@ -141,14 +141,14 @@ export class BlogService {
     const updatedBlogs = blogs.map(blog =>
       blog.id === id ? { ...blog, ...updates } : blog
     );
-    
+
     this.blogsSignal.set(updatedBlogs);
     this.saveStoredBlogs(updatedBlogs);
   }
 
   deleteBlog(id: string): void {
     const blogToDelete = this.blogsSignal().find(b => b.id === id);
-    
+
     // No permitir eliminar blogs estáticos
     if (blogToDelete?.isStatic) {
       console.warn('Cannot delete static blogs');
