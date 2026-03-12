@@ -3,72 +3,107 @@
   <!-- ═══════════════════════════════════════════════ -->
   <!--  HERO / COVER IMAGE                            -->
   <!-- ═══════════════════════════════════════════════ -->
-  <section class="blog-detail-hero relative h-[60vh] lg:h-[70vh] flex items-end overflow-hidden bg-brand-charcoal">
+  <section class="blog-detail-hero relative min-h-[72vh] flex flex-col justify-end overflow-hidden bg-brand-charcoal">
 
-    <!-- Cover image -->
+    <!-- Cover image con parallax suave -->
     <img
       [src]="post.coverImageUrl"
       [alt]="post.title"
-      class="absolute inset-0 w-full h-full object-cover opacity-40"
+      class="absolute inset-0 w-full h-full object-cover scale-105 opacity-35"
     />
 
-    <!-- Gradient overlay -->
-    <div class="absolute inset-0 bg-linear-to-t from-brand-charcoal via-brand-charcoal/60 to-transparent"></div>
+    <!-- Gradiente multicapa: oscuro abajo, viñeta lateral sutil -->
+    <div class="absolute inset-0 bg-linear-to-t from-brand-charcoal via-brand-charcoal/70 to-brand-charcoal/10"></div>
+    <div class="absolute inset-0 bg-linear-to-r from-brand-charcoal/50 via-transparent to-transparent"></div>
+
+    <!-- Línea decorativa superior (acento color) -->
+    <div class="absolute top-0 left-0 right-0 h-0.75 bg-linear-to-r from-brand-accent via-brand-accent/60 to-transparent z-20"></div>
 
     <!-- Content -->
-    <div class="container mx-auto px-6 lg:px-12 relative z-10 pb-12 lg:pb-16">
+    <div class="container mx-auto px-6 lg:px-14 relative z-10 pt-20 pb-14 lg:pb-20">
 
       <!-- Breadcrumb -->
-      <div class="flex items-center gap-2 text-sm text-brand-warm/60 mb-6">
-        <a routerLink="/blog" class="hover:text-brand-accent transition-colors">Blog</a>
-        <span>/</span>
-        <span class="text-brand-warm">{{ post.title }}</span>
-      </div>
+      <nav aria-label="Migas de pan" class="flex items-center gap-2 text-sm mb-8">
+        <a routerLink="/blog" class="text-brand-warm/50 hover:text-brand-accent transition-colors duration-200 flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+          </svg>
+          Blog
+        </a>
+        <svg class="w-3.5 h-3.5 text-brand-warm/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+        <span class="text-brand-warm/40 truncate max-w-65 lg:max-w-md text-xs">{{ post.title }}</span>
+      </nav>
 
       <div class="max-w-4xl">
 
         <!-- Category badge -->
-        <span class="inline-block px-3 py-1 text-xs font-semibold text-brand-accent bg-brand-accent/20 rounded-full mb-4">
-          {{ post.category }}
-        </span>
+        <div class="flex items-center gap-3 mb-5">
+          <span class="inline-flex items-center gap-1.5 px-3.5 py-1 text-[11px] font-bold tracking-widest uppercase text-brand-accent bg-brand-accent/15 border border-brand-accent/30 rounded-full backdrop-blur-sm">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-accent inline-block"></span>
+            {{ post.category }}
+          </span>
+          <span class="text-brand-warm/35 text-xs hidden sm:block">·</span>
+          <span class="text-brand-warm/40 text-xs hidden sm:flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            {{ post.readTime }} de lectura
+          </span>
+        </div>
 
         <!-- Title -->
-        <h1 class="text-4xl lg:text-6xl font-bold text-brand-cream leading-tight mb-6">
+        <h1 class="text-[2.4rem] sm:text-5xl lg:text-[3.6rem] font-medium text-brand-cream leading-[1.12] tracking-tight mb-8 drop-shadow-sm">
           {{ post.title }}
         </h1>
 
+        <!-- Separador fino -->
+        <div class="w-16 h-0.5 bg-brand-accent/60 mb-8 rounded-full"></div>
+
         <!-- Meta info -->
-        <div class="flex flex-wrap items-center gap-6 text-brand-warm/80">
+        <div class="flex flex-wrap items-center gap-5">
+
+          <!-- Author -->
           <div class="flex items-center gap-3">
-            <!-- Avatar — solo el primero -->
-            <img
-              [src]="post.authors[0].avatarUrl"
-              [alt]="post.authors[0].name"
-              class="w-10 h-10 rounded-full object-cover border-2 border-brand-accent/40"
-            />
-            <!-- Names -->
-            <span class="font-medium">
-              @if (post.authors.length === 1) {
-                {{ post.authors[0].name }}
-              } @else {
-                <button (click)="showAuthorsModal.set(true)" class="hover:text-brand-accent transition-colors cursor-pointer">
-                  {{ post.authors[0].name }} + {{ post.authors.length - 1 }} más
-                </button>
-              }
-            </span>
+            <div class="relative">
+              <img
+                [src]="post.authors[0].avatarUrl"
+                [alt]="post.authors[0].name"
+                class="w-11 h-11 rounded-full object-cover border-2 border-brand-accent/50 shadow-lg"
+              />
+              <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-brand-accent rounded-full border-2 border-brand-charcoal"></span>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-[10px] font-semibold uppercase tracking-widest text-brand-warm/40 leading-none mb-0.5">Autor</span>
+              <span class="font-semibold text-brand-cream text-sm leading-none">
+                @if (post.authors.length === 1) {
+                  {{ post.authors[0].name }}
+                } @else {
+                  <button (click)="showAuthorsModal.set(true)" class="hover:text-brand-accent transition-colors cursor-pointer">
+                    {{ post.authors[0].name }} <span class="text-brand-accent">+{{ post.authors.length - 1 }}</span>
+                  </button>
+                }
+              </span>
+            </div>
           </div>
-          <div class="flex items-center gap-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-            </svg>
-            <span>{{ formatDate(post.date) }}</span>
+
+          <div class="w-px h-8 bg-brand-warm/20 hidden sm:block"></div>
+
+          <!-- Date -->
+          <div class="flex flex-col">
+            <span class="text-[10px] font-semibold uppercase tracking-widest text-brand-warm/40 leading-none mb-0.5">Publicado</span>
+            <span class="text-brand-warm/75 text-sm font-medium leading-none">{{ formatDate(post.date) }}</span>
           </div>
-          <div class="flex items-center gap-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>{{ post.readTime }} de lectura</span>
+
+          <div class="w-px h-8 bg-brand-warm/20 hidden sm:block"></div>
+
+          <!-- Read time (mobile también) -->
+          <div class="flex flex-col sm:hidden">
+            <span class="text-[10px] font-semibold uppercase tracking-widest text-brand-warm/40 leading-none mb-0.5">Lectura</span>
+            <span class="text-brand-warm/75 text-sm font-medium leading-none">{{ post.readTime }}</span>
           </div>
+
         </div>
 
       </div>
@@ -82,37 +117,40 @@
   <article class="bg-brand-cream">
 
     <!-- ── TOP BAR: Tags + Acciones rápidas ── -->
-    <div class="border-b border-brand-warm/60 bg-white/50 backdrop-blur-sm sticky top-0 z-30">
+    <div class="border-b border-brand-warm/40 bg-brand-cream/90 backdrop-blur-md sticky top-0 z-30 shadow-sm">
       <div class="container mx-auto px-6 lg:px-12">
-        <div class="flex items-center justify-between py-3 gap-4">
+        <div class="flex items-center justify-between py-2.5 gap-4">
 
-          <!-- Category pill -->
-          <div class="flex items-center gap-3">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold text-brand-accent bg-brand-accent/10 rounded-full border border-brand-accent/20">
-              <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
-              </svg>
+          <!-- Left: category + read time -->
+          <div class="flex items-center gap-4 min-w-0">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-bold tracking-wider uppercase text-brand-accent bg-brand-accent/10 rounded-full border border-brand-accent/20 shrink-0">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-accent"></span>
               {{ post.category }}
             </span>
-            <span class="text-xs text-brand-muted hidden sm:inline">{{ post.readTime }} de lectura</span>
+            <div class="hidden sm:flex items-center gap-1.5 text-xs text-brand-muted">
+              <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              {{ post.readTime }} de lectura
+            </div>
           </div>
 
-          <!-- Quick actions -->
-          <div class="flex items-center gap-2">
+          <!-- Right: actions -->
+          <div class="flex items-center gap-1 shrink-0">
             @if (!post.isStatic) {
               <button
                 (click)="deleteBlog()"
-                class="inline-flex items-center gap-1.5 px-4 py-1.5 text-xs font-semibold text-brand-muted border border-brand-warm rounded-full hover:border-brand-accent/40 hover:text-brand-accent transition-all duration-200 cursor-pointer"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-brand-muted hover:text-red-500 hover:bg-red-50 rounded-full transition-all duration-200 cursor-pointer"
               >
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
                 </svg>
-                Eliminar
+                <span class="hidden sm:inline">Eliminar</span>
               </button>
             }
             <a
               routerLink="/blog"
-              class="inline-flex items-center gap-1.5 px-4 py-1.5 text-xs font-semibold text-brand-muted hover:text-brand-charcoal transition-colors duration-200"
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-brand-charcoal bg-brand-warm/50 hover:bg-brand-warm border border-brand-warm hover:border-brand-warm/80 rounded-full transition-all duration-200"
             >
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
