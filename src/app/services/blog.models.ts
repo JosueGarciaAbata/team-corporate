@@ -26,13 +26,17 @@ export interface BlogAuthor {
 }
 
 export interface BlogSubsection {
-  title: string;
+  title?: string;
   content: string;
+  imageUrl?: string;
+  imageAlt?: string;
 }
 
 export interface BlogSection {
   title: string;
   intro?: string;
+  imageUrl?: string;
+  imageAlt?: string;
   subsections?: BlogSubsection[];
 }
 
@@ -41,10 +45,10 @@ export interface Blog {
   title: string;
   excerpt: string;
   coverImageUrl: string;
-  category: BlogCategory;
+  category: string;
   authors: BlogAuthor[];
   date: string;
   readTime: string;
-  sections: BlogSection[];
   isStatic?: boolean;
+  sections: BlogSection[];
 }

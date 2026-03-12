@@ -11,9 +11,9 @@ import { CommonModule } from '@angular/common';
 })
 export class Blog {
   private blogService = inject(BlogService);
-  
+
   blogs = this.blogService.getBlogs();
-  
+
   // Categorías fijas del servicio
   categories = signal(['Todos', ...this.blogService.getCategories()]);
 
@@ -26,16 +26,21 @@ export class Blog {
     return this.blogs().filter(b => b.category === this.selectedCategory());
   });
 
+  // Top 3 más recientes para el bento del hero
+  latestBlogs = computed(() =>
+    [...this.blogs()].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3)
+  );
+
   selectCategory(category: string): void {
     this.selectedCategory.set(category);
   }
 
   formatDate(dateString: string): string {
     const date = new Date(dateString);
-    return date.toLocaleDateString('es-ES', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
+    return date.toLocaleDateString('es-ES', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
     });
   }
 }
