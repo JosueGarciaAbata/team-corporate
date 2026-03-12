@@ -62,6 +62,42 @@ export const blogTaxonomiaCASE: Blog = {
           title: 'Gestión de proyectos',
           content: 'Rastrean y monitorizan el plan de forma continua. Suelen ser extensiones de las herramientas de planificación que añaden seguimiento en tiempo real y alertas automáticas.',
         },
+        
+      ],
+    },
+        {
+      title: 'Herramientas de soporte de desarrollo',
+      intro: 'La siguiente parte de la taxonomía se centra en el control y organización del desarrollo del software, identificando factores influyentes como la documentación, los requisitos y las métricas.',
+      subsections: [
+        {
+          title: 'Seguimiento de requisitos',
+          content: 'Utilizan un enfoque sistemático para aislar estos requisitos, al combinar una evaluación del texto de la especificación, con un sistema de gestión de bases de datos, el cual almacena y categoriza los requisitos analizados a partir de esta fuente.',
+        },
+        {
+          title: 'Métricas y gestión',
+          content: 'Ayudan a los gestores a controlar y coordinar el proceso de ingeniería de software, y permiten a los ingenieros mejorar la calidad del software desarrollado; se enfocan en características del proceso y del producto. ',
+        },
+        {
+          title: 'Documentación',
+          content: 'Representan una gran oportunidad para mejorar la productividad e invertir el tiempo ahorrado en tareas más críticas en el desarrollo del software.',
+        },
+        {
+          title: 'Software de sistema',
+          content: 'Son tecnologías de estaciones de trabajo, el entorno CASE deberá adaptarse al software de red de alta calidad y a sus medios de comunicación.',
+        },
+        {
+          title: 'Control de calidad',
+          content: 'Realizan una auditoría del código fuente para determinar si el código se ajusta a los estándares del lenguaje, o extraen métricas técnicas para extrapolar la calidad que se construye. ',
+        },
+        {
+          title: 'Bases de datos',
+          content: 'Establecen una base de datos del proyecto. Pueden evolucionar a partir de los sistemas de gestión de bases de datos relacionales para transformarse en sistemas de gestión de bases de datos orientadas a objetos.',
+        },
+        {
+          title: 'Gestión de configuración del software',
+          content: 'Apoyan y facilitan sus cinco tareas principales: identificación de elementos, control de versiones, control de cambios, auditoría y el registro de estados. ',
+        }
+        
       ],
     },
   ],
