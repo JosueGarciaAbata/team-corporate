@@ -10,6 +10,7 @@ import { blog4 } from './static-4';
 import { blogTaxonomiaCASE } from './taxonomia-case';
 import { blogICaseEvolution } from './i-case-tools';
 import { blogCaseFundamentos } from './case-fundamentos';
+import { devAgeAI } from './dev_age_ai';
 
 export const STATIC_BLOGS: Blog[] = [
 	blog1,
@@ -19,4 +20,5 @@ export const STATIC_BLOGS: Blog[] = [
 	blogTaxonomiaCASE,
 	blogICaseEvolution,
 	blogCaseFundamentos,
+	devAgeAI
 ];
