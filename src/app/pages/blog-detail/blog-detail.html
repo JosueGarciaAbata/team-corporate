@@ -245,7 +245,7 @@
                 @if (section.bullets && section.bullets.length > 0) {
                   <ul class="blog-enhanced-list">
                     @for (item of section.bullets; track $index) {
-                      <li>{{ item }}</li>
+                      <li [innerHTML]="item"></li>
                     }
                   </ul>
                 }
@@ -303,12 +303,12 @@
                         <h3>{{ sub.title }}</h3>
                       }
 
-                      <p>{{ sub.content }}</p>
+                      <p [innerHTML]="sub.content"></p>
 
                       @if (sub.bullets && sub.bullets.length > 0) {
                         <ul class="blog-enhanced-list">
                           @for (item of sub.bullets; track $index) {
-                            <li>{{ item }}</li>
+                            <li [innerHTML]="item"></li>
                           }
                         </ul>
                       }
