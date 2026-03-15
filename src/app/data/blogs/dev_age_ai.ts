@@ -10,7 +10,7 @@ export const devAgeAI: Blog = {
   category: c.software,
   authors: [a.josue],
   date: '2026-03-12',
-  readTime: '10 min',
+  readTime: '15 min',
   isStatic: true,
   sections: [
     {
