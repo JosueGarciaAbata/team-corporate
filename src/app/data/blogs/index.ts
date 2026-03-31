@@ -11,6 +11,7 @@ import { blogTaxonomiaCASE } from './taxonomia-case';
 import { blogICaseEvolution } from './i-case-tools';
 import { blogCaseFundamentos } from './case-fundamentos';
 import { devAgeAI } from './dev_age_ai';
+import { blogMiroAnalisisDiseno } from './miro-analisis-diseno';
 
 export const STATIC_BLOGS: Blog[] = [
 	blog1,
@@ -20,5 +21,6 @@ export const STATIC_BLOGS: Blog[] = [
 	blogTaxonomiaCASE,
 	blogICaseEvolution,
 	blogCaseFundamentos,
-	devAgeAI
+	devAgeAI,
+	blogMiroAnalisisDiseno
 ];
