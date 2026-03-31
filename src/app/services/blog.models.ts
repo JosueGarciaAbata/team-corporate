@@ -35,6 +35,9 @@ export interface BlogSubsection {
   imageAlt?: string;
   imageCaption?: string;
   imageSize?: string;
+  videoEmbedUrl?: string;
+  videoTitle?: string;
+  videoCaption?: string;
   bullets?: string[];
   table?: BlogTable;
 }
@@ -46,6 +49,9 @@ export interface BlogSection {
   imageAlt?: string;
   imageCaption?: string;
   imageSize?: string;
+  videoEmbedUrl?: string;
+  videoTitle?: string;
+  videoCaption?: string;
   bullets?: string[];
   table?: BlogTable;
   subsections?: BlogSubsection[];
