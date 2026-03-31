@@ -3,6 +3,7 @@
 // ─────────────────────────────────────────────────────────
 import type { Blog } from '../../services/blog.models';
 
+import { blogBalsamiqWireframes } from './balsamiq-wireframes';
 import { blog1 } from './static-1';
 import { blog2 } from './static-2';
 import { blog3 } from './static-3';
@@ -13,6 +14,7 @@ import { blogCaseFundamentos } from './case-fundamentos';
 import { devAgeAI } from './dev_age_ai';
 
 export const STATIC_BLOGS: Blog[] = [
+	blogBalsamiqWireframes,
 	blog1,
 	blog2,
 	blog3,
