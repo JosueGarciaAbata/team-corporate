@@ -23,32 +23,6 @@ export const blogDrawIo: Blog = {
       title: '2. Características Principales',
       intro:
         'La escalabilidad de CASE puede ir desde un entorno completo que abarque bases de datos, personal, hardware, redes, sistemas operativos y estándares, hasta una única herramienta de apoyo para una sola actividad específica de ingeniería.',
-      table: {
-        title: 'Pilares de construcción CASE',
-        headers: ['Pilar', 'Rol dentro del entorno', 'Valor operativo'],
-        rows: [
-          [
-            'Arquitectura de entorno',
-            'Define base de hardware, sistema operativo y servicios nucleares',
-            'Estabilidad para ejecutar herramientas de ingeniería'
-          ],
-          [
-            'Servicios de portabilidad',
-            'Permiten migrar herramientas entre plataformas',
-            'Reduce costos de adaptación y mantenimiento'
-          ],
-          [
-            'Marco de integración',
-            'Orquesta comunicación y base de datos central del proyecto',
-            'Consistencia de datos y experiencia uniforme'
-          ],
-          [
-            'Herramientas CASE',
-            'Aplicaciones especializadas para actividades concretas',
-            'Productividad directa en tareas de ingeniería'
-          ]
-        ]
-      },
       subsections: [
         {
           title: 'Interfaz "Drag & Drop"',
@@ -261,45 +235,7 @@ export const blogDrawIo: Blog = {
             ]
           }
         },
-        {
-          title: 'Características ACS (Administración de Configuración del Software)',
-          content:
-            'Las capacidades ACS convierten al repositorio en una plataforma de control histórico, sincronización distribuida y trazabilidad completa.',
-          table: {
-            title: 'Matriz de trazabilidad ACS',
-            headers: ['Necesidad de control', 'Mecanismo ACS', 'Efecto en el proyecto'],
-            rows: [
-              [
-                'Historial de entregas',
-                'Versionado integral y rollback',
-                'Recuperación segura de estados previos'
-              ],
-              [
-                'Impacto de modificaciones',
-                'Rastreo de dependencias en vivo',
-                'Detección temprana de artefactos afectados'
-              ],
-              [
-                'Cumplimiento de requerimientos',
-                'Trazabilidad bidireccional',
-                'Relación clara entre requisito, diseño, código y prueba'
-              ],
-              [
-                'Gobierno de liberaciones',
-                'Congelamiento por hitos y auditoría obligatoria',
-                'Control formal de cambios para producción'
-              ]
-            ]
-          },
-          bullets: [
-            'Manejo de versiones: archivado total de versiones y posibilidad de rollback a liberaciones anteriores para depuración profunda.',
-            'Rastreo de dependencias y cambios en vivo: si cambia un diagrama UML, el sistema detecta interfaces, entregables o código impactado.',
-            'Rastreo bidireccional de requerimientos: hacia adelante para verificar implementación y hacia atrás para justificar origen del código.',
-            'Administración de configuración: congelamiento de configuraciones asociadas a hitos o entregas de producción.',
-            'Sincronización robusta: trabajo local fuera de línea con posterior homologación de cambios al repositorio principal.',
-            'Ensayos de auditoría obligatorios: bitácora con fecha, autor y justificación escrita de cada cambio en elementos de diseño.'
-          ]
-        }
+        
       ]
     }
   ]
