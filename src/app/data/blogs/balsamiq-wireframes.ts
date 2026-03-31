@@ -177,7 +177,7 @@ export const blogBalsamiqWireframes: Blog = {
         {
           title: 'Recurso complementario en video',
           content:
-            'Si quieres ver un ejemplo adicional sobre el uso de Balsamiq y su aplicación práctica en wireframes, puedes revisar este video: <a href="https://www.youtube.com/watch?v=0UWxMvxQInY" target="_blank" rel="noopener noreferrer">Balsamiq video de referencia</a>.'
+            'Como apoyo adicional para entender mejor el flujo de trabajo con wireframes, este recurso en video puede complementar la lectura del post y mostrar de forma más visual cómo se organiza una propuesta en Balsamiq: <a href="https://www.youtube.com/watch?v=0UWxMvxQInY" target="_blank" rel="noopener noreferrer">ver video de referencia sobre Balsamiq</a>.'
         }
       ]
     },
