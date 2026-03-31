@@ -266,6 +266,27 @@
                   </figure>
                 }
 
+                @if (section.videoEmbedUrl) {
+                  <figure class="blog-figure">
+                    <div class="relative overflow-hidden rounded-2xl border border-brand-warm/45 bg-black/90 shadow-xl">
+                      <iframe
+                        class="w-full aspect-video"
+                        [src]="toSafeResourceUrl(section.videoEmbedUrl)"
+                        [title]="section.videoTitle || section.title"
+                        loading="lazy"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                      ></iframe>
+                    </div>
+                    @if (section.videoCaption) {
+                      <figcaption class="blog-caption">
+                        {{ section.videoCaption }}
+                      </figcaption>
+                    }
+                  </figure>
+                }
+
                 @if (section.table) {
                   <div class="blog-table-block">
 
@@ -324,6 +345,27 @@
                           @if (sub.imageCaption) {
                             <figcaption class="blog-caption">
                               {{ sub.imageCaption }}
+                            </figcaption>
+                          }
+                        </figure>
+                      }
+
+                      @if (sub.videoEmbedUrl) {
+                        <figure class="blog-figure">
+                          <div class="relative overflow-hidden rounded-2xl border border-brand-warm/45 bg-black/90 shadow-xl">
+                            <iframe
+                              class="w-full aspect-video"
+                              [src]="toSafeResourceUrl(sub.videoEmbedUrl)"
+                              [title]="sub.videoTitle || sub.title || 'Video del blog'"
+                              loading="lazy"
+                              referrerpolicy="strict-origin-when-cross-origin"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                              allowfullscreen
+                            ></iframe>
+                          </div>
+                          @if (sub.videoCaption) {
+                            <figcaption class="blog-caption">
+                              {{ sub.videoCaption }}
                             </figcaption>
                           }
                         </figure>

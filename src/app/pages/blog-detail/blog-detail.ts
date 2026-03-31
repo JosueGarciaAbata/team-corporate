@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { BlogService, Blog as BlogModel } from '../../services/blog.service';
 import { CommonModule } from '@angular/common';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-blog-detail',
@@ -13,6 +14,7 @@ export class BlogDetail implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private blogService = inject(BlogService);
+  private sanitizer = inject(DomSanitizer);
 
   blog = signal<BlogModel | undefined>(undefined);
   relatedBlogs = signal<BlogModel[]>([]);
@@ -123,5 +125,9 @@ export class BlogDetail implements OnInit, OnDestroy {
 
   isSectionExpanded(index: number): boolean {
     return this.expandedSections().has(index);
+  }
+
+  toSafeResourceUrl(url: string): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }
