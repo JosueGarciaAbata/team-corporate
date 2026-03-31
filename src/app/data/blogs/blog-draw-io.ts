@@ -51,35 +51,31 @@ export const blogDrawIo: Blog = {
       },
       subsections: [
         {
-          title: 'Los 4 pilares fundamentales (cimientos)',
+          title: 'Interfaz "Drag & Drop"',
           content:
-            'El ecosistema CASE se sostiene sobre cuatro bloques base que habilitan la integración técnica y operativa entre herramientas.'
+            'Un sistema de arrastrar y soltar extremadamente intuitivo'
         },
         {
-          title: 'Arquitectura de entorno',
+          title: 'Versatilidad de Formatos:',
           content:
             'Compuesta por la plataforma de hardware y el soporte del sistema operativo (que incluye el software de red, la gestión de base de datos y los servicios de gestión de objetos). Establece la base física y lógica.'
         },
         {
-          title: 'Servicios de portabilidad',
+          title: 'Almacenamiento Flexible:',
           content:
-            'Actúan como puente de software para que las herramientas y el marco de integración migren entre distintas plataformas de hardware y sistemas operativos sin mantenimiento adaptativo costoso.'
-        },
+            'Permite crear diagramas de flujo, UML, diagramas de red (AWS, Azure, Cisco), procesos de negocio (BPMN), mapas mentales y maquetas de interfaces (mockups).',
+         bullets: [
+            'Nube: Google Drive, OneDrive, Dropbox, GitHub o GitLab.',
+            'Local: Directamente en tu computadora o navegador.',
+
+          ]
+          },
         {
-          title: 'Marco de integración',
+          title: 'Modo Offline:',
           content:
-            'Es un grupo de programas especializados que permite a las herramientas comunicarse entre sí, crear la base de datos central del proyecto y presentar una experiencia estandarizada al ingeniero de software.'
+            'Cuenta con una aplicación de escritorio para trabajar sin conexión a internet.'
         },
-        {
-          title: 'Herramientas CASE',
-          content:
-            'Son las aplicaciones individuales que apoyan de forma directa la actividad de ingeniería.'
-        },
-        {
-          title: 'Realidad actual del mercado',
-          content:
-            'Muchas herramientas actuales siguen siendo soluciones puntuales que no se comunican directamente con otras ni conforman entornos plenamente integrados. Aun así, varias de estas herramientas aisladas pueden ser bastante eficientes para tareas específicas.'
-        }
+        
       ]
     },
     {
@@ -114,25 +110,18 @@ export const blogDrawIo: Blog = {
       },
       subsections: [
         {
-          title: 'Beneficios detallados del I-CASE',
+          title: 'Visual Studio Code: Diagramar sin salir del código',
           content:
-            'I-CASE aporta beneficios directos sobre la continuidad del flujo de trabajo, la reducción del esfuerzo global y la calidad de la coordinación en proyectos complejos.',
+            'Esta es una de las funciones favoritas de los desarrolladores. Existe una extensión oficial llamada "Draw.io Integration".',
           bullets: [
-            'Transferencia regular, automática y fluida de modelos, programas, documentos y datos entre herramientas y fases de ingeniería.',
-            'Reducción drástica del esfuerzo en actividades globales como gestión de configuración, control de calidad y producción documental.',
-            'Mayor control integral del proyecto gracias a mejor planificación, monitorización y comunicación transversal.',
-            'Coordinación superior entre miembros del equipo en proyectos de gran escala.'
-          ]
+            'Archivos .drawio.png: Puedes guardar tus diagramas con esta extensión doble. Se ven como una imagen normal en cualquier sitio, pero si los abres en VS Code, son editables como diagramas.',
+            'Sincronización: Ideal para documentar READMEs en GitHub; editas el diagrama y la imagen se actualiza automáticamente en tu repositorio.',
+         ]
         },
         {
-          title: 'Desafíos tecnológicos de I-CASE',
+          title: 'GitHub / GitLab: Control de versiones para diagramas',
           content:
-            'El enfoque I-CASE enfrenta retos como estandarizar interfaces entre fabricantes, establecer un mecanismo homogéneo de comunicación entre ingeniero y herramientas, y garantizar capacidades multiplataforma reales y sostenibles.'
-        },
-        {
-          title: 'Requisitos rigurosos para considerar un entorno I-CASE',
-          content:
-            'No toda suite de herramientas puede llamarse I-CASE. Debe cumplir condiciones estrictas de integración, trazabilidad, configuración y soporte de procesos.',
+            'A diferencia de otras herramientas que guardan los datos en nubes cerradas, draw.io permite:.',
           bullets: [
             'Compartir información entre todas las herramientas y rastrear obligatoriamente modificaciones en cascada hacia elementos relacionados.',
             'Proporcionar control de versiones unificado y gestión de configuración para toda la información.',
@@ -144,7 +133,7 @@ export const blogDrawIo: Blog = {
       ]
     },
     {
-      title: '4. Arquitectura de Integración (Modelo de Marco de Referencia)',
+      title: '4. Funciones Avanzadas para Usuarios Pro',
       intro:
         'Para funcionar correctamente, un marco CASE debe integrar base de datos, sistema de gestión de objetos, control de herramientas e interfaz de usuario coherente en todos sus módulos.',
       table: {
