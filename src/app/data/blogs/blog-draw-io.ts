@@ -16,69 +16,76 @@ export const blogDrawIo: Blog = {
     {
       title: '1. ¿Qué es Draw.io?',
       intro:
-        'Es una plataforma de diagramación de código abierto y gratuita que permite crear desde diagramas de flujo sencillos hasta arquitecturas de red complejas. Su gran atractivo es que ofrece funcionalidades de nivel empresarial sin costo alguno y sin necesidad de crear una cuenta obligatoriamente.',
-    
+        'Draw.io (también conocido como diagrams.net) es una herramienta de diagramación gratuita y de código abierto. Permite modelar ideas técnicas de forma visual, desde flujos simples hasta arquitecturas de software completas, sin obligarte a crear una cuenta para empezar.',
+      subsections: [
+        {
+          title: '¿Para quién es útil?',
+          content:
+            'Es especialmente valioso para desarrolladores, arquitectos, analistas y equipos de producto que necesitan comunicar decisiones técnicas de manera rápida y clara.'
+        },
+        {
+          title: '¿Por qué destaca?',
+          content:
+            'Su combinación de facilidad de uso, gran biblioteca de formas y capacidad de integración lo convierten en una opción muy competitiva frente a herramientas de pago.'
+        }
+      ]
     },
     {
       title: '2. Características Principales',
-      intro:
-        'La escalabilidad de CASE puede ir desde un entorno completo que abarque bases de datos, personal, hardware, redes, sistemas operativos y estándares, hasta una única herramienta de apoyo para una sola actividad específica de ingeniería.',
       subsections: [
         {
           title: 'Interfaz "Drag & Drop"',
           content:
-            'Un sistema de arrastrar y soltar extremadamente intuitivo'
+            'Su editor de arrastrar y soltar permite construir diagramas con rapidez. Puedes partir de plantillas, mover bloques libremente y ajustar conectores sin fricción.'
         },
         {
-          title: 'Versatilidad de Formatos:',
+          title: 'Versatilidad de formatos',
           content:
-            'Compuesta por la plataforma de hardware y el soporte del sistema operativo (que incluye el software de red, la gestión de base de datos y los servicios de gestión de objetos). Establece la base física y lógica.'
+            'Soporta diagramas de flujo, UML, BPMN, mapas mentales, wireframes y diagramas de infraestructura (AWS, Azure, Cisco), entre otros.'
         },
         {
-          title: 'Almacenamiento Flexible:',
+          title: 'Almacenamiento flexible',
           content:
-            'Permite crear diagramas de flujo, UML, diagramas de red (AWS, Azure, Cisco), procesos de negocio (BPMN), mapas mentales y maquetas de interfaces (mockups).',
-         bullets: [
+            'Puedes decidir dónde guardar tus archivos, lo que facilita trabajar según tus políticas de seguridad y colaboración:',
+          bullets: [
             'Nube: Google Drive, OneDrive, Dropbox, GitHub o GitLab.',
-            'Local: Directamente en tu computadora o navegador.',
-
+            'Local: En tu computadora o en almacenamiento del navegador.'
           ]
-          },
-        {
-          title: 'Modo Offline:',
-          content:
-            'Cuenta con una aplicación de escritorio para trabajar sin conexión a internet.'
         },
-        
+        {
+          title: 'Modo offline',
+          content:
+            'Cuenta con aplicación de escritorio, ideal para trabajar sin conexión, en entornos restringidos o cuando necesitas mayor control local de tus archivos.'
+        }
       ]
     },
     {
-      title: '3. Integraciones de Flujo de trabajo',
+      title: '3. Integraciones para equipos de desarrollo',
       intro:
-        'La verdadera potencia y eficiencia de CASE se alcanza cuando existe integración total entre herramientas, procesos y actores del proyecto, formando un entorno I-CASE.',
+        'Uno de los mayores puntos fuertes de Draw.io es que se integra con herramientas que ya usas en el día a día, mejorando documentación, colaboración y trazabilidad.',
       table: {
-        title: 'Impacto operativo de I-CASE por área',
-        headers: ['Área', 'Aporte de I-CASE', 'Resultado esperado'],
+        title: 'Impacto operativo de Draw.io por área',
+        headers: ['Área', 'Aporte de Draw.io', 'Resultado esperado'],
         rows: [
           [
-            'Flujo de información',
-            'Transferencia automática entre fases y herramientas',
-            'Menos reprocesos y menor pérdida de contexto'
+            'Documentación técnica',
+            'Diagramas actualizables junto al código y la documentación funcional',
+            'Menor ambiguedad y comunicación más clara'
           ],
           [
-            'Control del proyecto',
-            'Planificación, monitorización y comunicación transversal',
-            'Mayor visibilidad y gobernanza'
+            'Revisión de cambios',
+            'Versionado de archivos y revisión colaborativa en repositorios',
+            'Historial visible y decisiones mejor justificadas'
           ],
           [
-            'Coordinación del equipo',
-            'Sincronización entre roles técnicos y de gestión',
-            'Trabajo colaborativo más eficiente'
+            'Trabajo en equipo',
+            'Integración con suites colaborativas y entornos de documentación',
+            'Mayor alineación entre negocio, diseño y desarrollo'
           ],
           [
-            'Calidad y configuración',
-            'Automatización de control de calidad y cambios',
-            'Trazabilidad integral y menor riesgo de errores'
+            'Entrega de proyectos',
+            'Material visual para onboarding, soporte y mantenimiento',
+            'Transferencia de conocimiento más rápida'
           ]
         ]
       },
@@ -86,156 +93,107 @@ export const blogDrawIo: Blog = {
         {
           title: 'Visual Studio Code: Diagramar sin salir del código',
           content:
-            'Esta es una de las funciones favoritas de los desarrolladores. Existe una extensión oficial llamada "Draw.io Integration".',
+            'Con la extensión de Draw.io para VS Code puedes editar diagramas junto a tu proyecto sin cambiar de herramienta.',
           bullets: [
-            'Archivos .drawio.png: Puedes guardar tus diagramas con esta extensión doble. Se ven como una imagen normal en cualquier sitio, pero si los abres en VS Code, son editables como diagramas.',
-            'Sincronización: Ideal para documentar READMEs en GitHub; editas el diagrama y la imagen se actualiza automáticamente en tu repositorio.',
-         ]
+            'Archivos .drawio.png: se visualizan como imagen, pero conservan la capacidad de edición.',
+            'Ideal para README y documentación técnica versionada junto al código.'
+          ]
         },
         {
           title: 'GitHub / GitLab: Control de versiones para diagramas',
           content:
-            'A diferencia de otras herramientas que guardan los datos en nubes cerradas, draw.io permite:.',
+            'Los diagramas pueden tratarse como cualquier otro artefacto del proyecto, con historial y trazabilidad de cambios.',
           bullets: [
-            'Compartir información entre todas las herramientas y rastrear obligatoriamente modificaciones en cascada hacia elementos relacionados.',
-            'Proporcionar control de versiones unificado y gestión de configuración para toda la información.',
-            'Permitir acceso directo y no secuencial a cualquier herramienta del entorno.',
-            'Dar soporte automatizado al modelo de procesos de software integrando herramientas en una estructura estándar de desglose del trabajo.',
-            'Permitir experimentar con la interfaz hombre-máquina, apoyar la comunicación del equipo y recoger métricas de uso y gestión para mejora continua.'
+            'Versionado y recuperación de cambios cuando hay iteraciones rápidas.',
+            'Trabajo colaborativo mediante ramas y pull requests.',
+            'Documentación viva alineada con la evolución del producto.'
           ]
         }
       ]
     },
     {
-      title: '4. Funciones Avanzadas para Usuarios Pro',
+      title: '4. Integraciones Clave',
       intro:
-        'Para funcionar correctamente, un marco CASE debe integrar base de datos, sistema de gestión de objetos, control de herramientas e interfaz de usuario coherente en todos sus módulos.',
-      table: {
-        title: 'Capas estructurales del marco de referencia CASE',
-        headers: ['Capa', 'Componentes clave', 'Responsabilidad principal'],
-        rows: [
-          [
-            'Interfaz de usuario',
-            'Kit de herramientas y protocolo de presentación',
-            'Uniformar experiencia visual e interacción'
-          ],
-          [
-            'Herramientas',
-            'Servicios de Gestión de Herramientas (SGH)',
-            'Coordinar ejecución, seguridad, auditoría y flujo de datos'
-          ],
-          [
-            'Gestión de objetos (CGO)',
-            'Servicios de integración estándar',
-            'Acoplar herramientas con repositorio central'
-          ],
-          [
-            'Repositorio compartido',
-            'Base de datos y control de acceso físico',
-            'Persistencia, control y trazabilidad de artefactos'
-          ]
-        ]
-      },
+        'Draw.io se adapta bien a diferentes ecosistemas. Estas integraciones cubren la mayoría de flujos profesionales.',
       subsections: [
         {
-          title: 'Capa de Interfaz de Usuario',
+          title: 'Ecosistema Atlassian',
           content:
-            'Incluye el kit de herramientas para la interfaz hombre-máquina y su biblioteca de visualización, junto con un protocolo de presentación que define convenciones estrictas de diseño de pantalla, iconografía, uso de ratón y teclado, y organización de menús para que todo el entorno luzca consistente.'
+            'Integración nativa con Jira y Confluence. Permite insertar diagramas directamente en tickets y páginas de documentación, manteniendo todo sincronizado y accesible para el equipo.'
         },
         {
-          title: 'Capa de Herramientas',
+          title: 'Google & Microsoft',
           content:
-            'Incorpora los Servicios de Gestión de Herramientas (SGH), responsables de gobernar comportamiento, sincronización y comunicación en multitarea, coordinar flujo de datos desde el repositorio y ejecutar seguridad y auditoría en segundo plano.'
+            'Puede usarse con herramientas de Google Workspace y Microsoft 365 para compartir diagramas con perfiles no técnicos.'
         },
         {
-          title: 'Capa de Gestión de Objetos (CGO)',
+          title: 'Desarrollo',
           content:
-            'Funciona como zócalo de integración donde cada herramienta se conecta. En conjunto con el repositorio provee servicios de integración estándar para acoplar herramientas con la base de datos central.'
-        },
-        {
-          title: 'Capa de Repositorio Compartido',
-          content:
-            'Es la base de datos material y sus funciones de control de acceso físico, con interacción bidireccional permanente con la CGO.'
+            'En desarrollo de software, Draw.io ayuda a documentar arquitectura, APIs y decisiones técnicas de manera visual y mantenible.',
+          bullets: [
+            'Arquitectura de soluciones: representación de componentes, dependencias y flujos de datos.',
+            'Diseño de procesos: mapeo de flujos funcionales para análisis y QA.',
+            'Onboarding técnico: materiales visuales para acelerar la integración de nuevos miembros.'
+          ]
         }
       ]
     },
     {
-      title: '5. El Repositorio CASE en Profundidad',
+      title: '5. Buenas prácticas para aprovechar Draw.io',
       intro:
-        'El repositorio es el núcleo de un entorno CASE moderno: mantiene consistencia, trazabilidad, seguridad y reutilización de conocimiento a lo largo de todo el ciclo de vida del software.',
+        'La herramienta es potente por sí sola, pero su verdadero valor aparece cuando se usa con criterios de calidad documental.',
       subsections: [
         {
-          title: 'Cambio de paradigma histórico',
+          title: 'Define una convención de diagramado',
           content:
-            'Antes, el repositorio era una persona: el programador que debía recordar y reconstruir información. Hoy es una base de datos dedicada y el ingeniero interactúa con ella mediante herramientas especializadas.'
+            'Acordar nomenclatura, colores y nivel de detalle evita inconsistencias y reduce el esfuerzo de interpretación entre equipos.'
         },
         {
-          title: 'Funciones ampliadas del repositorio',
+          title: 'Versiona diagramas junto al código',
           content:
-            'El repositorio no solo guarda artefactos: también regula integridad, colaboración y estandarización metodológica.',
+            'Mantener diagramas en el repositorio principal del proyecto asegura que la documentación evolucione al ritmo del producto.',
           bullets: [
-            'Integridad de datos: valida entradas, asegura consistencia cruzada y ejecuta cambios en cascada cuando una pieza afecta a otras.',
-            'Información compartida: gestiona acceso concurrente multiusuario con bloqueo y desbloqueo de objetos.',
-            'Integración datos-herramientas y datos-datos: define un modelo general accesible y relaciona objetos dentro del SGBD.',
-            'Imposición de metodología y estandarización: un modelo Entidad-Relación preconfigurado fuerza pasos metodológicos y documentación uniforme.'
+            'Incluye diagramas en pull requests cuando existan cambios arquitectónicos.',
+            'Usa descripciones de commit claras para explicar el motivo de las modificaciones visuales.'
           ]
         },
         {
-          title: 'El repositorio como metamodelo',
+          title: 'Piensa en tu audiencia',
           content:
-            'El repositorio actúa como un metamodelo de alto nivel que define cómo se almacenan datos, cómo se aplican reglas de seguridad y cómo se extiende lógicamente el entorno para futuras necesidades de ingeniería.'
+            'No todos los diagramas necesitan el mismo nivel técnico. Ajusta el contenido para desarrolladores, stakeholders o clientes según el contexto.'
         },
         {
-          title: 'Contenido exhaustivo almacenado',
+          title: 'Actualiza y simplifica',
           content:
-            'El alcance informacional del repositorio CASE cubre empresa, diseño, construcción, verificación y gestión integral del proyecto.',
+            'Un diagrama desactualizado genera más problemas que uno inexistente. Prioriza mantener versiones simples, vigentes y accionables.',
           table: {
-            title: 'Tipos de información almacenada en el repositorio CASE',
-            headers: ['Área', 'Ejemplos de contenido'],
+            title: 'Checklist de calidad para diagramas en Draw.io',
+            headers: ['Criterio', 'Qué revisar'],
             rows: [
               [
-                'Información de la empresa',
-                'Estructura organizativa, reglas y áreas de negocio, modelos de procesos y arquitectura.'
+                'Claridad visual',
+                'Jerarquía de información, legibilidad de etiquetas y uso coherente de conectores.'
               ],
               [
-                'Diseño',
-                'Reglas metodológicas, diagramas y representaciones gráficas, árboles de menú, rendimiento y algoritmos de comportamiento.'
+                'Consistencia',
+                'Mismos símbolos para conceptos equivalentes en todo el documento.'
               ],
               [
-                'Construcción y verificación',
-                'Código fuente y objeto, imágenes binarias, métricas de calidad, casos de prueba, resultados estadísticos y guiones de regresión.'
+                'Contexto',
+                'Título, objetivo y alcance del diagrama para evitar interpretaciones ambiguas.'
               ],
               [
-                'Gestión y proyecto',
-                'Estructura de desglose de tareas, planes, estimaciones, carga de recursos, manuales de usuario, informes de estado y auditoría.'
+                'Mantenimiento',
+                'Fecha de actualización y responsable del contenido técnico.'
               ]
             ]
           }
         },
         {
-          title: 'Servicios específicos que proporciona el repositorio',
+          title: 'Conclusión',
           content:
-            'El repositorio concentra capacidades de base de datos avanzada, características CASE especializadas y funciones de administración de configuración del software.',
-          table: {
-            title: 'Servicios del repositorio CASE',
-            headers: ['Categoría', 'Capacidades clave'],
-            rows: [
-              [
-                'Características SGBD',
-                'Almacenamiento no redundante, acceso de alto nivel, independencia física de datos, control de transacciones y recuperación ante fallos, seguridad perimetral, consultas ad hoc y transferencias en lote.'
-              ],
-              [
-                'Características especiales CASE',
-                'Soporte para estructuras sofisticadas como diagramas de flujo, imposición automática de reglas de negocio, interfaz semántica rica y coordinación entre desarrollo técnico y gestión de presupuesto/tiempo.'
-              ],
-              [
-                'Características ACS',
-                'Manejo integral de versiones, rastreo de dependencias y cambios en vivo, trazabilidad bidireccional de requerimientos, congelamiento de configuraciones por hitos y ensayos de auditoría obligatorios.'
-              ]
-            ]
-          }
-        },
-        
+            'Draw.io es una herramienta madura, flexible y accesible para documentar software. Si la integras a tu flujo de trabajo y aplicas buenas prácticas de mantenimiento, se convierte en un activo real para la calidad técnica y la colaboración del equipo.'
+        }
       ]
     }
   ]
