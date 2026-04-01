@@ -1,6 +1,7 @@
 import type { Blog } from '../../services/blog.models';
 import { AUTHORS as a, CATEGORY_MAP as c } from '../blog-catalogs';
-
+const drawioImage1Placeholder = '/assets/blog/drawio/drawioboardpanel.png';
+const drawioImage2Placeholder = '/assets/blog/drawio/integrations.png';
 export const blogDrawIo: Blog = {
   id: 'draw-io',
   title: 'Draw.io',
@@ -28,6 +29,8 @@ export const blogDrawIo: Blog = {
           content:
             'Su combinación de facilidad de uso, gran biblioteca de formas y capacidad de integración lo convierten en una opción muy competitiva frente a herramientas de pago.'
         }
+
+        
       ]
     },
     {
@@ -57,7 +60,12 @@ export const blogDrawIo: Blog = {
           content:
             'Cuenta con aplicación de escritorio, ideal para trabajar sin conexión, en entornos restringidos o cuando necesitas mayor control local de tus archivos.'
         }
-      ]
+      ],
+      imageUrl: drawioImage1Placeholder,
+      imageAlt: 'Interfaz de Draw.io mostrando distintos tipos de diagramas y características de uso',
+      imageCaption:
+        'Draw.io permite crear desde diagramas simples hasta arquitecturas complejas con una interfaz intuitiva.',
+      imageSize: 'image-medium'
     },
     {
       title: '3. Integraciones para equipos de desarrollo',
@@ -134,7 +142,12 @@ export const blogDrawIo: Blog = {
             'Arquitectura de soluciones: representación de componentes, dependencias y flujos de datos.',
             'Diseño de procesos: mapeo de flujos funcionales para análisis y QA.',
             'Onboarding técnico: materiales visuales para acelerar la integración de nuevos miembros.'
-          ]
+          ],
+          imageUrl: drawioImage2Placeholder,
+          imageAlt: 'Ejemplo de integraciones de Draw.io con herramientas como VS Code, GitHub, Jira y Confluence',
+          imageCaption:
+            'Draw.io se integra con las herramientas clave del flujo de desarrollo para mejorar documentación y colaboración.',
+          imageSize: 'image-medium'
         }
       ]
     },
