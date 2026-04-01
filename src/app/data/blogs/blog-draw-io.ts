@@ -4,9 +4,9 @@ const drawioImage1Placeholder = '/assets/blog/drawio/drawioboardpanel.png';
 const drawioImage2Placeholder = '/assets/blog/drawio/integrations.png';
 export const blogDrawIo: Blog = {
   id: 'draw-io',
-  title: 'Draw.io',
+  title: 'Draw.io, una herramienta para diagramas de software, arquitectura y diseño',
   excerpt:
-    'Draw.io, una herramienta para diagramas de software, arquitectura y diseño. Funcionalidades, ventajas y casos de uso en ingeniería de software.',
+    'Draw.io, es una herramienta muy útil a la hora de crear diagramas; cuenta con funcionalidades, ventajas y casos de uso en ingeniería de software, además de una IA incorporada.',
   coverImageUrl: '/assets/img/services/drawio.webp',
   category: c.software,
   authors: [a.carol],
@@ -159,7 +159,7 @@ export const blogDrawIo: Blog = {
         {
           title: 'Define una convención de diagramado',
           content:
-            'Acordar nomenclatura, colores y nivel de detalle evita inconsistencias y reduce el esfuerzo de interpretación entre equipos.'
+            'Acornpmdar nomenclatura, colores y nivel de detalle evita inconsistencias y reduce el esfuerzo de interpretación entre equipos.'
         },
         {
           title: 'Versiona diagramas junto al código',
