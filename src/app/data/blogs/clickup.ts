@@ -206,12 +206,12 @@ export const blogClickup: Blog = {
         {
             title: 'Un recurso complementario para profundizar',
             intro:
-                'Para observar de forma más visual cómo ClickUp organiza tareas, documentos y flujos de trabajo, una demostración práctica resulta muy valiosa. El siguiente video muestra la herramienta en funcionamiento y cómo diferentes elementos del trabajo pueden conectarse dentro de la plataforma.',
+                'Además del contenido desarrollado en este artículo, resulta útil incorporar una referencia audiovisual que permita apreciar de manera más concreta la dinámica de trabajo dentro de ClickUp. A través de una demostración práctica, el lector puede identificar con mayor claridad la forma en que la plataforma articula tareas, documentos, proyectos y espacios de colaboración en un mismo entorno.',
             subsections: [
                 {
                     title: 'Tutorial recomendado',
                     content:
-                        'La experiencia audiovisual permite ver de manera directa cómo se crean proyectos, definen tareas, documentan procesos y se establece la colaboración dentro de ClickUp. Esto complementa la lectura de este articulo y facilita una entrada más práctica a la herramienta.',
+                        'El siguiente video constituye un apoyo valioso para complementar la lectura, ya que ofrece una visión más cercana del funcionamiento de la herramienta y de sus principales posibilidades de uso. De este modo, facilita una comprensión más aplicada de ClickUp y permite que el lector se familiarice con su entorno antes de utilizarla.',
                     videoEmbedUrl: 'https://www.youtube.com/embed/l2SXLvo_Qt0',
                     videoTitle: 'ClickUp para Principiantes',
                     videoCaption: 'Tutorial en video: Guía completa de ClickUp para organizar tu trabajo desde cero.'
