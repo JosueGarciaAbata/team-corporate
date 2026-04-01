@@ -9,7 +9,7 @@ const clickupDashboardPlaceholder = '/assets/blog/clickup/dashboard-clickup.jpg'
 
 export const blogClickup: Blog = {
     id: 'clickup-organizacion-trabajo',
-    title: 'ClickUp: donde las ideas dejan de perderse, así transforma la organización del trabajo',
+    title: 'ClickUp: El espacio de trabajo donde nada se pierde y todo se conecta',
     excerpt:
         'Una experiencia digital en la que planificar, colaborar, documentar y ejecutar ya no ocurre por separado, sino dentro de un mismo espacio de trabajo.',
     coverImageUrl: clickupCoverPlaceholder,
@@ -30,14 +30,14 @@ export const blogClickup: Blog = {
                         'En muchos equipos, el trabajo no se pierde por falta de esfuerzo, sino por falta de conexión entre las herramientas que se usan a diario. Un documento queda por un lado, las tareas en otro, los recordatorios en otra aplicación y la comunicación en un canal diferente. En ese contexto, ClickUp resulta interesante porque plantea una experiencia más unificada: proyectos, tareas, documentos, chat, automatizaciones, pizarras visuales y seguimiento dentro de un mismo entorno.'
                 },
                 {
-                    title: 'Por qué ClickUp llama la atención desde el primer vistazo',
+                    title: '¿Por qué ClickUp llama la atención desde el primer vistazo?',
                     content:
                         'Lo que hace atractiva a esta herramienta no es únicamente su diseño moderno, sino la lógica con la que conecta el trabajo. ClickUp se presenta como una solución capaz de centralizar tareas, conocimiento, colaboración y seguimiento, lo que le da una identidad más completa que la de un simple gestor de pendientes. Esa amplitud es precisamente una de las razones por las que suele captar el interés de estudiantes, equipos de trabajo y personas que buscan orden sin sentir que todo está disperso.'
                 }
             ]
         },
         {
-            title: 'Qué es ClickUp y por qué resulta relevante',
+            title: '¿Qué es ClickUp y por qué resulta relevante?',
             intro:
                 'ClickUp es una plataforma de productividad que integra funciones como tareas, documentos, whiteboards, calendario, dashboards, automatizaciones e integraciones con otras herramientas. En lugar de obligar al usuario a saltar entre varias aplicaciones, busca que gran parte del flujo de trabajo ocurra dentro del mismo espacio.',
             subsections: [
@@ -138,7 +138,7 @@ export const blogClickup: Blog = {
             subsections: []
         },
         {
-            title: 'Dónde puede resultar útil',
+            title: '¿Dónde puede resultar útil?',
             intro:
                 'ClickUp se adapta a distintos contextos porque su propuesta es lo suficientemente flexible como para servir en académicos, profesionales y creativo.',
             subsections: [
@@ -182,7 +182,7 @@ export const blogClickup: Blog = {
             ]
         },
         {
-            title: 'Por qué sigue siendo una opción que vale la pena probar',
+            title: '¿Por qué sigue siendo una opción que vale la pena probar?',
             intro:
                 'Incluso reconociendo limitaciones, ClickUp ofrece una propuesta que merece ser explorada porque combina elementos que no suelen aparecer juntos en una sola plataforma.',
             subsections: [

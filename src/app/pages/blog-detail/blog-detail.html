@@ -267,20 +267,51 @@
                 }
 
                 @if (section.videoEmbedUrl) {
-                  <figure class="blog-figure">
-                    <div class="relative overflow-hidden rounded-2xl border border-brand-warm/45 bg-black/90 shadow-xl">
-                      <iframe
-                        class="w-full aspect-video"
-                        [src]="toSafeResourceUrl(section.videoEmbedUrl)"
-                        [title]="section.videoTitle || section.title"
-                        loading="lazy"
-                        referrerpolicy="strict-origin-when-cross-origin"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen
-                      ></iframe>
+                  <figure class="blog-figure blog-video-figure">
+                    <div class="blog-video-shell">
+                      @if (isVideoActivated('section-video-' + (i + 1))) {
+                        <iframe
+                          class="blog-video-frame"
+                          [src]="toSafeResourceUrl(section.videoEmbedUrl)"
+                          [title]="section.videoTitle || section.title"
+                          loading="lazy"
+                          referrerpolicy="strict-origin-when-cross-origin"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowfullscreen
+                        ></iframe>
+                      } @else {
+                        <button
+                          type="button"
+                          class="blog-video-preview"
+                          (click)="activateVideo('section-video-' + (i + 1))"
+                          [attr.aria-label]="'Reproducir video: ' + (section.videoTitle || section.title)"
+                        >
+                          @if (getVideoThumbnail(section.videoEmbedUrl); as thumbnail) {
+                            <img
+                              [src]="thumbnail"
+                              [alt]="section.videoTitle || section.title"
+                              class="blog-video-thumb"
+                              loading="lazy"
+                            />
+                          } @else {
+                            <div class="blog-video-fallback"></div>
+                          }
+                          <span class="blog-video-overlay"></span>
+                          <span class="blog-video-play">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                              <path d="M8 5v14l11-7z"></path>
+                            </svg>
+                          </span>
+                          <span class="blog-video-meta">
+                            <span class="blog-video-kicker">Video recomendado</span>
+                            <span class="blog-video-title">{{ section.videoTitle || section.title }}</span>
+                            <span class="blog-video-cta">Haz clic para cargar el reproductor</span>
+                          </span>
+                        </button>
+                      }
                     </div>
                     @if (section.videoCaption) {
-                      <figcaption class="blog-caption">
+                      <figcaption class="blog-caption blog-video-caption">
                         {{ section.videoCaption }}
                       </figcaption>
                     }
@@ -351,20 +382,51 @@
                       }
 
                       @if (sub.videoEmbedUrl) {
-                        <figure class="blog-figure">
-                          <div class="relative overflow-hidden rounded-2xl border border-brand-warm/45 bg-black/90 shadow-xl">
-                            <iframe
-                              class="w-full aspect-video"
-                              [src]="toSafeResourceUrl(sub.videoEmbedUrl)"
-                              [title]="sub.videoTitle || sub.title || 'Video del blog'"
-                              loading="lazy"
-                              referrerpolicy="strict-origin-when-cross-origin"
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                              allowfullscreen
-                            ></iframe>
+                        <figure class="blog-figure blog-video-figure">
+                          <div class="blog-video-shell">
+                            @if (isVideoActivated('sub-video-' + (i + 1) + '-' + (j + 1))) {
+                              <iframe
+                                class="blog-video-frame"
+                                [src]="toSafeResourceUrl(sub.videoEmbedUrl)"
+                                [title]="sub.videoTitle || sub.title || 'Video del blog'"
+                                loading="lazy"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen
+                              ></iframe>
+                            } @else {
+                              <button
+                                type="button"
+                                class="blog-video-preview"
+                                (click)="activateVideo('sub-video-' + (i + 1) + '-' + (j + 1))"
+                                [attr.aria-label]="'Reproducir video: ' + (sub.videoTitle || sub.title || 'Video del blog')"
+                              >
+                                @if (getVideoThumbnail(sub.videoEmbedUrl); as thumbnail) {
+                                  <img
+                                    [src]="thumbnail"
+                                    [alt]="sub.videoTitle || sub.title || 'Video del blog'"
+                                    class="blog-video-thumb"
+                                    loading="lazy"
+                                  />
+                                } @else {
+                                  <div class="blog-video-fallback"></div>
+                                }
+                                <span class="blog-video-overlay"></span>
+                                <span class="blog-video-play">
+                                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M8 5v14l11-7z"></path>
+                                  </svg>
+                                </span>
+                                <span class="blog-video-meta">
+                                  <span class="blog-video-kicker">Video recomendado</span>
+                                  <span class="blog-video-title">{{ sub.videoTitle || sub.title || 'Video del blog' }}</span>
+                                  <span class="blog-video-cta">Haz clic para cargar el reproductor</span>
+                                </span>
+                              </button>
+                            }
                           </div>
                           @if (sub.videoCaption) {
-                            <figcaption class="blog-caption">
+                            <figcaption class="blog-caption blog-video-caption">
                               {{ sub.videoCaption }}
                             </figcaption>
                           }

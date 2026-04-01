@@ -14,6 +14,7 @@ import { blogCaseFundamentos } from './case-fundamentos';
 import { devAgeAI } from './dev_age_ai';
 import { blogMiroAnalisisDiseno } from './miro-analisis-diseno';
 import { blogClickup } from './clickup';
+import { blogDrawIo } from './blog-draw-io';
 
 export const STATIC_BLOGS: Blog[] = [
 	blogBalsamiqWireframes,
@@ -26,5 +27,6 @@ export const STATIC_BLOGS: Blog[] = [
 	blogCaseFundamentos,
 	devAgeAI,
 	blogMiroAnalisisDiseno,
-	blogClickup
+    blogDrawIo,
+	blogClickup,
 ];
