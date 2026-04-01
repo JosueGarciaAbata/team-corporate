@@ -148,6 +148,15 @@ export const blogDrawIo: Blog = {
           imageCaption:
             'Draw.io se integra con las herramientas clave del flujo de desarrollo para mejorar documentación y colaboración.',
           imageSize: 'image-medium'
+        },
+        {
+          title: 'Tutorial recomendado de integraciones',
+          content:
+            'Si quieres ver una demostración práctica de cómo aprovechar Draw.io con herramientas de trabajo colaborativo y desarrollo, este video complementa muy bien esta sección de integraciones.',
+          videoEmbedUrl: 'https://www.youtube.com/embed/IohgUtWYfYg',
+          videoTitle: 'Draw.io Integrations Tutorial',
+          videoCaption:
+            'Video recomendado: integraciones de Draw.io para mejorar documentación y trabajo en equipo.'
         }
       ]
     },
@@ -206,6 +215,15 @@ export const blogDrawIo: Blog = {
           title: 'Conclusión',
           content:
             'Draw.io es una herramienta madura, flexible y accesible para documentar software. Si la integras a tu flujo de trabajo y aplicas buenas prácticas de mantenimiento, se convierte en un activo real para la calidad técnica y la colaboración del equipo.'
+        },
+        {
+          title: 'Tutorial básico recomendado',
+          content:
+            'Para cerrar este blog con una guía práctica, te compartimos un tutorial básico de Draw.io que te ayudará a empezar con los conceptos esenciales y el flujo de trabajo inicial.',
+          videoEmbedUrl: 'https://www.youtube.com/embed/mA8AMn2hVpI',
+          videoTitle: 'Tutorial básico de Draw.io',
+          videoCaption:
+            'Video recomendado al final del blog: introducción básica a Draw.io.'
         }
       ]
     }
