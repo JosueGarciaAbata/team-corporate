@@ -9,6 +9,7 @@ export const blogDrawIo: Blog = {
     'Draw.io, es una herramienta muy útil a la hora de crear diagramas; cuenta con funcionalidades, ventajas y casos de uso en ingeniería de software, además de una IA incorporada.',
   coverImageUrl: '/assets/img/services/drawio.webp',
   category: c.software,
+  tags: ['Draw.io', 'diagrams.net', 'Ingeniería de Software', 'Diagramas', 'Arquitectura de Software', 'UML', 'BPMN', 'Documentación Técnica', 'Integraciones', 'Visualización', 'Diseño', 'Modelado'],
   authors: [a.carol],
   date: '2026-03-31',
   readTime: '10 min',

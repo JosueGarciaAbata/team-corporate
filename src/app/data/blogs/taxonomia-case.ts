@@ -7,6 +7,7 @@ export const blogTaxonomiaCASE: Blog = {
   excerpt: 'Las herramientas CASE se pueden clasificar por su función, su papel como instrumentos para administradores o personal técnico, o por su utilización en los distintos pasos del proceso de ingeniería del software.',
   coverImageUrl: '/assets/img/services/taxonomia_case.webp',
   category: c.software,
+  tags: ['CASE', 'Ingeniería de Software', 'Taxonomía', 'Planificación', 'Análisis', 'Pruebas', 'Monitorización', 'Gestión de Proyectos', 'Diseño', 'Calidad de Software'],
   authors: [a.joel, a.carol, a['david-m']],
   date: '2026-03-09',
   readTime: '7 min',

@@ -9,6 +9,7 @@ export const blogICaseEvolution: Blog = {
   coverImageUrl:
     'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80',
   category: c.software,
+  tags: ['I-CASE', 'IA', 'Ingeniería de Software', 'Automatización', 'Requisitos', 'Arquitectura', 'Sistemas Inteligentes', 'Asistentes de Desarrollo', 'Modelado', 'Testing'],
   authors: [a['david-b']],
   date: '2026-03-11',
   readTime: '12 min',
