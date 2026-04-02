@@ -104,6 +104,15 @@ export class BlogDetail implements OnInit, OnDestroy {
     this.showDeleteModal.set(false);
   }
 
+  goBack(): void {
+    if (window.history.length > 1) {
+      window.history.back();
+      return;
+    }
+
+    this.router.navigate(['/blog']);
+  }
+
   scrollToSection(id: string): void {
     const el = document.getElementById(id);
     if (!el) return;

@@ -63,6 +63,7 @@ export interface Blog {
   excerpt: string;
   coverImageUrl: string;
   category: string;
+  tags?: string[];
   authors: BlogAuthor[];
   date: string;
   readTime: string;

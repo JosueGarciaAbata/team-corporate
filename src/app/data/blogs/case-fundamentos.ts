@@ -8,6 +8,7 @@ export const blogCaseFundamentos: Blog = {
     'Una guía completa sobre conceptos CASE, bloques de construcción, entornos I-CASE, arquitectura de integración y el rol profundo del repositorio CASE.',
   coverImageUrl: '/assets/img/services/taxonomia_case.webp',
   category: c.software,
+  tags: ['CASE', 'I-CASE', 'Ingeniería de Software', 'Repositorio', 'Integración', 'Metamodelo', 'Arquitectura', 'Modelado', 'Entornos CASE', 'Trazabilidad'],
   authors: [a.nixon],
   date: '2026-03-12',
   readTime: '18 min',
