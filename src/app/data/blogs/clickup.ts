@@ -14,6 +14,7 @@ export const blogClickup: Blog = {
         'Una experiencia digital en la que planificar, colaborar, documentar y ejecutar ya no ocurre por separado, sino dentro de un mismo espacio de trabajo.',
     coverImageUrl: clickupCoverPlaceholder,
     category: c.software,
+    tags: ['ClickUp', 'Ingeniería de Software', 'Productividad', 'Gestión de Proyectos', 'Colaboración', 'Tareas', 'Whiteboards', 'Documentación', 'Automatización', 'Dashboards', 'Organización', 'Trabajo en Equipo'],
     authors: [a.maybelline],
     date: '2026-04-01',
     readTime: '12 min',
