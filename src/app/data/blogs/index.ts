@@ -27,13 +27,8 @@ export const STATIC_BLOGS: Blog[] = [
 	blogICaseEvolution,
 	blogCaseFundamentos,
 	devAgeAI,
-<<<<<<< HEAD
 	blogMiroAnalisisDiseno,
     blogDrawIo,
 	blogClickup,
-=======
 	blogFigmaCicloVidaSoftware,
-	blogMiroAnalisisDiseno,
-    blogDrawIo
->>>>>>> 090f559d503406bd16806ea9a1ccd9074adfcbd6
 ];
