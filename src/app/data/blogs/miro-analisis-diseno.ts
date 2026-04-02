@@ -8,6 +8,7 @@ export const blogMiroAnalisisDiseno: Blog = {
     'Una revision de Miro como herramienta de analisis y diseno de software, destacando su facilidad de uso, funcionalidades, colaboracion en tiempo real e integracion en procesos de trabajo de equipo.',
   coverImageUrl: '/assets/blog/miro/portada.jpg',
   category: c.software,
+  tags: ['Miro', 'Ingeniería de Software', 'Colaboración', 'Discovery', 'Workflows', 'Brainstorming', 'Wireframes', 'Análisis', 'Diseño', 'Procesos', 'Requerimientos', 'Trabajo en Equipo'],
   authors: [a.joel, a.josue],
   date: '2026-03-31',
   readTime: '10 min',

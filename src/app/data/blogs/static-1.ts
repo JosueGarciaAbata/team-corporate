@@ -7,6 +7,7 @@ export const blog1: Blog = {
   excerpt: 'Las herramientas CASE (Computer-Aided Software Engineering) están transformando la manera en que los equipos desarrollan software empresarial.',
   coverImageUrl: '/assets/img/services/herramientas-case.webp',
   category: c.software,
+  tags: ['CASE', 'Ingeniería de Software', 'Modelado', 'Automatización', 'UML', 'Análisis', 'Diseño', 'Requisitos', 'Productividad', 'Herramientas de Software'],
   authors: [a.josue],
   date: '2026-02-15',
   readTime: '8 min',

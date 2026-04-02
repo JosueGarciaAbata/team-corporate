@@ -8,6 +8,7 @@ export const devAgeAI: Blog = {
     'Un análisis sobre cómo los desarrolladores están integrando asistentes de IA en programación, testing y arquitectura, y qué implicaciones tiene esto para productividad, calidad y adopción futura.',
   coverImageUrl: '/assets/img/services/dev-age-ai.png',
   category: c.software,
+  tags: ['IA', 'Ingeniería de Software', 'Developer Tools', 'Productividad', 'Testing', 'AI-native', 'Adopción', 'Programación', 'Arquitectura', 'Calidad de Código', 'Desarrolladores'],
   authors: [a.josue],
   date: '2026-03-12',
   readTime: '15 min',

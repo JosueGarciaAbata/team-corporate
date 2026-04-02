@@ -7,6 +7,7 @@ export const blog2: Blog = {
   excerpt: 'Cómo la IA está redefiniendo los procesos empresariales y creando nuevas oportunidades de negocio en 2026.',
   coverImageUrl: '/assets/img/services/ia.webp',
   category: c.ai,
+  tags: ['IA', 'Inteligencia Artificial', 'Transformación Digital', 'Automatización', 'Analítica', 'Gobernanza', 'Empresa', 'Machine Learning', 'Innovación', 'Datos'],
   authors: [a.josue, a.joel],
   date: '2026-02-10',
   readTime: '10 min',
