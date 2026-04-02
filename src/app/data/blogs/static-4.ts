@@ -7,6 +7,7 @@ export const blog4: Blog = {
   excerpt: 'Diseñando aplicaciones escalables y resilientes con las últimas tecnologías cloud-native y patrones arquitectónicos.',
   coverImageUrl: '/assets/img/services/microservicios.webp',
   category: c.cloud,
+  tags: ['Cloud Native', 'Arquitectura Cloud', 'Microservicios', 'Serverless', 'Observabilidad', 'API Gateway', 'Escalabilidad', 'Resiliencia', 'Contenedores', 'Arquitectura de Software'],
   authors: [a.josue, a['david-m']],
   date: '2026-01-20',
   readTime: '15 min',

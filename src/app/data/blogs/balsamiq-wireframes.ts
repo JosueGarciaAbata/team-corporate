@@ -13,6 +13,7 @@ export const blogBalsamiqWireframes: Blog = {
     'Una mirada a cómo Balsamiq facilita el análisis y diseño inicial de software mediante wireframes simples, colaborativos y fáciles de entender.',
   coverImageUrl: balsamiqCoverPlaceholder,
   category: c.software,
+  tags: ['Balsamiq', 'Ingeniería de Software', 'Wireframes', 'Baja Fidelidad', 'UX', 'UI', 'Análisis', 'Prototipado', 'Jira', 'Confluence', 'Levantamiento de Requisitos', 'Diseño de Interfaces'],
   authors: [a.josue],
   date: '2026-03-31',
   readTime: '11 min',

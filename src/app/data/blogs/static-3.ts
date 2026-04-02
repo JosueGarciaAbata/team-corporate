@@ -7,6 +7,7 @@ export const blog3: Blog = {
   excerpt: 'Estrategias modernas de DevOps que están acelerando los ciclos de desarrollo y mejorando la confiabilidad del software.',
   coverImageUrl: '/assets/img/services/ci-cd.webp',
   category: c.devops,
+  tags: ['DevOps', 'CI/CD', 'GitOps', 'Kubernetes', 'DORA', 'AIOps', 'Automatización', 'Despliegue', 'Infraestructura', 'Observabilidad', 'Calidad'],
   authors: [a.nixon, a.josue],
   date: '2026-01-28',
   readTime: '12 min',
