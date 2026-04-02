@@ -235,7 +235,12 @@
                   </button>
                 }
                 @if (selectedFilters().length === 0 && isPriorityTool(post)) {
-                  <span class="blog-row-priority">Herramienta destacada</span>
+                  <span class="blog-row-priority">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12 2.75l2.68 5.43 5.99.87-4.33 4.22 1.02 5.96L12 16.42l-5.36 2.81 1.02-5.96-4.33-4.22 5.99-.87L12 2.75z" />
+                    </svg>
+                    Herramienta destacada
+                  </span>
                 }
               </div>
             </div>

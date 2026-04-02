@@ -15,13 +15,17 @@ export class Blog {
   private readonly toolPriority = [
     'figma-ciclo-vida-software',
     'balsamiq-wireframes',
-    'miro-analisis-diseno-software'
+    'miro-analisis-diseno-software',
+    'draw-io',
+    'clickup-organizacion-trabajo'
   ];
   private readonly preferredFilters = [
     'Ingeniería de Software',
     'Figma',
     'UX',
     'UI',
+    'Draw.io',
+    'ClickUp',
     'DevOps',
     'Arquitectura Cloud',
     'Desarrollo Web',
