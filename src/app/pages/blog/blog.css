@@ -357,11 +357,12 @@
 .blog-row-priority {
   display: inline-flex;
   align-items: center;
+  gap: 0.38rem;
   font-size: 0.72rem;
   font-weight: 700;
-  color: #191918;
-  background: rgba(25, 25, 24, 0.08);
-  border: 1px solid rgba(25, 25, 24, 0.12);
+  color: #9a6300;
+  background: rgba(250, 216, 120, 0.22);
+  border: 1px solid rgba(212, 162, 30, 0.35);
   padding: 0.2rem 0.65rem;
   border-radius: 999px;
 }
