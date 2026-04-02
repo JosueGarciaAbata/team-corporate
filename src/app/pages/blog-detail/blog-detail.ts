@@ -23,6 +23,7 @@ export class BlogDetail implements OnInit, OnDestroy {
   activeSection = signal<string>('');
   tocOpen = signal(false);
   expandedSections = signal<Set<number>>(new Set());
+  activatedVideos = signal<Set<string>>(new Set());
 
   private observer: IntersectionObserver | null = null;
 
@@ -136,7 +137,64 @@ export class BlogDetail implements OnInit, OnDestroy {
     return this.expandedSections().has(index);
   }
 
+  activateVideo(key: string): void {
+    const next = new Set(this.activatedVideos());
+    next.add(key);
+    this.activatedVideos.set(next);
+  }
+
+  isVideoActivated(key: string): boolean {
+    return this.activatedVideos().has(key);
+  }
+
+  getVideoThumbnail(url: string): string | null {
+    const videoId = this.extractYoutubeVideoId(url);
+    return videoId ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg` : null;
+  }
+
+  getVideoWatchUrl(url: string): string {
+    const videoId = this.extractYoutubeVideoId(url);
+    return videoId ? `https://www.youtube.com/watch?v=${videoId}` : url;
+  }
+
   toSafeResourceUrl(url: string): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(this.buildVideoEmbedUrl(url));
+  }
+
+  private buildVideoEmbedUrl(url: string): string {
+    const videoId = this.extractYoutubeVideoId(url);
+    if (!videoId) return url;
+
+    return `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+  }
+
+  private extractYoutubeVideoId(url: string): string | null {
+    try {
+      const parsed = new URL(url);
+      const host = parsed.hostname.replace(/^www\./, '');
+
+      if (host === 'youtu.be') {
+        return parsed.pathname.split('/').filter(Boolean)[0] ?? null;
+      }
+
+      if (host === 'youtube.com' || host === 'm.youtube.com' || host === 'youtube-nocookie.com') {
+        if (parsed.pathname.startsWith('/embed/')) {
+          return parsed.pathname.split('/')[2] ?? null;
+        }
+
+        if (parsed.pathname.startsWith('/watch')) {
+          return parsed.searchParams.get('v');
+        }
+
+        if (parsed.pathname.startsWith('/shorts/')) {
+          return parsed.pathname.split('/')[2] ?? null;
+        }
+      }
+    } catch {
+      const match = url.match(/(?:embed\/|watch\?v=|youtu\.be\/)([\w-]{6,})/i);
+      return match?.[1] ?? null;
+    }
+
+    return null;
   }
 }
