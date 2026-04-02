@@ -8,9 +8,9 @@ const balsamiqImage3Placeholder = '/assets/blog/balsamiq/wiref1.jpg';
 
 export const blogBalsamiqWireframes: Blog = {
   id: 'balsamiq-wireframes',
-  title: 'Balsamiq: una herramienta práctica para transformar ideas en interfaces claras',
+  title: 'Balsamiq: una herramienta practica para transformar ideas en interfaces claras',
   excerpt:
-    'Una mirada a cómo Balsamiq facilita el análisis y diseño inicial de software mediante wireframes simples, colaborativos y fáciles de entender.',
+    'Una mirada a como Balsamiq facilita el analisis y diseno inicial de software mediante wireframes simples, colaborativos y faciles de entender.',
   coverImageUrl: balsamiqCoverPlaceholder,
   category: c.software,
   authors: [a.josue],
@@ -19,99 +19,99 @@ export const blogBalsamiqWireframes: Blog = {
   isStatic: true,
   sections: [
     {
-      title: 'Introducción',
+      title: 'Introduccion',
       intro:
-        'En el desarrollo de software, muchas veces los problemas no aparecen por falta de programación, sino por falta de claridad. Una idea puede parecer correcta en conversación, pero al momento de llevarla a una pantalla surgen dudas sobre la estructura, la navegación o la información que realmente debe mostrarse. Por eso, antes de construir una solución, resulta necesario contar con herramientas que permitan visualizarla de manera rápida y comprensible.',
+        'En el desarrollo de software, muchas veces los problemas no aparecen por falta de programacion, sino por falta de claridad. Una idea puede parecer correcta en conversacion, pero al momento de llevarla a una pantalla surgen dudas sobre la estructura, la navegacion o la informacion que realmente debe mostrarse. Por eso, antes de construir una solucion, resulta necesario contar con herramientas que permitan visualizarla de manera rapida y comprensible.',
       subsections: [
         {
           content:
-            'En ese contexto, Balsamiq se ha consolidado como una herramienta orientada a la creación de wireframes de baja fidelidad, es decir, bocetos digitales que representan pantallas, formularios y flujos sin entrar todavía en detalles visuales finales. Su propuesta consiste en ayudar a los equipos a pensar mejor una interfaz antes de programarla, reduciendo confusiones y mejorando la comunicación entre quienes participan en el proyecto.'
+            'En ese contexto, Balsamiq se ha consolidado como una herramienta orientada a la creacion de wireframes de baja fidelidad, es decir, bocetos digitales que representan pantallas, formularios y flujos sin entrar todavia en detalles visuales finales. Su propuesta consiste en ayudar a los equipos a pensar mejor una interfaz antes de programarla, reduciendo confusiones y mejorando la comunicacion entre quienes participan en el proyecto.'
         }
       ],
       imageUrl: balsamiqImage1Placeholder,
-      imageAlt: 'Imagen referencial del editor de wireframes y diseño inicial de interfaces',
+      imageAlt: 'Imagen referencial del editor de wireframes y diseno inicial de interfaces',
       imageCaption:
         'Vista general de Balsamiq como herramienta para construir wireframes de baja fidelidad.',
       imageSize: 'image-medium'
     },
     {
-      title: '¿Qué es Balsamiq?',
+      title: 'Que es Balsamiq?',
       intro:
-        'Balsamiq es una herramienta de wireframing creada para representar ideas de interfaz de manera rápida, simple y ordenada. Un wireframe puede entenderse como el esqueleto de una aplicación o de una página: muestra qué elementos tendrá una pantalla, dónde se ubican y cómo se relacionan, pero sin pretender ser todavía el diseño definitivo.',
+        'Balsamiq es una herramienta de wireframing creada para representar ideas de interfaz de manera rapida, simple y ordenada. Un wireframe puede entenderse como el esqueleto de una aplicacion o de una pagina: muestra que elementos tendra una pantalla, donde se ubican y como se relacionan, pero sin pretender ser todavia el diseno definitivo.',
       subsections: [
         {
           title: 'Enfoque de baja fidelidad',
           content:
-            'Según la documentación de Balsamiq, este tipo de wireframe de baja fidelidad está centrado en la estructura, el diseño funcional y la organización del contenido, no en los detalles visuales finales.'
+            'Segun la documentacion de Balsamiq, este tipo de wireframe de baja fidelidad esta centrado en la estructura, el diseno funcional y la organizacion del contenido, no en los detalles visuales finales.'
         },
         {
-          title: 'Una estética pensada para discutir ideas',
+          title: 'Una estetica pensada para discutir ideas',
           content:
-            'A diferencia de otras herramientas que apuntan a prototipos más pulidos, Balsamiq mantiene una estética intencionalmente sencilla. Eso hace que el usuario perciba el resultado como una propuesta en construcción, abierta a cambios y revisión. En lugar de distraer la conversación con aspectos como colores o tipografías, permite concentrarse en cuestiones más importantes al inicio del proyecto: qué necesita el usuario, cómo será el recorrido dentro del sistema y qué debe ocurrir en cada interacción.'
+            'A diferencia de otras herramientas que apuntan a prototipos mas pulidos, Balsamiq mantiene una estetica intencionalmente sencilla. Eso hace que el usuario perciba el resultado como una propuesta en construccion, abierta a cambios y revision. En lugar de distraer la conversacion con aspectos como colores o tipografias, permite concentrarse en cuestiones mas importantes al inicio del proyecto: que necesita el usuario, como sera el recorrido dentro del sistema y que debe ocurrir en cada interaccion.'
         }
       ]
     },
     {
-      title: '¿Para qué sirve en el desarrollo de software?',
+      title: 'Para que sirve en el desarrollo de software?',
       intro:
-        'Balsamiq es especialmente útil en las etapas de análisis y diseño inicial. Cuando un equipo está definiendo una funcionalidad, una mejora o incluso una idea completa de producto, necesita una forma de convertir conceptos abstractos en algo visible. Balsamiq cumple esa función al permitir crear pantallas de ejemplo en pocos minutos, facilitando la discusión y la validación temprana de decisiones.',
+        'Balsamiq es especialmente util en las etapas de analisis y diseno inicial. Cuando un equipo esta definiendo una funcionalidad, una mejora o incluso una idea completa de producto, necesita una forma de convertir conceptos abstractos en algo visible. Balsamiq cumple esa funcion al permitir crear pantallas de ejemplo en pocos minutos, facilitando la discusion y la validacion temprana de decisiones.',
       subsections: [
         {
-          title: 'Validación antes de pasar al código',
+          title: 'Validacion antes de pasar al codigo',
           content:
-            'Esto resulta valioso porque evita avanzar directamente al código sin haber aclarado previamente la lógica de la solución. La herramienta ayuda a alinear equipos, eliminar ambigüedad y cerrar flujos antes de comprometer tiempo en programación o diseño visual. En otras palabras, Balsamiq permite detectar errores de enfoque cuando todavía es barato corregirlos.'
+            'Esto resulta valioso porque evita avanzar directamente al codigo sin haber aclarado previamente la logica de la solucion. La herramienta ayuda a alinear equipos, eliminar ambiguedad y cerrar flujos antes de comprometer tiempo en programacion o diseno visual. En otras palabras, Balsamiq permite detectar errores de enfoque cuando todavia es barato corregirlos.'
         }
       ],
       bullets: [
-        'Bosquejar pantallas web o móviles.',
-        'Estructurar formularios y módulos administrativos.',
-        'Representar flujos de navegación.',
+        'Bosquejar pantallas web o moviles.',
+        'Estructurar formularios y modulos administrativos.',
+        'Representar flujos de navegacion.',
         'Explicar requisitos funcionales.',
-        'Mostrar ideas a clientes, docentes o compañeros.',
-        'Recibir retroalimentación antes de desarrollar.'
+        'Mostrar ideas a clientes, docentes o companeros.',
+        'Recibir retroalimentacion antes de desarrollar.'
       ],
       imageUrl: balsamiqImage2Placeholder,
       imageAlt: 'Imagen referencial de un wireframe de login, dashboard o formulario',
       imageCaption:
-        'Ejemplo de wireframe donde se define la estructura de una pantalla antes de pasar al diseño final.',
+        'Ejemplo de wireframe donde se define la estructura de una pantalla antes de pasar al diseno final.',
       imageSize: 'image-medium'
     },
     {
-      title: 'Características principales',
+      title: 'Caracteristicas principales',
       intro:
         'Una de las razones por las que Balsamiq es valorado en equipos de producto y desarrollo es que combina simplicidad con funciones suficientes para trabajar con agilidad.',
       subsections: [
         {
-          title: 'Componentes prediseñados',
+          title: 'Componentes predisenados',
           content:
-            'La herramienta ofrece elementos listos para usar, como botones, menús, tablas, campos de texto, tarjetas, barras de navegación e iconos. Esto permite armar una pantalla de manera rápida sin comenzar desde cero.'
+            'La herramienta ofrece elementos listos para usar, como botones, menus, tablas, campos de texto, tarjetas, barras de navegacion e iconos. Esto permite armar una pantalla de manera rapida sin comenzar desde cero.'
         },
         {
           title: 'Arrastrar y soltar',
           content:
-            'Su dinámica de uso está pensada para que cualquier persona pueda construir wireframes sin necesidad de ser diseñadora. Balsamiq resalta justamente la simplicidad de drag and drop y la ausencia de una curva de aprendizaje pronunciada.'
+            'Su dinamica de uso esta pensada para que cualquier persona pueda construir wireframes sin necesidad de ser disenadora. Balsamiq resalta justamente la simplicidad de drag and drop y la ausencia de una curva de aprendizaje pronunciada.'
         },
         {
           title: 'Enlace entre pantallas',
           content:
-            'Los wireframes pueden vincularse entre sí para representar recorridos de usuario y mostrar cómo se pasaría de una vista a otra. Esto ayuda a explicar flujos completos y no solo pantallas aisladas.'
+            'Los wireframes pueden vincularse entre si para representar recorridos de usuario y mostrar como se pasaria de una vista a otra. Esto ayuda a explicar flujos completos y no solo pantallas aisladas.'
         },
         {
-          title: 'Compartición y exportación',
+          title: 'Comparticion y exportacion',
           content:
-            'Los diseños pueden compartirse mediante enlace o exportarse como PDF y PNG, lo que facilita presentarlos en clases, reuniones, revisiones o documentación.'
+            'Los disenos pueden compartirse mediante enlace o exportarse como PDF y PNG, lo que facilita presentarlos en clases, reuniones, revisiones o documentacion.'
         },
         {
-          title: 'Colaboración',
+          title: 'Colaboracion',
           content:
-            'Balsamiq permite comentarios, reacciones y edición en tiempo real, lo cual mejora la revisión grupal y la construcción conjunta de propuestas.'
+            'Balsamiq permite comentarios, reacciones y edicion en tiempo real, lo cual mejora la revision grupal y la construccion conjunta de propuestas.'
         },
         {
-          title: 'Integración con Jira y Confluence',
+          title: 'Integracion con Jira y Confluence',
           content:
-            'La herramienta dispone de versiones específicas para integrarse con Jira y Confluence. En Confluence puede insertarse en páginas para hacer la documentación más visual, y en Jira puede incorporarse en tickets para que el equipo tenga claridad sobre lo que se espera construir.',
+            'La herramienta dispone de versiones especificas para integrarse con Jira y Confluence. En Confluence puede insertarse en paginas para hacer la documentacion mas visual, y en Jira puede incorporarse en tickets para que el equipo tenga claridad sobre lo que se espera construir.',
           imageUrl: balsamiqImage3Placeholder,
-          imageAlt: 'Imagen referencial del editor con componentes o documentación con wireframe insertado',
+          imageAlt: 'Imagen referencial del editor con componentes o documentacion con wireframe insertado',
           imageCaption:
             'Balsamiq permite construir, compartir y discutir wireframes dentro del flujo de trabajo del equipo.',
           imageSize: 'image-medium'
@@ -119,76 +119,80 @@ export const blogBalsamiqWireframes: Blog = {
       ]
     },
     {
-      title: '¿Por qué es útil en análisis y diseño?',
+      title: 'Por que es util en analisis y diseno?',
       intro:
-        'La elección de una herramienta no depende solo de sus funciones, sino también de qué tan bien responde a las necesidades reales del proceso. En este caso, Balsamiq encaja bien en análisis y diseño porque ayuda a hacer visibles decisiones que, si solo permanecen en texto o conversación, pueden interpretarse de varias maneras.',
+        'La eleccion de una herramienta no depende solo de sus funciones, sino tambien de que tan bien responde a las necesidades reales del proceso. En este caso, Balsamiq encaja bien en analisis y diseno porque ayuda a hacer visibles decisiones que, si solo permanecen en texto o conversacion, pueden interpretarse de varias maneras.',
       bullets: [
-        'Facilita la comprensión de ideas complejas al volver más concreto un requisito.',
+        'Facilita la comprension de ideas complejas al volver mas concreto un requisito.',
         'Reduce retrabajo porque permite revisar una propuesta antes de programarla.',
-        'Mejora la comunicación entre personas con perfiles distintos, incluso si no tienen formación técnica avanzada.',
-        'Enfoca la discusión en la lógica del sistema antes del acabado visual.'
+        'Mejora la comunicacion entre personas con perfiles distintos, incluso si no tienen formacion tecnica avanzada.',
+        'Enfoca la discusion en la logica del sistema antes del acabado visual.'
       ],
       subsections: [
         {
-          title: 'Valor metodológico de la baja fidelidad',
+          title: 'Valor metodologico de la baja fidelidad',
           content:
-            'Su estilo de baja fidelidad tiene una ventaja metodológica importante: ayuda a discutir la lógica del sistema antes del acabado visual. Esto es especialmente útil en contextos académicos o en equipos en etapa temprana, donde todavía se están construyendo ideas y no conviene invertir demasiado tiempo en detalles finales.'
+            'Su estilo de baja fidelidad tiene una ventaja metodologica importante: ayuda a discutir la logica del sistema antes del acabado visual. Esto es especialmente util en contextos academicos o en equipos en etapa temprana, donde todavia se estan construyendo ideas y no conviene invertir demasiado tiempo en detalles finales.'
         }
       ]
     },
     {
       title: 'Ventajas de usar Balsamiq',
       intro:
-        'Entre sus ventajas más relevantes se pueden destacar las siguientes:',
+        'Entre sus ventajas mas relevantes se pueden destacar las siguientes:',
       bullets: [
-        '<strong>Rapidez.</strong> Permite pasar de una idea a una representación visual en poco tiempo.',
-        '<strong>Facilidad de uso.</strong> No exige experiencia avanzada en diseño.',
-        '<strong>Enfoque en lo esencial.</strong> Al ser de baja fidelidad, mantiene la atención en estructura y funcionalidad.',
+        '<strong>Rapidez.</strong> Permite pasar de una idea a una representacion visual en poco tiempo.',
+        '<strong>Facilidad de uso.</strong> No exige experiencia avanzada en diseno.',
+        '<strong>Enfoque en lo esencial.</strong> Al ser de baja fidelidad, mantiene la atencion en estructura y funcionalidad.',
         '<strong>Trabajo colaborativo.</strong> Permite compartir, comentar y editar junto con otros miembros del equipo.',
-        '<strong>Apoyo a la documentación.</strong> Sus integraciones con Jira y Confluence lo hacen útil para especificaciones, tickets y documentación funcional.'
+        '<strong>Apoyo a la documentacion.</strong> Sus integraciones con Jira y Confluence lo hacen util para especificaciones, tickets y documentacion funcional.'
       ]
     },
     {
       title: 'Posibles limitaciones',
       intro:
-        'Aunque Balsamiq es muy útil, también tiene un alcance claro. No está orientado al diseño visual final ni a prototipos altamente detallados que simulen por completo el producto definitivo. Su valor está en las primeras fases, cuando todavía se necesita explorar opciones, validar lógica y tomar decisiones antes de profundizar en el detalle visual.',
+        'Aunque Balsamiq es muy util, tambien tiene un alcance claro. No esta orientado al diseno visual final ni a prototipos altamente detallados que simulen por completo el producto definitivo. Su valor esta en las primeras fases, cuando todavia se necesita explorar opciones, validar logica y tomar decisiones antes de profundizar en el detalle visual.',
       subsections: [
         {
           content:
-            'Por ello, puede entenderse mejor como una herramienta para pensar y organizar una interfaz, más que para embellecerla. Una vez validada la idea, el proyecto puede continuar en herramientas más enfocadas en alta fidelidad o en implementación.'
+            'Por ello, puede entenderse mejor como una herramienta para pensar y organizar una interfaz, mas que para embellecerla. Una vez validada la idea, el proyecto puede continuar en herramientas mas enfocadas en alta fidelidad o en implementacion.'
         }
       ]
     },
     {
-      title: 'Aplicación en un entorno académico o de proyecto',
+      title: 'Aplicacion en un entorno academico o de proyecto',
       intro:
-        'En el contexto de un grupo de trabajo, Balsamiq resulta adecuado para representar de forma rápida propuestas de pantallas, módulos o recorridos de usuario. Puede utilizarse, por ejemplo, para bosquejar el inicio de sesión, el panel principal, formularios de registro, vistas administrativas o cualquier otra interfaz que deba discutirse antes del desarrollo.',
+        'En el contexto de un grupo de trabajo, Balsamiq resulta adecuado para representar de forma rapida propuestas de pantallas, modulos o recorridos de usuario. Puede utilizarse, por ejemplo, para bosquejar el inicio de sesion, el panel principal, formularios de registro, vistas administrativas o cualquier otra interfaz que deba discutirse antes del desarrollo.',
       subsections: [
         {
-          title: 'Aporte para revisión y toma de decisiones',
+          title: 'Aporte para revision y toma de decisiones',
           content:
-            'Su aporte principal en este tipo de entornos está en que permite presentar ideas de forma clara y ordenada, favoreciendo la participación del equipo y haciendo más sencilla la revisión por parte de docentes, compañeros o clientes. Más que un simple programa de dibujo, funciona como un apoyo concreto para el análisis, la comunicación y la toma de decisiones en las primeras etapas del software.'
+            'Su aporte principal en este tipo de entornos esta en que permite presentar ideas de forma clara y ordenada, favoreciendo la participacion del equipo y haciendo mas sencilla la revision por parte de docentes, companeros o clientes. Mas que un simple programa de dibujo, funciona como un apoyo concreto para el analisis, la comunicacion y la toma de decisiones en las primeras etapas del software.'
         },
         {
           title: 'Una herramienta alineada con el trabajo colaborativo',
           content:
-            'Esta utilidad está alineada con el enfoque oficial de Balsamiq, que presenta la herramienta como un medio para alinear equipos y cerrar flujos antes de pasar a código o diseño final.'
+            'Esta utilidad esta alineada con el enfoque oficial de Balsamiq, que presenta la herramienta como un medio para alinear equipos y cerrar flujos antes de pasar a codigo o diseno final.'
         },
         {
           title: 'Recurso complementario en video',
           content:
-            'Como apoyo adicional para entender mejor el flujo de trabajo con wireframes, este recurso en video puede complementar la lectura del post y mostrar de forma más visual cómo se organiza una propuesta en Balsamiq: <a href="https://www.youtube.com/watch?v=0UWxMvxQInY" target="_blank" rel="noopener noreferrer">ver video de referencia sobre Balsamiq</a>.'
+            'Como apoyo adicional para entender mejor el flujo de trabajo con wireframes, este recurso en video puede complementar la lectura del post y mostrar de forma mas visual como se organiza una propuesta en Balsamiq.',
+          videoEmbedUrl: 'https://www.youtube.com/watch?v=0UWxMvxQInY',
+          videoTitle: 'Balsamiq video de referencia',
+          videoCaption:
+            'Video recomendado: referencia practica sobre el uso de Balsamiq para wireframes.'
         }
       ]
     },
     {
-      title: 'Conclusión',
+      title: 'Conclusion',
       intro:
-        'Balsamiq es una herramienta que cumple un papel importante dentro del análisis y diseño de software porque permite traducir ideas en representaciones visuales simples, comprensibles y fáciles de discutir. Su enfoque de baja fidelidad no busca reemplazar el diseño final, sino aportar claridad en el momento en que más se necesita: cuando todavía se está definiendo qué debe construirse y cómo debe funcionar.',
+        'Balsamiq es una herramienta que cumple un papel importante dentro del analisis y diseno de software porque permite traducir ideas en representaciones visuales simples, comprensibles y faciles de discutir. Su enfoque de baja fidelidad no busca reemplazar el diseno final, sino aportar claridad en el momento en que mas se necesita: cuando todavia se esta definiendo que debe construirse y como debe funcionar.',
       subsections: [
         {
           content:
-            'Por su facilidad de uso, sus opciones de colaboración, su capacidad para compartir wireframes y su integración con plataformas como Jira y Confluence, Balsamiq se convierte en una alternativa pertinente para equipos académicos y profesionales que necesitan comunicar mejor sus propuestas. En ese sentido, más que una herramienta de dibujo, puede entenderse como un recurso para analizar, ordenar y validar soluciones antes de desarrollarlas.'
+            'Por su facilidad de uso, sus opciones de colaboracion, su capacidad para compartir wireframes y su integracion con plataformas como Jira y Confluence, Balsamiq se convierte en una alternativa pertinente para equipos academicos y profesionales que necesitan comunicar mejor sus propuestas. En ese sentido, mas que una herramienta de dibujo, puede entenderse como un recurso para analizar, ordenar y validar soluciones antes de desarrollarlas.'
         }
       ]
     }
