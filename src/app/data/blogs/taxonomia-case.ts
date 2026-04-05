@@ -4,7 +4,8 @@ import { AUTHORS as a, CATEGORY_MAP as c } from '../blog-catalogs';
 export const blogTaxonomiaCASE: Blog = {
   id: 'taxonomia-case',
   title: 'Taxonomía de las Herramientas CASE',
-  excerpt: 'Las herramientas CASE se pueden clasificar por su función, su papel como instrumentos para administradores o personal técnico, o por su utilización en los distintos pasos del proceso de ingeniería del software.',
+  excerpt:
+    'Las herramientas CASE pueden clasificarse según su función, su rol (administrativo o técnico) y su uso a lo largo de las etapas del proceso de ingeniería de software.',
   coverImageUrl: '/assets/img/services/taxonomia_case.webp',
   category: c.software,
   tags: ['CASE', 'Ingeniería de Software', 'Taxonomía', 'Planificación', 'Análisis', 'Pruebas', 'Monitorización', 'Gestión de Proyectos', 'Diseño', 'Calidad de Software'],
@@ -15,7 +16,8 @@ export const blogTaxonomiaCASE: Blog = {
   sections: [
     {
       title: 'Niveles de Integración CASE',
-      intro: 'Los niveles relativos de integración CASE muestran cómo interactúan estas soluciones en un entorno de trabajo:',
+      intro:
+        'Los niveles de integración CASE describen cómo interactúan estas soluciones dentro de un entorno de trabajo y qué tan consistente es el flujo de información entre ellas:',
       imageUrl: '/assets/blog/taxonomia_case/niveles_herramientas.webp',
       imageAlt: 'Diagrama de niveles de integración de herramientas CASE',
       imageCaption: 'Niveles de integración CASE. Fuente: Adaptado de "Software Engineering: A Practitioner’s Approach" de Roger S. Pressman.',
@@ -23,97 +25,105 @@ export const blogTaxonomiaCASE: Blog = {
       subsections: [
         {
           title: 'Herramienta individual (solución puntual)',
-          content: 'En el extremo inferior del espectro de integración se encuentra la herramienta individual. Opera de forma aislada sin intercambio con otras herramientas del entorno.',
+          content:
+            'En el extremo inferior del espectro se ubica la herramienta individual: opera de forma aislada y no intercambia información con otras herramientas del entorno.',
         },
         {
           title: 'Intercambio de datos',
-          content: 'Estas herramientas producen su salida en un formato estándar compatible con otras herramientas, permitiendo un flujo de datos básico entre ellas.',
+          content:
+            'Estas herramientas generan su salida en un formato estándar o compatible con otras soluciones, lo que habilita un flujo de datos básico entre ellas.',
         },
         {
           title: 'Puentes y asociaciones',
-          content: 'Constructores de herramientas complementarias trabajan juntos para formar un puente (ej. análisis y diseño enlazado con generación de código), reduciendo la fricción entre fases.',
+          content:
+            'Soluciones complementarias se integran mediante “puentes” (p. ej., enlazar análisis y diseño con generación de código), reduciendo la fricción entre fases.',
         },
         {
           title: 'Fuente única',
-          content: 'Un vendedor integra una cierta cantidad de herramientas distintas y las vende en forma de paquete, garantizando compatibilidad interna entre ellas.',
+          content:
+            'Un proveedor integra varias herramientas y las ofrece como un paquete, garantizando compatibilidad interna y una experiencia más homogénea.',
         },
         {
           title: 'EAIP — Entorno de Apoyo Integrado a Proyectos',
-          content: 'El nivel superior de integración. Se utilizan estándares abiertos para construir herramientas 100% compatibles entre sí, ofreciendo una visión unificada de todo el proyecto.',
+          content:
+            'Es el nivel superior de integración: se emplean estándares abiertos para construir herramientas altamente compatibles e interoperables, ofreciendo una visión unificada de todo el proyecto.',
         },
       ],
     },
     {
       title: 'Herramientas de Administración y Planificación',
-      intro: 'Esta parte de la taxonomía se enfoca en la gestión directa del proyecto de software:',
+      intro:
+        'Esta parte de la taxonomía se enfoca en la gestión del proyecto de software: planificación, control y toma de decisiones basada en información.',
       table: {
         title: 'Tipos de herramientas de administración y planificación',
         headers: ['Tipo', 'Descripción'],
         rows: [
           [
             'Ingeniería de procesos de negocio',
-            'Modelan requisitos de información estratégica para representar objetos de datos, relaciones y flujos en la compañía; son la base para alinear TI con negocio.'
+            'Modelan información estratégica para representar datos, relaciones y flujos del negocio; sirven como base para alinear TI con los objetivos organizacionales.'
           ],
           [
             'Modelado de procesos y gestión',
-            'Representan elementos clave del proceso para comprenderlo mejor y guiar al personal técnico en la ejecución cotidiana.'
+            'Representan elementos clave del proceso para comprenderlo y gestionarlo, guiando al equipo en la ejecución cotidiana.'
           ],
           [
             'Planificación de proyectos',
-            'Se centran en estimación de costes y esfuerzos, además de planificar duración, personas involucradas y recursos necesarios.'
+            'Se enfocan en la estimación de costos y esfuerzo, así como en la planificación de duración, personal involucrado y recursos requeridos.'
           ],
           [
             'Análisis de riesgos',
-            'Ayudan a construir tablas de riesgos con identificación, evaluación de probabilidad e impacto, y definición de planes de contingencia.'
+            'Apoyan la identificación y evaluación de riesgos (probabilidad e impacto) y la definición de planes de mitigación y contingencia.'
           ],
           [
             'Gestión de proyectos',
-            'Rastrean y monitorizan el plan de forma continua, con seguimiento en tiempo real y alertas automáticas.'
+            'Rastrean y monitorizan el plan de forma continua, con seguimiento y alertas que facilitan la corrección temprana de desviaciones.'
           ]
         ]
       },
     },
     {
       title: 'Herramientas de soporte de desarrollo',
-      intro: 'La siguiente parte de la taxonomía se centra en el control y organización del desarrollo del software, identificando factores influyentes como la documentación, los requisitos y las métricas.',
+      intro:
+        'La siguiente parte de la taxonomía se centra en el control y la organización del desarrollo de software, incluyendo documentación, requisitos, métricas y control de configuración.',
       table: {
         title: 'Tipos de herramientas de soporte de desarrollo',
         headers: ['Tipo', 'Descripción'],
         rows: [
           [
             'Seguimiento de requisitos',
-            'Aíslan requisitos combinando análisis de texto de especificación con un sistema de base de datos que almacena y categoriza lo identificado.'
+            'Identifican, almacenan y categorizan requisitos mediante repositorios que facilitan su gestión y trazabilidad.'
           ],
           [
             'Métricas y gestión',
-            'Permiten controlar y coordinar el proceso de ingeniería de software, mejorando calidad del producto y del proceso.'
+            'Permiten controlar y coordinar el proceso de ingeniería de software, mejorando la calidad del producto y del proceso.'
           ],
           [
             'Documentación',
-            'Mejoran productividad al reducir tiempo en documentación y liberar esfuerzo para tareas críticas de desarrollo.'
+            'Mejoran la productividad al reducir el esfuerzo de documentación y liberar tiempo para tareas críticas de desarrollo.'
           ],
           [
             'Software de sistema',
-            'Incluyen tecnologías de estaciones de trabajo y redes; el entorno CASE debe adaptarse a software de comunicación de alta calidad.'
+            'Incluyen tecnologías de estaciones de trabajo y redes; el entorno CASE debe apoyarse en mecanismos de comunicación confiables.'
           ],
           [
             'Control de calidad',
-            'Auditan código fuente para validar estándares del lenguaje y extraen métricas técnicas para estimar la calidad construida.'
+            'Auditan el código fuente para validar estándares y extraer métricas técnicas, contribuyendo a estimar la calidad incorporada.'
           ],
           [
             'Bases de datos',
-            'Mantienen la base de datos del proyecto, evolucionando desde modelos relacionales hacia orientados a objetos cuando aplica.'
+            'Mantienen la base de datos del proyecto y evolucionan desde modelos relacionales hacia modelos orientados a objetos cuando aplica.'
           ],
           [
             'Gestión de configuración del software',
-            'Apoyan identificación de elementos, control de versiones, control de cambios, auditoría y registro de estados.'
+            'Apoyan la identificación de elementos, el control de versiones y cambios, la auditoría y el registro de estados.'
           ]
         ]
       },
     },
     {
       title: 'Herramientas para Construcción y Pruebas de Software',
-      intro: 'Esta sección cubre las herramientas esenciales en las fases de construcción y validación del software, fundamental en cualquier ciclo de desarrollo',
+      intro:
+        'Esta sección cubre herramientas clave para las fases de construcción y validación del software, fundamentales en cualquier ciclo de desarrollo.',
       table: {
         title: 'Tipos de herramientas para construcción y pruebas',
         headers: ['Tipo', 'Descripción'],
@@ -144,15 +154,15 @@ export const blogTaxonomiaCASE: Blog = {
           ],
           [
             'Integración y pruebas',
-            'Planificación, desarrollo y control de pruebas. Incluyen adquisición de datos, medidas estáticas/dinámicas, simulación y gestión de pruebas.',
+            'Planificación, desarrollo y control de pruebas. Incluyen adquisición de datos, mediciones estáticas/dinámicas, simulación y gestión de pruebas.',
           ],
           [
             'Análisis estático',
-            'Analizan código fuente sin ejecutarlo para derivar casos de prueba. Tres tipos: basadas en código, lenguajes especializados y requisitos usuario.',
+            'Analizan código fuente sin ejecutarlo para derivar casos de prueba. Se apoyan en enfoques basados en código, lenguajes especializados y requisitos de usuario.',
           ],
           [
             'Análisis dinámico',
-            'Interactúan con el programa en ejecución probando cobertura de rutas. Intrusivas (agregan código) o no intrusivas (hardware separado).',
+            'Interactúan con el programa en ejecución para evaluar cobertura de rutas. Pueden ser intrusivas (agregan código) o no intrusivas (por ejemplo, mediante hardware separado).',
           ],
         ]
       },
@@ -163,7 +173,8 @@ export const blogTaxonomiaCASE: Blog = {
       subsections: [
         {
           title: 'Fase 1: Planificación y Análisis de Requisitos',
-          content: 'El proyecto inicia con reuniones de stakeholders para comprender el negocio. Las herramientas CASE intervienen desde el primer día:',
+          content:
+            'El proyecto inicia con reuniones con stakeholders para comprender el negocio. Las herramientas CASE intervienen desde el primer día:',
           bullets: [
             '<strong>Ingeniería de Procesos de Negocio</strong>: ARIS o BPM mapean los procesos actuales de inventario: recepción de mercancía, almacenamiento, búsqueda de productos y reporte de ventas.',
             '<strong>Planificación de Proyectos</strong>: Microsoft Project o Asana permiten estimar costos, tiempos y asignar recursos. El análisis de riesgos identifica amenazas críticas como pérdida de datos, indisponibilidad del sistema o retrasos en la implementación, generando planes de contingencia.',
@@ -195,7 +206,7 @@ export const blogTaxonomiaCASE: Blog = {
             '<strong>Herramientas de Programación</strong>: IDEs como Visual Studio Code o IntelliJ IDEA, con compiladores y depuradores integrados, permiten implementar el código basado fielmente en los modelos de diseño.',
             '<strong>Desarrollo Web</strong>: Angular con TypeScript es el framework elegido. Librerías de Bootstrap aceleran la creación de componentes frontend reutilizables y responsivos.',
             '<strong>Gestión de Configuración</strong>: Git y GitHub registran cada cambio: se crean ramas para nuevas funcionalidades y se documentan las modificaciones, garantizando historial completo y trabajo en equipo sin conflictos.',
-            '<strong>Documentación Automática</strong>: Swagger genera la documentación de APIs sincronizada con el código; Confluence centraliza la wiki técnica del proyecto, siempre actualizada.',
+            '<strong>Documentación Automática</strong>: Swagger genera documentación de APIs sincronizada con el código; Confluence centraliza la wiki técnica del proyecto, manteniéndola actualizada.',
           ],
         },
         {
@@ -230,7 +241,8 @@ export const blogTaxonomiaCASE: Blog = {
         },
         {
           title: 'Reducción de Errores y Riesgos',
-          content: 'Cada etapa de validación (análisis, simulación, prototipado, pruebas estáticas, pruebas dinámicas) detecta errores temprano. Identificar un defecto en la fase de análisis cuesta 10 veces menos que en producción. Por eso la taxonomía CASE es tan valiosa: proporciona múltiples capas de validación.',
+          content:
+            'Cada etapa de validación (análisis, simulación, prototipado, pruebas estáticas, pruebas dinámicas) permite detectar errores de forma temprana. En general, corregir un defecto en fases iniciales tiende a ser significativamente menos costoso que hacerlo en producción. Por eso la taxonomía CASE es valiosa: aporta múltiples capas de validación.',
         },
         {
           title: 'Mejora Continua',
