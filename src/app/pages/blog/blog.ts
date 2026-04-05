@@ -1,5 +1,5 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, ViewportScroller } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { BlogService, Blog as BlogModel } from '../../services/blog.service';
 
@@ -11,7 +11,8 @@ import { BlogService, Blog as BlogModel } from '../../services/blog.service';
 })
 export class Blog {
   private blogService = inject(BlogService);
-  private readonly pageSize = 4;
+  private viewportScroller = inject(ViewportScroller);
+  private readonly pageSize = 8;
   private readonly toolPriority = [
     'figma-ciclo-vida-software',
     'balsamiq-wireframes',
@@ -196,6 +197,7 @@ export class Blog {
   goToPage(page: number): void {
     if (page < 1 || page > this.totalPages()) return;
     this.currentPage.set(page);
+    this.scrollToTop();
   }
 
   nextPage(): void {
@@ -204,6 +206,10 @@ export class Blog {
 
   previousPage(): void {
     this.goToPage(this.currentPage() - 1);
+  }
+
+  private scrollToTop(): void {
+    setTimeout(() => this.viewportScroller.scrollToPosition([0, 0]));
   }
 
   getTags(blog: BlogModel): string[] {

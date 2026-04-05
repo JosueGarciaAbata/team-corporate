@@ -13,9 +13,11 @@ import { blogICaseEvolution } from './i-case-tools';
 import { blogCaseFundamentos } from './case-fundamentos';
 import { devAgeAI } from './dev_age_ai';
 import { blogFigmaCicloVidaSoftware } from './figma-ciclo-vida-software';
+import { blogJiraConfluence } from './jira-confluence-gestion-trazabilidad';
 import { blogMiroAnalisisDiseno } from './miro-analisis-diseno';
 import { blogClickup } from './clickup';
 import { blogDrawIo } from './blog-draw-io';
+import { blogNotionLearning } from './notion-learning';
 
 export const STATIC_BLOGS: Blog[] = [
 	blogBalsamiqWireframes,
@@ -24,6 +26,7 @@ export const STATIC_BLOGS: Blog[] = [
 	blog3,
 	blog4,
 	blogTaxonomiaCASE,
+	blogJiraConfluence,
 	blogICaseEvolution,
 	blogCaseFundamentos,
 	devAgeAI,
@@ -31,4 +34,5 @@ export const STATIC_BLOGS: Blog[] = [
     blogDrawIo,
 	blogClickup,
 	blogFigmaCicloVidaSoftware,
+	blogNotionLearning,
 ];
