@@ -17,6 +17,7 @@ import { blogJiraConfluence } from './jira-confluence-gestion-trazabilidad';
 import { blogMiroAnalisisDiseno } from './miro-analisis-diseno';
 import { blogClickup } from './clickup';
 import { blogDrawIo } from './blog-draw-io';
+import { blogNotionLearning } from './notion-learning';
 
 export const STATIC_BLOGS: Blog[] = [
 	blogBalsamiqWireframes,
@@ -33,4 +34,5 @@ export const STATIC_BLOGS: Blog[] = [
     blogDrawIo,
 	blogClickup,
 	blogFigmaCicloVidaSoftware,
+	blogNotionLearning,
 ];
