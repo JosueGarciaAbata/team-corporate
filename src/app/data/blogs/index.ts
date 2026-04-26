@@ -18,8 +18,10 @@ import { blogMiroAnalisisDiseno } from './miro-analisis-diseno';
 import { blogClickup } from './clickup';
 import { blogDrawIo } from './blog-draw-io';
 import { blogNotionLearning } from './notion-learning';
+import { blogKindKubernetesDocker } from './kind-kubernetes-docker';
 
 export const STATIC_BLOGS: Blog[] = [
+	blogKindKubernetesDocker,
 	blogBalsamiqWireframes,
 	blog1,
 	blog2,

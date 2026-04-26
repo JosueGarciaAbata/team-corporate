@@ -14,6 +14,7 @@ export class Blog {
   private viewportScroller = inject(ViewportScroller);
   private readonly pageSize = 8;
   private readonly toolPriority = [
+    'kind-kubernetes-docker',
     'figma-ciclo-vida-software',
     'balsamiq-wireframes',
     'miro-analisis-diseno-software',
@@ -28,6 +29,10 @@ export class Blog {
     'Draw.io',
     'ClickUp',
     'DevOps',
+    'Kubernetes',
+    'kind',
+    'Docker',
+    'kubectl',
     'Arquitectura Cloud',
     'Desarrollo Web',
     'Inteligencia Artificial',
