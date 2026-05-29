@@ -517,8 +517,8 @@ export const blogKindKubernetesDocker: Blog = {
       title: 'Video final de la práctica',
       intro:
         'Para reforzar el cierre, este video acompaña la explicación final de la práctica y resume visualmente el flujo de trabajo con kind, Docker y Kubernetes.',
-      videoEmbedUrl: 'https://www.youtube.com/watch?v=s_o8dwzRlu4',
-      videoTitle: 'Práctica final: kind, Docker y Kubernetes',
+      videoEmbedUrl: 'https://youtu.be/XuJWpLYOVKk',
+      videoTitle: 'Practica k8s con kind.',
       videoCaption:
         'Video de cierre recomendado para complementar la lectura del blog y visualizar la práctica completa.',
       bullets: [
