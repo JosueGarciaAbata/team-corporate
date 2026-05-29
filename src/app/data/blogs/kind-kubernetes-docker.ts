@@ -34,11 +34,11 @@ export const blogKindKubernetesDocker: Blog = {
   ],
   authors: [a.josue, a.carol, a['david-b'], a.joel, a['david-m'], a.nixon, a.maybelline],
   date: '2026-04-26',
-  readTime: '24 min',
+  readTime: '29 min',
   isStatic: true,
   sections: [
     {
-      title: '1. Introducción: del contenedor aislado al cluster local',
+      title: 'Introducción: del contenedor aislado al cluster local',
       intro:
         'Cuando una aplicación crece, deja de ser suficiente ejecutarla manualmente en una sola terminal. Aparecen servicios que dependen entre sí, bases de datos, variables de entorno, puertos, health checks, logs, réplicas y necesidades de disponibilidad. Docker resuelve una parte importante del problema: empaquetar y ejecutar aplicaciones como contenedores. Kubernetes resuelve el siguiente nivel: administrar esos contenedores como un sistema coordinado.',
       imageUrl: cover,
@@ -72,7 +72,7 @@ export const blogKindKubernetesDocker: Blog = {
       ]
     },
     {
-      title: '2. Docker como base de la práctica',
+      title: 'Docker como base de la práctica',
       intro:
         'Antes de llegar a Kubernetes es necesario entender qué aporta Docker. Docker permite construir imágenes, ejecutar contenedores, publicar puertos, crear redes internas y persistir datos con volúmenes. En una aplicación de microservicios, estos conceptos aparecen de inmediato.',
       imageUrl: dockerToKind,
@@ -125,7 +125,7 @@ export const blogKindKubernetesDocker: Blog = {
       }
     },
     {
-      title: '3. ¿Qué es kind y cómo funciona?',
+      title: '¿Qué es kind y cómo funciona?',
       intro:
         'kind es una herramienta diseñada para crear clusters Kubernetes locales usando Docker. Su nombre viene de Kubernetes in Docker. En lugar de instalar máquinas virtuales o usar una nube, kind crea contenedores que actúan como nodos Kubernetes.',
       imageUrl: clusterArchitecture,
@@ -164,7 +164,7 @@ export const blogKindKubernetesDocker: Blog = {
       ]
     },
     {
-      title: '4. Kubernetes en manifiestos: declarar el estado deseado',
+      title: 'Kubernetes en manifiestos: declarar el estado deseado',
       intro:
         'Kubernetes se trabaja normalmente con archivos YAML llamados manifiestos. Cada manifiesto describe un recurso: Namespace, Deployment, Service, ConfigMap, Secret, entre otros. El punto central es que no le decimos a Kubernetes cada paso manual; declaramos el estado deseado y Kubernetes intenta mantenerlo.',
       imageUrl: manifestsMap,
@@ -218,7 +218,7 @@ export const blogKindKubernetesDocker: Blog = {
       }
     },
     {
-      title: '5. ConfigMap y Secret: configuración fuera de la imagen',
+      title: 'ConfigMap y Secret: configuración fuera de la imagen',
       intro:
         'Una buena imagen Docker debe ser portable. La misma imagen debería servir para desarrollo, pruebas, staging o Kubernetes. Lo que cambia entre entornos no debería ser la imagen, sino la configuración externa. En Kubernetes esa configuración se separa con ConfigMaps y Secrets.',
       subsections: [
@@ -262,7 +262,7 @@ export const blogKindKubernetesDocker: Blog = {
       }
     },
     {
-      title: '6. NodePort, ClusterIP y port-forward',
+      title: 'NodePort, ClusterIP y port-forward',
       intro:
         'La red es una de las partes más importantes de Kubernetes. No todos los servicios deben exponerse hacia fuera. En una arquitectura sana, solo se expone lo necesario. En la práctica, order-service es la entrada principal y se expone con NodePort; inventory-service queda interno con ClusterIP.',
       imageUrl: nodeportNetworking,
@@ -305,7 +305,7 @@ export const blogKindKubernetesDocker: Blog = {
       }
     },
     {
-      title: '7. Despliegue práctico con kubectl',
+      title: 'Despliegue práctico con kubectl',
       intro:
         'Una vez creado el cluster kind y cargadas las imágenes, el despliegue se realiza con kubectl. La práctica usa Kustomize para aplicar todos los manifiestos con un solo comando: <code>kubectl apply -k k8s</code>.',
       subsections: [
@@ -352,7 +352,7 @@ export const blogKindKubernetesDocker: Blog = {
       }
     },
     {
-      title: '8. Escalado, auto-recuperación y logs',
+      title: 'Escalado, auto-recuperación y logs',
       intro:
         'Kubernetes no solo crea recursos. También mantiene el estado declarado. Si pedimos cinco réplicas, Kubernetes intenta sostener cinco réplicas. Si un Pod se elimina, el Deployment crea otro. Si queremos más capacidad, podemos escalar.',
       imageUrl: operationsObservability,
@@ -391,7 +391,7 @@ export const blogKindKubernetesDocker: Blog = {
       ]
     },
     {
-      title: '9. Observabilidad: Prometheus y Grafana',
+      title: 'Observabilidad: Prometheus y Grafana',
       intro:
         'Una aplicación desplegada no termina en "está corriendo". También necesitamos observarla. En esta práctica se incluyen Prometheus y Grafana para mostrar cómo se puede comenzar a recolectar y visualizar métricas dentro del cluster.',
       subsections: [
@@ -423,7 +423,7 @@ export const blogKindKubernetesDocker: Blog = {
       }
     },
     {
-      title: '10. Errores comunes y cómo entenderlos',
+      title: 'Errores comunes y cómo entenderlos',
       intro:
         'Aprender Kubernetes implica leer estados y eventos. Muchos errores no significan que Kubernetes esté fallando, sino que está informando que algo del estado deseado no puede cumplirse todavía.',
       subsections: [
@@ -461,7 +461,7 @@ export const blogKindKubernetesDocker: Blog = {
       }
     },
     {
-      title: '11. Extensión de Kubernetes en VS Code',
+      title: 'Extensión de Kubernetes en VS Code',
       intro:
         'Aunque kubectl es la herramienta principal, la extensión de Kubernetes para VS Code ayuda mucho durante una exposición porque permite visualizar Namespaces, Pods, Deployments, Services, ConfigMaps y Secrets de forma gráfica.',
       subsections: [
@@ -490,7 +490,125 @@ export const blogKindKubernetesDocker: Blog = {
       ]
     },
     {
-      title: '12. Cierre: qué aprendemos con kind',
+      title: 'Curva de aprendizaje',
+      intro:
+        'La curva de aprendizaje de kind depende menos de la herramienta en sí y más de los conceptos de Kubernetes que se practican con ella. kind simplifica la creación del cluster, pero no oculta ideas importantes como Pods, Services, Deployments, namespaces, manifiestos YAML, networking y diagnóstico con kubectl.',
+      subsections: [
+        {
+          title: 'Entrada amigable, conceptos reales',
+          content:
+            'Crear un cluster con kind es relativamente rápido: basta con tener Docker instalado y ejecutar comandos puntuales. Sin embargo, lo valioso es que el entorno resultante se comporta como Kubernetes real, por lo que el estudiante practica el mismo modelo mental que usaría en un cluster de nube o de producción.'
+        },
+        {
+          title: 'Dónde suele sentirse la dificultad',
+          content:
+            'La parte más retadora no suele ser kind, sino entender por qué un Pod no arranca, por qué un Service no tiene endpoints, por qué una imagen no se encuentra o por qué <code>localhost</code> no funciona igual dentro de un contenedor. Por eso es clave aprender a leer estados, eventos, logs y descripciones de recursos.'
+        },
+        {
+          title: 'Progresión recomendada',
+          content:
+            'Una ruta sana es empezar con Docker y Docker Compose, pasar a un cluster kind de un solo nodo, desplegar un Deployment simple, agregar Services, luego ConfigMaps y Secrets, y finalmente practicar escalado, recuperación, métricas y herramientas como Prometheus y Grafana.'
+        }
+      ],
+      bullets: [
+        '<strong>Nivel inicial:</strong> instalar Docker, crear el cluster y ejecutar comandos básicos de kubectl.',
+        '<strong>Nivel intermedio:</strong> escribir manifiestos YAML, conectar Services y depurar Pods.',
+        '<strong>Nivel avanzado:</strong> observar métricas, ajustar probes, escalar réplicas y reproducir fallos controlados.',
+        '<strong>Mayor aprendizaje:</strong> entender el comportamiento de Kubernetes sin depender todavía de una nube.'
+      ],
+      table: {
+        title: 'Qué se aprende en cada etapa',
+        headers: ['Etapa', 'Conceptos principales', 'Resultado esperado'],
+        rows: [
+          ['Base Docker', 'Imágenes, contenedores, redes y volúmenes', 'Entender cómo se empaqueta y ejecuta cada servicio'],
+          ['Primer cluster', 'Nodos kind, kubeconfig y kubectl', 'Tener un entorno local listo para aplicar manifiestos'],
+          ['Primer despliegue', 'Deployment, Pod y Service', 'Exponer una aplicación y validar tráfico interno o externo'],
+          ['Operación básica', 'Logs, describe, eventos y escalado', 'Diagnosticar errores y sostener el estado deseado'],
+          ['Observabilidad', 'Métricas, Prometheus y Grafana', 'Analizar el comportamiento de los servicios desplegados']
+        ]
+      }
+    },
+    {
+      title: 'Licencia y costos',
+      intro:
+        'kind es una herramienta open source pensada para desarrollo, pruebas automatizadas y aprendizaje. Su costo directo es cero, pero sigue dependiendo de los recursos de la máquina local: CPU, memoria, disco y una instalación funcional de Docker o un runtime compatible.',
+      subsections: [
+        {
+          title: 'Licencia',
+          content:
+            'kind se distribuye como software libre bajo licencia Apache 2.0. Esto permite usarlo, estudiarlo, modificarlo y automatizarlo en entornos personales, académicos o de integración continua, respetando las condiciones de dicha licencia.'
+        },
+        {
+          title: 'Costo directo',
+          content:
+            'No se paga por crear clusters kind ni por ejecutar Kubernetes localmente con esta herramienta. Para una práctica académica o un laboratorio de microservicios, eso elimina la necesidad de contratar un cluster administrado en la nube.'
+        },
+        {
+          title: 'Costo indirecto',
+          content:
+            'El costo real aparece en los recursos del equipo. Un cluster con varios nodos, Prometheus, Grafana, Redis y múltiples réplicas puede consumir memoria y CPU de forma notable. En laptops con recursos limitados conviene reducir réplicas o apagar el cluster al terminar.'
+        }
+      ],
+      bullets: [
+        'No requiere una suscripción cloud para practicar Kubernetes.',
+        'Permite repetir laboratorios sin generar facturación externa.',
+        'Consume recursos locales mientras el cluster y los contenedores estén activos.',
+        'No debe confundirse con un servicio administrado: la operación y limpieza del entorno dependen del usuario.'
+      ],
+      table: {
+        title: 'Resumen de licencia y costos',
+        headers: ['Aspecto', 'Detalle', 'Impacto en la práctica'],
+        rows: [
+          ['Licencia', 'Apache 2.0', 'Uso libre para aprendizaje, pruebas y automatización'],
+          ['Costo de la herramienta', 'Sin costo directo', 'Ideal para laboratorios y clases'],
+          ['Infraestructura', 'Máquina local con Docker', 'No requiere pagar un cluster en la nube'],
+          ['Consumo', 'CPU, RAM y disco locales', 'Puede exigir cerrar recursos no usados'],
+          ['Mantenimiento', 'Responsabilidad del usuario', 'Hay que crear, revisar y eliminar clusters manualmente']
+        ]
+      }
+    },
+    {
+      title: 'Ventajas frente a otras opciones',
+      intro:
+        'kind no es la única forma de ejecutar Kubernetes localmente, pero sí tiene ventajas claras cuando el objetivo es aprender, probar manifiestos o automatizar escenarios repetibles. Su enfoque de nodos como contenedores lo vuelve ligero, rápido y fácil de destruir y recrear.',
+      subsections: [
+        {
+          title: 'Frente a Minikube',
+          content:
+            'Minikube es muy completo y puede usar distintos drivers, incluso máquinas virtuales. kind suele ser más directo cuando ya se trabaja con Docker, especialmente para crear clusters desechables y reproducibles con varios nodos en pocos comandos.'
+        },
+        {
+          title: 'Frente a Docker Compose',
+          content:
+            'Docker Compose es excelente para levantar servicios locales, pero no enseña completamente el modelo de Kubernetes. kind permite practicar Deployments, Services, ConfigMaps, Secrets, namespaces, probes y controladores manteniendo el entorno en la misma máquina.'
+        },
+        {
+          title: 'Frente a un cluster cloud',
+          content:
+            'Un cluster administrado en la nube se parece más a producción, pero implica costos, credenciales, permisos y tiempos de aprovisionamiento. kind es mejor para experimentar rápido, fallar sin miedo y repetir ejercicios muchas veces antes de pasar a un entorno cloud.'
+        }
+      ],
+      bullets: [
+        '<strong>Rapidez:</strong> permite crear y borrar clusters locales en minutos.',
+        '<strong>Reproducibilidad:</strong> el archivo de configuración de kind versiona nodos y puertos del laboratorio.',
+        '<strong>Bajo costo:</strong> evita facturación cloud durante el aprendizaje.',
+        '<strong>Buena integración con CI:</strong> se usa con frecuencia para probar manifiestos o controladores en pipelines.',
+        '<strong>Modelo Kubernetes real:</strong> trabaja con kubectl y recursos estándar.'
+      ],
+      table: {
+        title: 'Comparación rápida',
+        headers: ['Opción', 'Fortaleza principal', 'Cuándo conviene usarla'],
+        rows: [
+          ['kind', 'Clusters locales ligeros basados en contenedores', 'Aprendizaje, pruebas repetibles y CI'],
+          ['Minikube', 'Experiencia local completa con múltiples drivers', 'Explorar addons o simular un entorno local más amplio'],
+          ['Docker Compose', 'Orquestación simple de contenedores locales', 'Desarrollo rápido sin necesitar conceptos Kubernetes'],
+          ['Cluster cloud', 'Entorno administrado cercano a producción', 'Validación final, despliegues reales y trabajo colaborativo'],
+          ['k3d', 'Kubernetes ligero basado en k3s dentro de Docker', 'Laboratorios livianos con enfoque en k3s y edge computing']
+        ]
+      }
+    },
+    {
+      title: 'Cierre: qué aprendemos con kind',
       intro:
         'kind es una herramienta excelente para aprender Kubernetes porque reduce la fricción inicial. No reemplaza un cluster productivo, pero permite practicar de forma realista conceptos clave: nodos, Pods, Deployments, Services, ConfigMaps, Secrets, escalado, logs y observabilidad.',
       subsections: [
